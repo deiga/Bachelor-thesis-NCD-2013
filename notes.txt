@@ -1,0 +1,6 @@
+- Referaattiin mukaan
+  - NCD
+  - Clustering
+  - Lukijan pitäisi pystyä ymmärtää mitä NCD on
+  - Skip:
+    - Kolmogorov
