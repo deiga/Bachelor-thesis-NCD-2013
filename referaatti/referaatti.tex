@@ -138,32 +138,25 @@
       NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}
     \end{align*}
 
-    Metodi on tulos joka perustuu Kolmogorov kompleksisuuteen.
-
     Oletamme että objektit ovat äärellisiä merkkijonoja 0:sta ja 1:stä. Jokainen tiedosto tietokoneella on tätä muotoa. Voidaan määritellä informaatioetäisyys merkkijonojen $x$ ja $y$ välillä lyhimmän ohjelman $p$ mukaan, joka laskee $x$:n $y$:stä ja toisinpäin. Tämä lyhin ohjelma on määrätyssä ohjelmointikielessä. Teknisistä syistä käytetään Turing koneitten teoreettista käsitettä.
     $p$:n pituuden ilmaisemiseen käytetään \emph{Kolmogorov kompleksisuuden} käsitettä. On osoitettu, että
     $$|p| = max\{K(x|y),K(y|x)\}$$
+
+    Käytännössä \emph{NCD}:n tulos on $ \leq r \leq 1+ \epsilon$ joka kuvastaa kahden tiedoston erotusta. Pienempi luku tarkoittaa enemmän samankaltaisuutta. $\epsilon$ on virhemarginaali korjaamaan tosielämän pakkausalgoritmejen puutteita, suurimmalle osalle pakkausalgritmeistä on epätodennäköistä nähdä $\epsilon \geq 0.1$
   % paragraph normalisoitu_pakkauset_isyys (end)
 
   \paragraph{Normalisoitu Informaatioetäisyys} % (fold)
   \label{par:normalisoitu_informaatioet_isyys}
     $$ NID(x,y) = \frac{ \max\{K{(x|y)},K{(y|x)}\} }{ \max \{K(x),K(y)\}} $$,
 
-    jossa $K(x|y)$ on algoritmin tietoa $x$:stä kun $y$ on syöte. \emph{NID}:iä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska $NID(x,y)$ on osoitettu täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa.
+    jossa $K(x|y)$ on algoritmin tietoa $x$:stä kun $y$ on syöte. \emph{NID}:iä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska $NID(x,y)$ on osoitettu täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa. \emph{NCD} on siis käytännön versio \emph{NID}:stä
   % paragraph normalisoitu_informaatioet_isyys (end)
   % section normalisoitu_pakkauset_isyys (end)
 
-\subsection{Algoritmin esittely} % (fold)
-\label{sub:algoritmin_esittely}
+  \emph{NCD}:stä on luonnollinen tulkinta. Jos oletetaan $C(y) \geq C(x)$, niin voimme kirjoittaa
+  $$ NCD(x,y) = \frac{C(xy)-C(x)}{C(y)} $$
 
-
-
-% subsection algoritmin_esittely (end)
-
-\subsection{Mistä NCD koostuu} % (fold)
-\label{sub:mist_ncd_koostuu}
-
-% subsection mist_ncd_koostuu (end)
+  Eli siis etäisyys $NCD(x,y)$ $x$:n ja $y$:n välillä tuottaa parannuksen kun pakataan $y$ käyttäen $x$:ää kuten aikaisemmin pakattuna ``tietokantana'' ja pakkaamalla $y$ tyhjästä, ilmaistuna suhteena pituuden biteissä välillä kummastakin pakatusta versiosta.
 
 % --- References ---
 %
