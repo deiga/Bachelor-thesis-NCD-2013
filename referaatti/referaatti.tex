@@ -122,28 +122,41 @@
 
 \mainmatter       % clear page, start arabic page numbering
 
-\section{Normalisoitu Pakkausetäisyys}
+\section{Normalisoitu Pakkausetäisyys} % (fold)
+\label{sec:normalisoitu_pakkauset_isyys}
 
-  Normalisoitua versio hyväksyttävästä etäisyydestä $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{Normalisoidusta Informaatioetäisyydestä (NID)}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}
-\\\\
-  Jos $x$ ja $y$ ovat kaksi objektia, ja $C(x)$ on $x$ kompressoitu etäisyys  käyttäen kompressoria $C$, sitten NCD määräytyy seuraavanlaisesti
+  \emph{Normalisoitu Pakkausetäisyys (NCD)} on funktioden perhe jotka ottavat argumenteiksi kaksi objektia (esim. tiedostoja, Googlen haku sanoja) ja evaluoivat määrätyn kaavan, joka ilmaisee tiivistetyn version näistä objekteista, erillisinä ja yhdistettynä. Täten tämä funktioden perhe on parametrisoitu käytettävän kompressorin mukaan.
 
-  \begin{align*}
-    NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}
-  \end{align*}
+  \paragraph{Normalisoitu Pakkausetäisyys} % (fold)
+  \label{par:normalisoitu_pakkauset_isyys}
 
-  Metodi on tulos joka perustuu Kolmogorov kompleksisuuteen.
+    Normalisoitua versio hyväksyttävästä etäisyydestä $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{Normalisoidusta Informaatioetäisyydestä (NID)}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}
+  \\\\
+    Jos $x$ ja $y$ ovat kaksi objektia, ja $C(x)$ on $x$ kompressoitu etäisyys  käyttäen kompressoria $C$, sitten NCD määräytyy seuraavanlaisesti
 
-  Oletamme että objektit ovat äärellisiä merkkijonoja 0:sta ja 1:stä. Jokainen tiedosto tietokoneella on tätä muotoa. Voidaan määritellä informaatioetäisyys merkkijonojen $x$ ja $y$ välillä lyhimmän ohjelman $p$ mukaan, joka laskee $x$:n $y$:stä ja toisinpäin. Tämä lyhin ohjelma on määrätyssä ohjelmointikielessä. Teknisistä syistä käytetään Turing koneitten teoreettista käsitettä.
-  $p$:n pituuden ilmaisemiseen käytetään \emph{Kolmogorov kompleksisuuden} käsitettä. On osoitettu, että
-  $$|p| = max\{K(x|y),K(y|x)\}$$
+    \begin{align*}
+      NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}
+    \end{align*}
 
+    Metodi on tulos joka perustuu Kolmogorov kompleksisuuteen.
 
-  Normalized Compression Distance (NCD) is actually a family of functions which take as arguments two objects (literal files, Google search terms) and evaluate a fixed formula expressed in terms of the compressed versions of these objects, separately and combined. Hence this family of functions is parametrized by the compressor used.
+    Oletamme että objektit ovat äärellisiä merkkijonoja 0:sta ja 1:stä. Jokainen tiedosto tietokoneella on tätä muotoa. Voidaan määritellä informaatioetäisyys merkkijonojen $x$ ja $y$ välillä lyhimmän ohjelman $p$ mukaan, joka laskee $x$:n $y$:stä ja toisinpäin. Tämä lyhin ohjelma on määrätyssä ohjelmointikielessä. Teknisistä syistä käytetään Turing koneitten teoreettista käsitettä.
+    $p$:n pituuden ilmaisemiseen käytetään \emph{Kolmogorov kompleksisuuden} käsitettä. On osoitettu, että
+    $$|p| = max\{K(x|y),K(y|x)\}$$
+  % paragraph normalisoitu_pakkauset_isyys (end)
 
+  \paragraph{Normalisoitu Informaatioetäisyys} % (fold)
+  \label{par:normalisoitu_informaatioet_isyys}
+    $$ NID(x,y) = \frac{ \max\{K{(x|y)},K{(y|x)}\} }{ \max \{K(x),K(y)\}} $$,
+
+    jossa $K(x|y)$ on algoritmin tietoa $x$:stä kun $y$ on syöte. \emph{NID}:iä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska $NID(x,y)$ on osoitettu täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa.
+  % paragraph normalisoitu_informaatioet_isyys (end)
+  % section normalisoitu_pakkauset_isyys (end)
 
 \subsection{Algoritmin esittely} % (fold)
 \label{sub:algoritmin_esittely}
+
+
 
 % subsection algoritmin_esittely (end)
 
