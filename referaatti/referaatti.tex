@@ -151,7 +151,7 @@
 \paragraph{Normaali Kompressori} % (fold)
 \label{par:normaali_kompressori}
 
-  Esitämme aksioomia jotka määrittelevät laajan joukon kompressoreita joihin kuuluvat moni oikean elämän kompressori ja samalla varmistavat  \emph{NCD}:ssä halutut ominaisuudet.
+  Esitämme aksioomia jotka määrittelevät laajan joukon kompressoreita joihin kuuluvat moni tosielämän kompressori ja samalla varmistavat  \emph{NCD}:ssä halutut ominaisuudet.
 
   Kompressori $C$ on \emph{normaali} jos se täyttää seuraavat aksioomat, $O(log n)$ termiin saakka
 
@@ -167,17 +167,15 @@
 \paragraph{Normalisoitu Pakkausetäisyys} % (fold)
 \label{par:normalisoitu_pakkauset_isyys}
 
-  Normalisoitua versio hyväksyttävästä etäisyydestä $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{Normalisoidusta Informaatioetäisyydestä (NID)}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}
+  Normalisoitua versio \emph{hyväksyttävästä etäisyydestä} $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{Normalisoidusta Informaatioetäisyydestä (NID)}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}
 
   \begin{align*}
     NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}
   \end{align*}
 
-  \emph{Normalisoitu pakkausetäisyys} on oikean maailman versio ideaali sesta \emph{normalisoidusta informaatioetäisyydestä}
+  \emph{NCD} on funktioden perhe jotka ottavat argumenteiksi kaksi objektia (esim. tiedostoja, Googlen haku sanoja) ja evaluoivat määrätyn kaavan, joka ilmaisee tiivistetyn version näistä objekteista, erillisinä ja yhdistettynä. Tämä funktioden perhe on parametrisoitu käytetyn kompressorin mukaan.
 
-  \emph{Normalisoitu Pakkausetäisyys (NCD)} on funktioden perhe jotka ottavat argumenteiksi kaksi objektia (esim. tiedostoja, Googlen haku sanoja) ja evaluoivat määrätyn kaavan, joka ilmaisee tiivistetyn version näistä objekteista, erillisinä ja yhdistettynä. Tämä funktioden perhe on parametrisoitu käytetyn kompressorin mukaan.
-
-  Käytännössä \emph{NCD}:n tulos on $ \leq r \leq 1+ \epsilon$ joka kuvastaa kahden tiedoston erotusta. Pienempi luku tarkoittaa enemmän samankaltaisuutta. $\epsilon$ on virhemarginaali korjaamaan tosielämän pakkausalgoritmejen puutteita, suurimmalle osalle pakkausalgritmeistä on epätodennäköistä nähdä $\epsilon \geq 0.1$
+  Käytännössä \emph{NCD}:n tulos on $ \leq r \leq 1+ \epsilon$ joka kuvastaa kahden tiedoston erotusta; pienempi luku tarkoittaa että tiedostot ovat samankaltaisia. Tosielämässä pakkausalgoritmit eivät ole yhtä tehokkaita kuin teoreettiset mallit, joten virhemarginaali $\epsilon$ on lisätty ylärajaan, suurimmalle osalle näistä  $\epsilon \geq 0.1$on epätodennäköistä nähdä
 % paragraph normalisoitu_pakkauset_isyys (end)
 
   \emph{NCD}:stä on luonnollinen tulkinta. Jos oletetaan $C(y) \geq C(x)$, niin voimme kirjoittaa
