@@ -127,67 +127,67 @@
 
 \paragraph{Kolmogorov kompleksisuus} % (fold)
 \label{par:kolmogorov_kompleksisuus}
-  Lyhimmän binääriohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \emph{kolmogorov kompleksisuus} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$. Pohjimmillaan kolmogorov kompleksisuus tiedostosta on sen äärimmäisesti pakatun version pituus.
+  Lyhimmän binääriohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \emph{Kolmogorov kompleksisuus} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$. Pohjimmillaan Kolmogorov kompleksisuus tiedostosta on sen äärimmäisesti pakatun version pituus.
 
 % paragraph kolmogorov_kompleksisuus (end)
 \paragraph{Normalisoitu Informaatioetäisyys} % (fold)
 \label{par:normalisoitu_informaatioet_isyys}
 
-  Artikkelissa \cite{CV05} on esitelty \emph{informaatioetäisyys} $E(x,y)$, joka on määritelty lyhimpänä binääriohjelmana, joka syötteellä $x$ laskee $y$:n ja syötteellä $y$ laskee $x$:n.
-  \begin{align*}
-    E(x,y) &= max\{K(x|y),K(y|x)\}
-  \end{align*}
-
-  Normalisoitu versio $E(x,y)$:stä, jota kutsutaan \emph{normalisoiduksi informaatioetäisyydeksi} on määritelty seuraavasti,
+  Artikkelissa \cite{CV05} on esitelty \emph{informaatioetäisyys} $E(x,y)$, joka on määritelty lyhimpänä binääriohjelmana, joka syötteellä $x$ laskee $y$:n ja syötteellä $y$ laskee $x$:n. Tämä lasketaan seuraavasti
 
   \begin{align*}
-    NID(x,y) &= \frac{ max\{K{(x|y)},K{(y|x)}\} }{ max \{K(x),K(y)\}}
+    E(x,y) &= max\{K(x|y),K(y|x)\}.
   \end{align*}
 
-  \emph{NID}:iä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa, koska Turingin määritelmän mukaan Kolmogorv kompleksisuus ei ole laskettavissa.
-  Nimittäjän approksimointi annetulla kompressorilla $C$ on trviaalia, se on $max \{C(x),C(y)\}$. Numeraattori on hankalampi ja sen paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
-  Kun \emph{NID} approksimoidaan oikealla kompressorilla, saadaa tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}, tämä esitellään formaalisti myöhemmin.
+  Normalisoitu versio informaatioetäisyydestä ($E(x,y)$), jota kutsutaan \emph{normalisoiduksi informaatioetäisyydeksi}, on määritelty seuraavasti
+
+  \begin{align*}
+    NID(x,y) &= \frac{ max\{K{(x|y)},K{(y|x)}\} }{ max \{K(x),K(y)\}}.
+  \end{align*}
+
+  Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa, koska Turingin määritelmän mukaan Kolmogorov kompleksisuus ei ole laskettavissa.
+  Nimittäjän approksimointi annetulla kompressorilla $C$ on $max \{C(x),C(y)\}$. Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
+  Kun \emph{NID} approksimoidaan oikealla kompressorilla, saadaa tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}. Tämä esitellään formaalisti myöhemmin.
 % paragraph normalisoitu_informaatioet_isyys (end)
 
 \paragraph{Normaali Kompressori} % (fold)
 \label{par:normaali_kompressori}
 
-  Esitämme aksioomia jotka määrittelevät laajan joukon kompressoreita joihin kuuluvat moni tosielämän kompressori ja samalla varmistavat  \emph{NCD}:ssä halutut ominaisuudet.
+  Seuraavaksi esitämme aksioomia, jotka määrittelevät laajan joukon kompressoreita ja samalla varmistavat \emph{normalisoidussa pakkausetäisyydessä} halutut ominaisuudet. Näihin kompressoreihin kuuluvat monet tosielämän kompressorit.
 
-  Kompressori $C$ on \emph{normaali} jos se täyttää seuraavat aksioomat, $O(log n)$ termiin saakka
+  Kompressori $C$ on \emph{normaali} jos se täyttää seuraavat aksioomat, $O(log n)$ termiin saakka:
 
   \begin{enumerate}
-    \item \emph{Idempotency}: $C(xx) == C(x)$ ja $C(\lambda) = 0$, jossa $\lambda$ on tyhjä merkkijono.
-    \item \emph{Monotonisuus}: $C(xy) \geq C(x)$
-    \item \emph{Symmetrisuus}: $C(xy) == C(yx)$
-    \item \emph{Distributivity}: $C(xy) + C(z) \leq C(xz) + C(yz)$
+    \item \emph{Idempotenssi}: $C(xx) == C(x)$ ja $C(\lambda) = 0$, jossa $\lambda$ on tyhjä merkkijono,
+    \item \emph{Monotonisuus}: $C(xy) \geq C(x)$,
+    \item \emph{Symmetrisuus}: $C(xy) == C(yx)$ ja
+    \item \emph{Distributiivisuus}: $C(xy) + C(z) \leq C(xz) + C(yz)$.
   \end{enumerate}
-
 % paragraph normaali_kompressori (end)
 
 \paragraph{Normalisoitu Pakkausetäisyys} % (fold)
 \label{par:normalisoitu_pakkauset_isyys}
 
-  Normalisoitua versio \emph{hyväksyttävästä etäisyydestä} $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{Normalisoidusta Informaatioetäisyydestä (NID)}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}
+  Normalisoitua versiota \emph{hyväksyttävästä etäisyydestä} $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{normalisoidusta informaatioetäisyydestä}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}. Tämä lasketaan seuraavasti
 
   \begin{align*}
-    NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}
+    NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}.
   \end{align*}
 
-  \emph{NCD} on funktioden perhe jotka ottavat argumenteiksi kaksi objektia (esim. tiedostoja, Googlen haku sanoja) ja tiivistävät nämä, erillisinä ja yhdistettyinä. Tämä funktioden perhe on parametrisoitu käytetyn kompressorin mukaan.
+  \emph{NCD} on funktioden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä. Tämä funktioden joukko on parametrisoitu käytetyn kompressorin $C$ mukaan.
 
-  Käytännössä \emph{NCD}:n tulos on $ \leq r \leq 1+ \epsilon$ joka vastaa kahden tiedoston eroa toisistaan; pienempi luku tarkoittaa että tiedostot ovat samankaltaisia. Tosielämässä pakkausalgoritmit eivät ole yhtä tehokkaita kuin teoreettiset mallit, joten virhemarginaali $\epsilon$ on lisätty ylärajaan, suurimmalle osalle näistä algoritmeistä $\epsilon > 0.1$ on epätodennäköistä.
+  Käytännössä \emph{NCD}:n tulos on välillä $0 \leq r \leq 1+ \epsilon$, joka vastaa kahden tiedoston eroa toisistaan; mitä pienempi luku, sitä enemmän tiedostot ovat samankaltaisia. Tosielämässä pakkausalgoritmit eivät ole yhtä tehokkaita kuin teoreettiset mallit, joten virhemarginaali $\epsilon$ on lisätty ylärajaan. Suurimmalle osalle näistä algoritmeistä on epätodennäköistä että  $\epsilon > 0.1$.
 % paragraph normalisoitu_pakkauset_isyys (end)
 
   Luonnollinen tulkinta \emph{NCD}:stä, jos oletetaan $C(y) \geq C(x)$, on
 
   \begin{align*}
-    NCD(x,y) = \frac{C(xy)-C(x)}{C(y)}
+    NCD(x,y) = \frac{C(xy)-C(x)}{C(y)}.
   \end{align*}
 
-  Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta kun $y$ pakataan käyttäen $x$:ää ja $y$:n pakkauksesta yksinään; suhde ilmaistaan pituutena bitteinä kummankin pakatun version välillä.
+  Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
 
-  Kun kompressori on normaali, sitten \emph{NCD} on normalisoitu hyväksyttävä etäisyys joka täyttää metriikan (epä)yhtälöt, eli samankaltaisuuden metriikka.
+  Kun kompressori on normaali niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
 
 % --- References ---
 %
