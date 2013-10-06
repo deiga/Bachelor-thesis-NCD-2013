@@ -127,6 +127,8 @@
 
 \paragraph{Kolmogorov kompleksisuus} % (fold)
 \label{par:kolmogorov_kompleksisuus}
+
+  % Esitellään K(x) ensin
   Lyhimmän binääriohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \emph{Kolmogorov kompleksisuus} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$. Pohjimmillaan Kolmogorov kompleksisuus tiedostosta on sen äärimmäisesti pakatun version pituus.
 
 % paragraph kolmogorov_kompleksisuus (end)
@@ -145,6 +147,7 @@
     NID(x,y) &= \frac{ max\{K{(x|y)},K{(y|x)}\} }{ max \{K(x),K(y)\}}.
   \end{align*}
 
+  % NID on paras mahdollinen etäisyyden metriikka
   Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa, koska Turingin määritelmän mukaan Kolmogorov kompleksisuus ei ole laskettavissa.
   Nimittäjän approksimointi annetulla kompressorilla $C$ on $max \{C(x),C(y)\}$. Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
   Kun \emph{NID} approksimoidaan oikealla kompressorilla, saadaa tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}. Tämä esitellään formaalisti myöhemmin.
@@ -188,6 +191,9 @@
   Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
 
   Kun kompressori on normaali niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
+
+
+  % O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
 
 % --- References ---
 %
