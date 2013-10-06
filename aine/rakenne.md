@@ -1,0 +1,8 @@
+- NCD esittely (Referaatti)
+- Klusterorinti
+- Käyttökohteet
+  - Klusteroinnin tuloksia
+  - Kuvantunnistusta
+- Kohinan kestävyys (Noise resistance)
+- Huomioitavaa kompressorin valitsemisessa
+- Google Similarity Distance ja muita samankaltaisuuden metriikoita
