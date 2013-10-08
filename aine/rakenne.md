@@ -1,3 +1,5 @@
+- Johdanto (prio)
+  - esittely aiheeseen (vähemmän matemaattinen)
 - NCD esittely (Referaatti)
 - Klusterorinti
 - Käyttökohteet
