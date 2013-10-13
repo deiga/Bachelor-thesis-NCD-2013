@@ -127,6 +127,43 @@
 
 \section{Johdanto} % (fold)
 \label{sec:johdanto}
+\iffalse
+  All data are created equal but some data are more alike than others. We propose a method expressing this alikeness, using a new similarity metric based on compression. It is parameter-free in that it does not use any features or background knowledge about the data, and can without changes be applied to different areas and across area boundaries. It is universal in that it approximates the parameter expressing similarity of the dominant feature in all pairwise comparisons. It is robust in the sense that its success appears independent from the type of compressor used. The clustering we use is hierarchical clustering indendrograms based on a new fast heuristic for the quartet method. The method is available as an open-source software tool. Below we explain the method, the theory underpinning it, and present evidence for its universality and robustness by experiments and results in a plethora of different areas using different types of compressors.
+
+  Non-Feature Similarities: Our aim is to capture, in a single simi- larity metric, every effective distance: effective versions of Hamming distance, Euclidean distance, edit distances, alignment distance, Lempel–Ziv distance [11], and so on. This metric should be so general that it works in every domain: music, text, literature, programs, genomes, executables, natural language determination, equally and si- multaneously. It would be able to simultaneously detect all similarities betweenpiecesthatothereffectivedistancescandetectseperately.
+
+  Compression-Based Similarity: Such a “universal” metric was co-developed by us in, as a normalized version of the “information metric” of [4], [32]. Roughly speaking, two objects are deemed close if we can significantly “compress” one given the information in theother,theideabeingthatiftwopiecesaremoresimilar,thenwe can more succinctly describe one given the other. The mathematics used is based on Kolmogorov complexity theory [32]. In [31], we defined a new class of (possibly nonmetric) distances, taking values in $[0,1]$ and appropriate for measuring effective similarity relations between sequences, say one type of similarity per distance, and vice versa.Itwasshownthatanappropriately“normalized”information distance minorizes every distance in the class. It discovers all effective similaritiesinthesensethatiftwoobjectsarecloseaccordingtosome effective similarity, then they are also close according to the normal- ized information distance. Put differently, the normalized information distance represents similarity according to the dominating shared featurebetweenthetwoobjectsbeingcompared.Incomparisonsof more than two objects, different pairs may have different dominating features. The normalized information distance is a metric and takes valuesin$[0,1]$;hence,itmaybecalledthesimilaritymetric.
+  To applythisidealprecisemathematicaltheoryinreallife,wehaveto replace the use of the noncomputable Kolmogorov complexity by an approximation using a standard real-world compressor. Earlier approaches resulted in the first completely automatic construction of the phylogeny tree based on whole mitochondrial genomes, [29]–[31], a completely automatic construction of a language tree for over 50 Euro-Asian languages [31], detects plagiarism in student programming assignments[8],givesphylogenyofchainletters[5],andclusters music [10]. Moreover, the method turns out to be robust under change of the underlying compressor-types: statistical (PPMZ), Lempel–Ziv based dictionary (gzip), block based (bzip2), or special purpose (Gencompress).
+\fi
+\paragraph{} % (fold)
+\label{par:intro-1}
+  Kaikki data on luotu samanveroiseksi, mutta jotkut ovat samankaltaisempia kuin toiset. Esitämme tavan jolla esittää tämä samankaltaisuus, käyttäen uutta samankaltaisuuden metriikkaa(engl. similarity metric) joka perustuu tiedoston pakkaamiseen. Se on parametriton siten että se ei käytä ominaisuuksia tai taustatieto datasta, ja sitä voi soveltaa eri alueisiin ja aluerajojen yli ilman muunnoksia. Se on yleinen siten että se approksimoi parametrin joka esittää samankaltaisuutta hallitsevassa piirteessä kaikissa pareittain vertailuissa. Se on tukeva siinä mielessä, että sen menestys esiintyy riippumatta siitä mitä kompressoria käytetään.
+
+% paragraph  (end)
+
+\paragraph{} % (fold)
+\label{par:intro-2}
+  Seuraavaksi esittelemme algoritmin toimintaperiaatteen ja sen koostumuksen.
+
+% paragraph  (end)
+
+\paragraph{} % (fold)
+\label{par:intro-3}
+  Luvussa 3 esittelemme algoritmin käyttökohteita monelta eri alueelta
+
+% paragraph  (end)
+
+\paragraph{} % (fold)
+\label{par:intro-4}
+  Luvussa 4 esittelmme algoritmin ominaisuuksia ja ongelmia (Kohinansieto, kompressorin valinta)
+
+% paragraph  (end)
+
+\paragraph{} % (fold)
+\label{par:intro-5}
+  Luvussa 5 kosketamme muita samankaltaisuuden metriikoita kuten Google Similarity Distance
+
+% paragraph  (end)
 
 % section johdanto (end)
 
@@ -193,7 +230,7 @@
 
   \begin{align}
     NCD(x,y) = \frac{C(xy)-C(x)}{C(y)}.
-  % \end{align}
+ \end{align}
 
   Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
 
@@ -220,8 +257,10 @@
   % subsection kuvantunnnistus (end)
 % section k_ytt_kohteet (end)
 
-\section{Kohinan sietokyky} % (fold)
+\section{Kohinansietokyky} % (fold)
 \label{sec:kohinan_sietokyky}
+
+Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä. Progressivisen kohinan lisääminen tiedostoon voi tuottaa tietoa mittarista(measure) itsestään. Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
 
 % section kohinan_sietokyky (end)
 
