@@ -125,6 +125,10 @@
 
 \mainmatter       % clear page, start arabic page numbering
 
+\section{Johdanto} % (fold)
+\label{sec:johdanto}
+
+% section johdanto (end)
 
 \section{Normalisoitu Pakkausetäisyys} % (fold)
 \label{sec:normalisoitu_pakkauset_isyys}
@@ -140,15 +144,15 @@
 
   Artikkelissa \cite{CV05} on esitelty \emph{informaatioetäisyys} $E(x,y)$, joka on määritelty lyhimpänä binääriohjelmana, joka syötteellä $x$ laskee $y$:n ja syötteellä $y$ laskee $x$:n. Tämä lasketaan seuraavasti \cite{10.1109/WDM.2004.1358107}
 
-  \begin{align*}
+  \begin{align}
     E(x,y) &= max\{K(x|y),K(y|x)\}.
-  \end{align*}
+  \end{align}
 
   Normalisoitu versio informaatioetäisyydestä ($E(x,y)$), jota kutsutaan \emph{normalisoiduksi informaatioetäisyydeksi}, on määritelty seuraavasti
 
-  \begin{align*}
+  \begin{align}
     NID(x,y) &= \frac{ max\{K{(x|y)},K{(y|x)}\} }{ max \{K(x),K(y)\}}.
-  \end{align*}
+  \end{align}
 
   % NID on paras mahdollinen etäisyyden metriikka
   Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa, koska Turingin määritelmän mukaan Kolmogorov kompleksisuus ei ole laskettavissa.
@@ -176,9 +180,9 @@
 
   Normalisoitua versiota \emph{hyväksyttävästä etäisyydestä} $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{normalisoidusta informaatioetäisyydestä}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}. Tämä lasketaan seuraavasti
 
-  \begin{align*}
+  \begin{align}
     NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}.
-  \end{align*}
+  \end{align}
 
   \emph{NCD} on funktioden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä. Tämä funktioden joukko on parametrisoitu käytetyn kompressorin $C$ mukaan.
 
@@ -187,9 +191,9 @@
 
   Luonnollinen tulkinta \emph{NCD}:stä, jos oletetaan $C(y) \geq C(x)$, on
 
-  \begin{align*}
+  \begin{align}
     NCD(x,y) = \frac{C(xy)-C(x)}{C(y)}.
-  \end{align*}
+  % \end{align}
 
   Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
 
@@ -199,7 +203,40 @@
   % O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
 % section normalisoitu_pakkauset_isyys (end)
 
+\section{Klusterointi} % (fold)
+\label{sec:klusterointi}
 
+% section klusterointi (end)
+
+\section{Käyttökohteet} % (fold)
+\label{sec:k_ytt_kohteet}
+  \subsection{Klusteroinnin tulokset} % (fold)
+  \label{sub:klusteroinnin_tulokset}
+
+  % subsection klusteroinnin_tulokset (end)
+  \subsection{Kuvantunnnistus} % (fold)
+  \label{sub:kuvantunnnistus}
+
+  % subsection kuvantunnnistus (end)
+% section k_ytt_kohteet (end)
+
+\section{Kohinan sietokyky} % (fold)
+\label{sec:kohinan_sietokyky}
+
+% section kohinan_sietokyky (end)
+
+\section{Huomioitavaa kompressorin valitsemisessa} % (fold)
+\label{sec:huomioitavaa_kompressorin_valitsemisessa}
+
+% section huomioitavaa_kompressorin_valitsemisessa (end)
+
+\section{Muita samankaltaisuuden metriikoita} % (fold)
+\label{sec:muita_samankaltaisuuden_metriikoita}
+  \subsection{Google Similarity Distance} % (fold)
+  \label{sub:google_similarity_distance}
+
+  % subsection google_similarity_distance (end)
+% section muita_samankaltaisuuden_metriikoita (end)
 % --- References ---
 %
 % bibtex is used to generate the bibliography. The babplain style
