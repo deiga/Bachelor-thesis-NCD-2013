@@ -167,17 +167,17 @@
 
 % section johdanto (end)
 
-\section{Normalisoitu Pakkausetäisyys} % (fold)
+\section{Normalisoitu Pakkausetäisyys: Mistä se koostuu, miten se toimii?} % (fold)
 \label{sec:normalisoitu_pakkauset_isyys}
-  \paragraph{Kolmogorov kompleksisuus} % (fold)
-\label{par:kolmogorov_kompleksisuus}
+  \subsection{Kolmogorov kompleksisuus} % (fold)
+\label{sub:kolmogorov_kompleksisuus}
 
   % Esitellään K(x) ensin
   Lyhimmän binääriohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \emph{Kolmogorov kompleksisuus} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$. Pohjimmillaan Kolmogorov kompleksisuus tiedostosta on sen äärimmäisesti pakatun version pituus.
 
-% paragraph kolmogorov_kompleksisuus (end)
-\paragraph{Normalisoitu Informaatioetäisyys} % (fold)
-\label{par:normalisoitu_informaatioet_isyys}
+% subsection kolmogorov_kompleksisuus (end)
+\subsection{Normalisoitu Informaatioetäisyys} % (fold)
+\label{sub:normalisoitu_informaatioet_isyys}
 
   Artikkelissa \cite{CV05} on esitelty \emph{informaatioetäisyys} $E(x,y)$, joka on määritelty lyhimpänä binääriohjelmana, joka syötteellä $x$ laskee $y$:n ja syötteellä $y$ laskee $x$:n. Tämä lasketaan seuraavasti \cite{10.1109/WDM.2004.1358107}
 
@@ -195,10 +195,10 @@
   Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa, koska Turingin määritelmän mukaan Kolmogorov kompleksisuus ei ole laskettavissa.
   Nimittäjän approksimointi annetulla kompressorilla $C$ on $max \{C(x),C(y)\}$. Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
   Kun \emph{NID} approksimoidaan oikealla kompressorilla, saadaa tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}. Tämä esitellään formaalisti myöhemmin.
-% paragraph normalisoitu_informaatioet_isyys (end)
+% subsection normalisoitu_informaatioet_isyys (end)
 
-\paragraph{Normaali Kompressori} % (fold)
-\label{par:normaali_kompressori}
+\subsection{Normaali Kompressori} % (fold)
+\label{sub:normaali_kompressori}
 
   Seuraavaksi esitämme aksioomia, jotka määrittelevät laajan joukon kompressoreita ja samalla varmistavat \emph{normalisoidussa pakkausetäisyydessä} halutut ominaisuudet. Näihin kompressoreihin kuuluvat monet tosielämän kompressorit.
 
@@ -210,10 +210,10 @@
     \item \emph{Symmetrisuus}: $C(xy) == C(yx)$ ja
     \item \emph{Distributiivisuus}: $C(xy) + C(z) \leq C(xz) + C(yz)$.
   \end{enumerate}
-% paragraph normaali_kompressori (end)
+% subsection normaali_kompressori (end)
 
-\paragraph{Normalisoitu Pakkausetäisyys} % (fold)
-\label{par:normalisoitu_pakkauset_isyys}
+\subsection{Normalisoitu Pakkausetäisyys} % (fold)
+\label{sub:normalisoitu_pakkauset_isyys}
 
   Normalisoitua versiota \emph{hyväksyttävästä etäisyydestä} $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{normalisoidusta informaatioetäisyydestä}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}. Tämä lasketaan seuraavasti
 
@@ -224,7 +224,7 @@
   \emph{NCD} on funktioden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä. Tämä funktioden joukko on parametrisoitu käytetyn kompressorin $C$ mukaan.
 
   Käytännössä \emph{NCD}:n tulos on välillä $0 \leq r \leq 1+ \epsilon$, joka vastaa kahden tiedoston eroa toisistaan; mitä pienempi luku, sitä enemmän tiedostot ovat samankaltaisia. Tosielämässä pakkausalgoritmit eivät ole yhtä tehokkaita kuin teoreettiset mallit, joten virhemarginaali $\epsilon$ on lisätty ylärajaan. Suurimmalle osalle näistä algoritmeistä on epätodennäköistä että  $\epsilon > 0.1$.
-% paragraph normalisoitu_pakkauset_isyys (end)
+% subsection normalisoitu_pakkauset_isyys (end)
 
   Luonnollinen tulkinta \emph{NCD}:stä, jos oletetaan $C(y) \geq C(x)$, on
 
@@ -240,34 +240,37 @@
   % O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
 % section normalisoitu_pakkauset_isyys (end)
 
-\section{Klusterointi} % (fold)
-\label{sec:klusterointi}
-
-% section klusterointi (end)
-
 \section{Käyttökohteet} % (fold)
 \label{sec:k_ytt_kohteet}
-  \subsection{Klusteroinnin tulokset} % (fold)
-  \label{sub:klusteroinnin_tulokset}
+  \subsection{Klusterointi} % (fold)
+  \label{sub:klusterointi}
+    \subsubsection{Tuloksia} % (fold)
+    \label{ssub:tuloksia}
 
-  % subsection klusteroinnin_tulokset (end)
+    % subsubsection tuloksia (end)
+  % subsection klusterointi (end)
   \subsection{Kuvantunnnistus} % (fold)
   \label{sub:kuvantunnnistus}
 
   % subsection kuvantunnnistus (end)
 % section k_ytt_kohteet (end)
 
-\section{Kohinansietokyky} % (fold)
-\label{sec:kohinan_sietokyky}
+\section{Algoritmin ongelmat ja ominaisuudet} % (fold)
+\label{sec:algoritmin_ongelmat_ja_ominaisuudet}
+  \subsection{Kohinansietokyky} % (fold)
+  \label{sub:kohinansietokyky}
+    Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä. Progressivisen kohinan lisääminen tiedostoon voi tuottaa tietoa mittarista(measure) itsestään. Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
 
-Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä. Progressivisen kohinan lisääminen tiedostoon voi tuottaa tietoa mittarista(measure) itsestään. Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
+  % subsection kohinansietokyky (end)
 
-% section kohinan_sietokyky (end)
+  \subsection{Kompressorin valinta} % (fold)
+  \label{sub:kompressorin_valinta}
 
-\section{Huomioitavaa kompressorin valitsemisessa} % (fold)
-\label{sec:huomioitavaa_kompressorin_valitsemisessa}
-
-% section huomioitavaa_kompressorin_valitsemisessa (end)
+    \iffalse
+      This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
+    \fi
+  % subsection kompressorin_valinta (end)
+% section algoritmin_ongelmat_ja_ominaisuudet (end)
 
 \section{Muita samankaltaisuuden metriikoita} % (fold)
 \label{sec:muita_samankaltaisuuden_metriikoita}
