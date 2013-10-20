@@ -74,7 +74,7 @@
 % The following commands define the information used to generate title and
 % abstract pages. The following entries should be always specified:
 
-\title{Normalisoitu pakkausetäisyys}
+\title{Normalisoitu pakkausetäisyys: sovelluksia ja variaatioita}
 \author{Timo Sand}
 \date{\today}
 \level{Kandidaatintutkielma}
@@ -178,40 +178,39 @@
 
 \section{Normalisoitu Pakkausetäisyys: Mistä se koostuu, miten se toimii?} % (fold)
 \label{sec:normalisoitu_pakkauset_isyys}
-  \subsection{Kolmogorov kompleksisuus} % (fold)
+  \subsection{Kolmogorov-kompleksisuus} % (fold)
 \label{sub:kolmogorov_kompleksisuus}
 
-  % Esitellään K(x) ensin
-  Lyhimmän binääriohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \emph{Kolmogorov kompleksisuus} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$. Pohjimmillaan Kolmogorov kompleksisuus tiedostosta on sen äärimmäisesti pakatun version pituus.
+  Lyhimmän tietokoneohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \emph{Kolmogorov kompleksisuus} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$. Kolmogorov-kompleksisuus $x$:stä on lyhimmän tietokoneohjelman pituus, joka ilman syötettä palauttaa $x$; tämä merkitään $K(x)=K(x|\lambda)$, $\lambda$ esittää tyhjää syötettä. Pohjimmillaan Kolmogorov kompleksisuus tiedostosta on sen äärimmäisesti pakatun version pituus.
 
 % subsection kolmogorov_kompleksisuus (end)
-\subsection{Normalisoitu Informaatioetäisyys} % (fold)
+\subsection{Normalisoitu informaatioetäisyys} % (fold)
 \label{sub:normalisoitu_informaatioet_isyys}
 
-  Artikkelissa \cite{CV05} on esitelty \emph{informaatioetäisyys} $E(x,y)$, joka on määritelty lyhimpänä binääriohjelmana, joka syötteellä $x$ laskee $y$:n ja syötteellä $y$ laskee $x$:n. Tämä lasketaan seuraavasti \cite{10.1109/WDM.2004.1358107}
+  Artikkelissa \cite{CV05} on esitelty \emph{informaatioetäisyys} $E(x,y)$, joka on määritelty lyhimpänä binääriohjelman pituutena, joka syötteellä $x$ laskee $y$:n ja syötteellä $y$ laskee $x$:n. Tämä lasketaan seuraavasti:
 
   \begin{align}
     E(x,y) &= max\{K(x|y),K(y|x)\}.
   \end{align}
 
-  Normalisoitu versio informaatioetäisyydestä ($E(x,y)$), jota kutsutaan \emph{normalisoiduksi informaatioetäisyydeksi}, on määritelty seuraavasti
+  Normalisoitu versio informaatioetäisyydestä $E(x,y)$, jota kutsutaan \emph{normalisoiduksi informaatioetäisyydeksi}, on määritelty seuraavasti
 
   \begin{align}
     NID(x,y) &= \frac{ max\{K{(x|y)},K{(y|x)}\} }{ max \{K(x),K(y)\}}.
   \end{align}
 
-  % NID on paras mahdollinen etäisyyden metriikka
-  Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa, koska Turingin määritelmän mukaan Kolmogorov kompleksisuus ei ole laskettavissa.
-  Nimittäjän approksimointi annetulla kompressorilla $C$ on $max \{C(x),C(y)\}$. Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
-  Kun \emph{NID} approksimoidaan oikealla kompressorilla, saadaa tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}. Tämä esitellään formaalisti myöhemmin.
+  % TODO: NID on paras mahdollinen etäisyyden metriikka
+  Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa, koska Turingin määritelmän mukaan Kolmogorov kompleksisuus ei ole laskettavissa \cite{CV05}.
+  Nimittäjän approksimointi annetulla pakkaajalla $C$ on $max \{C(x),C(y)\}$. Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
+  Kun \emph{NID} approksimoidaan oikealla pakkaajalla, saadaa tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}. Tämä esitellään formaalisti myöhemmin.
 % subsection normalisoitu_informaatioet_isyys (end)
 
-\subsection{Normaali Kompressori} % (fold)
-\label{sub:normaali_kompressori}
+\subsection{Normaali pakkaaja} % (fold)
+\label{sub:normaali_pakkaaja}
 
-  Seuraavaksi esitämme aksioomia, jotka määrittelevät laajan joukon kompressoreita ja samalla varmistavat \emph{normalisoidussa pakkausetäisyydessä} halutut ominaisuudet. Näihin kompressoreihin kuuluvat monet tosielämän kompressorit.
+  Seuraavaksi esitämme aksioomia, jotka määrittelevät laajan joukon pakkaajia ja samalla varmistavat \emph{normalisoidussa pakkausetäisyydessä} halutut ominaisuudet. Näihin pakkaajiin kuuluvat monet tosielämän pakkaajat.
 
-  Kompressori $C$ on \emph{normaali} jos se täyttää seuraavat aksioomat, $O(log n)$ termiin saakka:
+  Pakkaaja $C$ on \emph{normaali} jos se täyttää seuraavat aksioomat, $O(log n)$ termiin saakka:
 
   \begin{enumerate}
     \item \emph{Idempotenssi}: $C(xx) == C(x)$ ja $C(\lambda) = 0$, jossa $\lambda$ on tyhjä merkkijono,
@@ -219,18 +218,18 @@
     \item \emph{Symmetrisuus}: $C(xy) == C(yx)$ ja
     \item \emph{Distributiivisuus}: $C(xy) + C(z) \leq C(xz) + C(yz)$.
   \end{enumerate}
-% subsection normaali_kompressori (end)
+% subsection normaali_pakkaaja (end)
 
 \subsection{Normalisoitu Pakkausetäisyys} % (fold)
 \label{sub:normalisoitu_pakkauset_isyys}
 
-  Normalisoitua versiota \emph{hyväksyttävästä etäisyydestä} $E_c(x,y)$, joka on kompressoriin $C$ pohjautuva approksimaatio \emph{normalisoidusta informaatioetäisyydestä}, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}. Tämä lasketaan seuraavasti
+  Normalisoitua versiota \emph{hyväksyttävästä etäisyydestä} $E_c(x,y)$, joka on pakkaajaan $C$ pohjautuva approksimaatio normalisoidusta informaatioetäisyydestä, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}. Tämä lasketaan seuraavasti
 
   \begin{align}
     NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}.
   \end{align}
 
-  \emph{NCD} on funktioden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä. Tämä funktioden joukko on parametrisoitu käytetyn kompressorin $C$ mukaan.
+  \emph{NCD} on funktioden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä. Tämä funktioden joukko on parametrisoitu käytetyn pakkaajan $C$ mukaan.
 
   Käytännössä \emph{NCD}:n tulos on välillä $0 \leq r \leq 1+ \epsilon$, joka vastaa kahden tiedoston eroa toisistaan; mitä pienempi luku, sitä enemmän tiedostot ovat samankaltaisia. Tosielämässä pakkausalgoritmit eivät ole yhtä tehokkaita kuin teoreettiset mallit, joten virhemarginaali $\epsilon$ on lisätty ylärajaan. Suurimmalle osalle näistä algoritmeistä on epätodennäköistä että  $\epsilon > 0.1$.
 % subsection normalisoitu_pakkauset_isyys (end)
@@ -243,10 +242,10 @@
 
   Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
 
-  Kun kompressori on normaali niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
+  Kun pakkaaja on normaali niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
 
 
-  % O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
+  % TODO: O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
 % section normalisoitu_pakkauset_isyys (end)
 
 \section{Käyttökohteet} % (fold)
@@ -272,13 +271,13 @@
 
   % subsection kohinansietokyky (end)
 
-  \subsection{Kompressorin valinta} % (fold)
-  \label{sub:kompressorin_valinta}
+  \subsection{Pakkaajan valinta} % (fold)
+  \label{sub:pakkaajan_valinta}
 
     \iffalse
-      This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
+      TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
     \fi
-  % subsection kompressorin_valinta (end)
+  % subsection pakkaajan_valinta (end)
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
 
 \section{Muita samankaltaisuuden metriikoita} % (fold)
