@@ -109,6 +109,8 @@
 % \city{Helsinki}
 %
 
+\newcommand{\engl}[1]{\emph{(engl. #1)}}
+
 
 \begin{document}
 
@@ -128,21 +130,25 @@
 \section{Johdanto} % (fold)
 \label{sec:johdanto}
 \iffalse
-  All data are created equal but some data are more alike than others. We propose a method expressing this alikeness, using a new similarity metric based on compression. It is parameter-free in that it does not use any features or background knowledge about the data, and can without changes be applied to different areas and across area boundaries. It is universal in that it approximates the parameter expressing similarity of the dominant feature in all pairwise comparisons. It is robust in the sense that its success appears independent from the type of compressor used.
+  TODO: All data are created equal but some data are more alike than others. We propose a method expressing this alikeness, using a new similarity metric based on compression. It is parameter-free in that it does not use any features or background knowledge about the data, and can without changes be applied to different areas and across area boundaries. It is universal in that it approximates the parameter expressing similarity of the dominant feature in all pairwise comparisons. It is robust in the sense that its success appears independent from the type of compressor used.
 
   Non-Feature Similarities: Our aim is to capture, in a single simi- larity metric, every effective distance: effective versions of Hamming distance, Euclidean distance, edit distances, alignment distance, Lempel–Ziv distance [11], and so on. This metric should be so general that it works in every domain: music, text, literature, programs, genomes, executables, natural language determination, equally and si- multaneously. It would be able to simultaneously detect all similarities betweenpiecesthatothereffectivedistancescandetectseperately.
 
-  To apply this ideal precise mathematical theory in real life, we have to replace the use of the non computable Kolmogorov complexity by an approximation using a standard real-world compressor. Earlier approaches resulted in the first completely automatic construction of the phylogeny tree based on whole mitochondrial genomes, [29]–[31], a completely automatic construction of a language tree for over 50 Euro-Asian languages [31], detects plagiarism in student programming assignments[8],givesphylogenyofchainletters[5],andclusters music [10]. Moreover, the method turns out to be robust under change of the underlying compressor-types: statistical (PPMZ), Lempel–Ziv based dictionary (gzip), block based (bzip2), or special purpose (Gencompress).
+  To apply this ideal precise mathematical theory in real life, we have to replace the use of the non computable Kolmogorov complexity by an approximation using a standard real-world compressor. Earlier approaches resulted in the first completely automatic construction of the phylogeny tree based on whole mitochondrial genomes, [29]–[31], a completely automatic construction of a language tree for over 50 Euro-Asian languages [31], detects plagiarism in student programming assignments[8],givesphylogenyofchainletters[5],andclusters music [10]. Moreover, the method turns out to be robust under change of the underlying compressor-types: statistical (\emph{PPMZ}), Lempel–Ziv based dictionary (\emph{gzip}), block based (\emph{bzip2}), or special purpose (\emph{Gencompress}).
 \fi
 \paragraph{} % (fold)
 \label{par:intro-1}
-  Kaikki data on luotu samanveroiseksi, mutta jotkut ovat samankaltaisempia kuin toiset. Esitämme tavan jolla esittää tämä samankaltaisuus, käyttäen uutta samankaltaisuuden metriikkaa(engl. similarity metric) joka perustuu tiedoston pakkaamiseen. Se on parametriton siten että se ei käytä ominaisuuksia tai taustatieto datasta, ja sitä voi soveltaa eri alueisiin ja aluerajojen yli ilman muunnoksia. Se on yleinen siten että se approksimoi parametrin joka esittää samankaltaisuutta hallitsevassa piirteessä kaikissa pareittain vertailuissa. Se on vakaa siinä mielessä, että sen tulokset ovat riippumattomia käytetystä kompressorista.
+  Kaikki data on luotu samanveroiseksi, mutta jotkut ovat samankaltaisempia kuin toiset.
+  Esitämme tavan jolla esittää tämä samankaltaisuus, käyttäen uutta samankaltaisuuden metriikkaa \engl{similarity metric} joka perustuu tiedoston pakkaamiseen. Metriikka on parametriton, se ei käytä datan ominaisuuksia tai taustatietoa siitä, ja sitä voi soveltaa eri aloihin ilman muunnoksia.
+  Metriikka on universaali siten, että se approksimoi parametrin, joka kaikissa pareittain vertailuissa ilmaisee samankaltaisuutta hallitsevassa piirteessä. Se on vakaa siinä mielessä, että sen tulokset ovat riippumattomia käytetystä pakkaajasta \cite{CV05}. Pakkaajalla tarkoitetaan pakkausohjelmaa kuten \emph{gzip, ppmz, bzip2}.
 
 % paragraph  (end)
 
 \paragraph{} % (fold)
 \label{par:intro-2}
-  Pakkaukseen perustuva samankaltaisuus (engl. Compression-Based Similarity): Tällaisen 'universaalin' metriikan kehittivät \cite{CV05}. Karkeasti, kaksi objektia ovat lähellä toisiaan jos voimme merkittävästi 'pakata' yhden objektin toisen objektin tiedoilla. Ideana se, että jos kaksi palaa ovat samankaltaisempia, niin voimme ytimekkäästi kuvailla yhden kun toinen on annettu. Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja esittelemme mihin teoriaan algoritmi perustuu ja miten se toimii. Edellä mainitun vakauden esittämiseen käytämme useaa tosielämän pakkausalgoritmi': tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistoa (gzip), lohkoperusteista (bzip2) tai erityistä tarkoitusta varten (Gencompress).
+   \textbf{Pakkaukseen perustuva samankaltaisuus} \engl{Compression-Based Similarity}: Tällaisen `universaalin' metriikan kehittivät Cilibrasi ja Vitanyi \cite{CV05}. Yksinkertaistettuna kaksi objektia ovat lähellä toisiaan jos voimme `pakata' yhden objektin huomattavasti tiiviimmin toisen objektin datalla. ABstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden palan toisen avulla, jos palat ovat samankaltaisia. Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja esittelemme mihin teoriaan algoritmi perustuu ja miten se toimii. Edellä mainitun vakauden esittämiseen käytämme useaa tosielämän pakkausalgoritmiä: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistoa (gzip), lohkoperusteista (bzip2) tai erityistä tarkoitusta varten (Gencompress).
+
+   Kun määrittelemme ryhmän sallittavia etäisyyksia \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$. Saavutamme tämän rajoittamalla objektien lukumäärän annetussa etäisyydessä objektiin. Teemme tämän huomioimalla vain todellisia etäisyyksia seuraavasti: Määräämme sopivan ja tietyn ohjelmointikielen, joka toimii tutkielman ajan referenssikielenä.
 
 % paragraph  (end)
 
@@ -156,15 +162,15 @@
 
 \paragraph{} % (fold)
 \label{par:intro-4}
-  Luvussa \ref{sec:algoritmin_ongelmat_ja_ominaisuudet} esitellään NCD:n kestävyyttä ja ongelmia. Ensiksi esitellään miten kohina vaikuttaa NCD:n tuloksiin lisäämällä sitä vähitellen toiseen niistä tiedostoista jota pakataan. Saamme nähdä miten paljon kohina vaikuttaa NCD:n laskemiin etäisyyksiin ja että vaikuttaako se klusterointiin ollenkaan.
+  Luvussa \ref{sec:algoritmin_ongelmat_ja_ominaisuudet} esitellään NCD:n kestävyyttä ja ongelmia. Ensiksi esitellään miten kohina vaikuttaa NCD:n tuloksiin, lisäämällä kohinaa vähitellen toiseen tiedostoista jota pakataan ja mittaamalla samankaltaisuutta tämän jälkeen. Saamme nähdä miten paljon kohina vaikuttaa NCD:n laskemiin etäisyyksiin ja että huonontaako se klusteroinnin tuloksia.
 
-  Mikään algoritmi ei ole täydellinen ja niin on tämänkin kanssa. Algoritmissä itsessään ei ole selvää heikkoutta, mutta sen käytössä on otettava kompressorin valinta huomioon kun halutaan suorittaa klusterointia. Monet suosituista pakkausalgoritmeistä ovat optimoituja tietyn kokoisille tiedostoille, niissä on niinkutsuttu ikkunakoko(engl. window size) joka määrittelee mikä tiedostokok on sopiva. Jos tiedostonkoko on pienempi kuin ikkunakoko, niin pakkaus on tehokasta, kun mennään sen yli niin pakkauksesta tulee huomattavasti tehottomampaa. Tässä luvussa esitellään tuloksia eri pakkausalgoritmejen vertailuista ja mikä näistä algoritmeistä on parhaimmaksi havaittu NCD:n kanssa käytettäväksi.
+  Mikään algoritmi ei ole täydellinen ja niin tälläkin on ongelmansa. Algoritmissä itsessään ei ole selvää heikkoutta, mutta sen käytössä on otettava pakkaajan valinta huomioon, koska sonet suosituista pakkausalgoritmeistä ovat optimoituja tietyn kokoisille tiedostoille. Niissä on niinkutsuttu ikkunakoko \engl{window size} joka määrittelee mikä tiedostokoko on sopiva. Jos tiedostokoko on pienempi kuin ikkunakoko, niin pakkaus on tehokasta, kun mennään sen yli niin pakkauksesta tulee huomattavasti tehottomampaa. Esittelemme tuloksia eri pakkausalgoritmejen vertailuista ja mikä näistä algoritmeistä on parhaimmaksi havaittu NCD:n kanssa käytettäväksi.
 
 % paragraph  (end)
 
 \paragraph{} % (fold)
 \label{par:intro-5}
-  NCD ei ole ainut metriikka jolla voidaan mitata samankaltaisuutta. Internettiä hyödyntäen on tehty metriikka joka käyttää hakukoneita samankaltaisuuden tutkimiseen, tämä on nimetty Google samankaltaisuusetäisyydeksi (engl. Google Similarity Distance); se toimii myös muilla hakukoneilla kuin Googlella. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esitellemme tämän sekä muita samankaltaisuuden metriikoita.
+  NCD ei ole ainut metriikka jolla voidaan mitata samankaltaisuutta. Internettiä hyödyntäen on tehty metriikka joka käyttää hakukoneita samankaltaisuuden tutkimiseen, tämä on nimetty Google samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}; se toimii myös muilla hakukoneilla kuin Googlella. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esitellemme tämän sekä muita samankaltaisuuden metriikoita.
 
 % paragraph  (end)
 
