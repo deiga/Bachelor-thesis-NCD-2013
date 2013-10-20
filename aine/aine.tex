@@ -139,38 +139,38 @@
 \paragraph{} % (fold)
 \label{par:intro-1}
   Kaikki data on luotu samanveroiseksi, mutta jotkut ovat samankaltaisempia kuin toiset.
-  Esitämme tavan jolla esittää tämä samankaltaisuus, käyttäen uutta samankaltaisuuden metriikkaa \engl{similarity metric} joka perustuu tiedoston pakkaamiseen. Metriikka on parametriton, se ei käytä datan ominaisuuksia tai taustatietoa siitä, ja sitä voi soveltaa eri aloihin ilman muunnoksia.
+  Esitämme tavan jolla esittää tämä samankaltaisuus, käyttäen uutta samankaltaisuuden metriikkaa \engl{similarity metric}, joka perustuu tiedoston pakkaamiseen. Metriikka on parametriton, eli se ei käytä datan ominaisuuksia tai taustatietoja, ja sitä voi soveltaa eri aloihin ilman muunnoksia.
   Metriikka on universaali siten, että se approksimoi parametrin, joka kaikissa pareittain vertailuissa ilmaisee samankaltaisuutta hallitsevassa piirteessä. Se on vakaa siinä mielessä, että sen tulokset ovat riippumattomia käytetystä pakkaajasta \cite{CV05}. Pakkaajalla tarkoitetaan pakkausohjelmaa kuten \emph{gzip, ppmz, bzip2}.
 
 % paragraph  (end)
 
 \paragraph{} % (fold)
 \label{par:intro-2}
-   \textbf{Pakkaukseen perustuva samankaltaisuus} \engl{Compression-Based Similarity}: Tällaisen `universaalin' metriikan kehittivät Cilibrasi ja Vitanyi \cite{CV05}. Yksinkertaistettuna kaksi objektia ovat lähellä toisiaan jos voimme `pakata' yhden objektin huomattavasti tiiviimmin toisen objektin datalla. ABstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden palan toisen avulla, jos palat ovat samankaltaisia. Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja esittelemme mihin teoriaan algoritmi perustuu ja miten se toimii. Edellä mainitun vakauden esittämiseen käytämme useaa tosielämän pakkausalgoritmiä: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistoa (gzip), lohkoperusteista (bzip2) tai erityistä tarkoitusta varten (Gencompress).
+   Pakkaukseen perustuva samankaltaisuus \engl{Compression-Based Similarity} on ``universaali'' metriikka, jonka kehittivät Cilibrasi ja Vitanyi \cite{CV05}. Yksinkertaistettuna tämä tarkoitta, että kaksi objektia ovat lähellä toisiaan, jos voimme ``pakata'' yhden objektin huomattavasti tiiviimmin toisen objektin datalla. Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden palan toisen avulla, mikäli palat ovat samankaltaisia. Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja samalla käymme läpi mihin teoriaan algoritmi perustuu sekä miten se toimii. Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmiä: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistoa (gzip), lohkoperusteista (bzip2) tai erityistä (Gencompress).
 
-   Kun määrittelemme ryhmän sallittavia etäisyyksia \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$. Saavutamme tämän rajoittamalla objektien lukumäärän annetussa etäisyydessä objektiin. Teemme tämän huomioimalla vain todellisia etäisyyksia seuraavasti: Määräämme sopivan ja tietyn ohjelmointikielen, joka toimii tutkielman ajan referenssikielenä.
+   Kun määrittelemme ryhmän sallittavia etäisyyksia \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$. Saavutamme tämän rajoittamalla objektien lukumäärän annetussa etäisyydessä objektiin. Teemme tämän huomioimalla vain todellisia etäisyyksia seuraavasti: Määräämme sopivan ja tietyn ohjelmointikielen, joka toimii tutkielman ajan referenssikielenä. \cite{CV05}
 
 % paragraph  (end)
 
 \paragraph{} % (fold)
 \label{par:intro-3}
-  Luvussa \ref{sec:k_ytt_kohteet} esittelemme algoritmin käyttökohteita monelta eri alueelta. Aloitamme sillä, miten yleiseti NCD:n avulla pystymme klusteroimaan tuloksia eri kategorioihin; miten musiikkikappaleet klusteroituu saman artistin alle, miten kuvantunnistuksessa saamme ryhmitettyä samankaltaiset kuvat ja miten sienten genomista saamme tarkan lajiryhmityksen.
+  Luvussa \ref{sec:k_ytt_kohteet} esittelemme algoritmin käyttökohteita monelta eri alueelta. Aloitamme siitä, miten yleiseti NCD:n avulla pystymme klusteroimaan tuloksia eri kategorioihin; miten musiikkikappaleet klusteroituvat saman artistin alle, miten kuvantunnistuksessa saamme ryhmitettyä samankaltaiset kuvat ja miten sienten genomeista saamme tarkan lajiryhmityksen.
 
-  Syvennymme musiikin, kuvantunnistuken ja dokumenttien kategorisoinnin tuloksiin lopussa lukua.
+  Syvennymme musiikin, kuvantunnistuken ja dokumenttien kategorisoinnin tuloksiin luvun lopussa.
 
 % paragraph  (end)
 
 \paragraph{} % (fold)
 \label{par:intro-4}
-  Luvussa \ref{sec:algoritmin_ongelmat_ja_ominaisuudet} esitellään NCD:n kestävyyttä ja ongelmia. Ensiksi esitellään miten kohina vaikuttaa NCD:n tuloksiin, lisäämällä kohinaa vähitellen toiseen tiedostoista jota pakataan ja mittaamalla samankaltaisuutta tämän jälkeen. Saamme nähdä miten paljon kohina vaikuttaa NCD:n laskemiin etäisyyksiin ja että huonontaako se klusteroinnin tuloksia.
+  Luvussa \ref{sec:algoritmin_ongelmat_ja_ominaisuudet} esitellään NCD:n kestävyyttä ja ongelmia. Ensiksi esitellään NCD:n kohinansietokykä, eli katsotaan mitä tapahtuu kun lisätään vähitellen kohinaa toiseen tiedostoista, jota pakataan, ja mittaamalla samankaltaisuutta tämän jälkeen \cite{4167725}. Saamme nähdä miten paljon kohina vaikuttaa NCD:n laskemiin etäisyyksiin ja huonontaako se klusteroinnin tuloksia.
 
-  Mikään algoritmi ei ole täydellinen ja niin tälläkin on ongelmansa. Algoritmissä itsessään ei ole selvää heikkoutta, mutta sen käytössä on otettava pakkaajan valinta huomioon, koska sonet suosituista pakkausalgoritmeistä ovat optimoituja tietyn kokoisille tiedostoille. Niissä on niinkutsuttu ikkunakoko \engl{window size} joka määrittelee mikä tiedostokoko on sopiva. Jos tiedostokoko on pienempi kuin ikkunakoko, niin pakkaus on tehokasta, kun mennään sen yli niin pakkauksesta tulee huomattavasti tehottomampaa. Esittelemme tuloksia eri pakkausalgoritmejen vertailuista ja mikä näistä algoritmeistä on parhaimmaksi havaittu NCD:n kanssa käytettäväksi.
+  Mikään algoritmi ei ole täydellinen ja niin NCD-algoritmilläkin on ongelmansa. Algoritmissä itsessään ei ole selvää heikkoutta, mutta sen käytössä on otettava pakkaajan valinta huomioon, koska monet suosituista pakkausalgoritmeistä ovat optimoituja tietyn kokoisille tiedostoille. Niissä on niin kutsuttu ikkunakoko \engl{window size}, joka määrittelee mikä tiedostokoko on sopiva \cite{cebrian2005common}. Jos tiedostokoko on pienempi kuin ikkunakoko, niin pakkaus on tehokasta, kun mennään siitä yli, niin pakkauksesta tulee huomattavasti tehottomampaa. Esittelemme tuloksia eri pakkausalgoritmien vertailuista ja mikä näistä algoritmeistä on parhaimmaksi havaittu NCD:n kanssa käytettäväksi.
 
 % paragraph  (end)
 
 \paragraph{} % (fold)
 \label{par:intro-5}
-  NCD ei ole ainut metriikka jolla voidaan mitata samankaltaisuutta. Internettiä hyödyntäen on tehty metriikka joka käyttää hakukoneita samankaltaisuuden tutkimiseen, tämä on nimetty Google samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}; se toimii myös muilla hakukoneilla kuin Googlella. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esitellemme tämän sekä muita samankaltaisuuden metriikoita.
+  NCD ei ole ainut metriikka, jolla voidaan mitata samankaltaisuutta. Internettiä hyödyntäen on tehty metriikka, joka käyttää hakukoneita samankaltaisuuden tutkimiseen; tämä on nimetty Google samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}. Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esitellemme tämän sekä muita samankaltaisuuden metriikoita.
 
 % paragraph  (end)
 
