@@ -110,6 +110,7 @@
 %
 
 \newcommand{\engl}[1]{\emph{(engl. #1)}}
+\newcommand{\kolmogorov}{Kolmogorov-kompleksisuus}
 
 
 \begin{document}
@@ -183,10 +184,10 @@
 
 \section{Normalisoitu Pakkausetäisyys: Mistä se koostuu, miten se toimii?} % (fold)
 \label{sec:normalisoitu_pakkauset_isyys}
-  \subsection{Kolmogorov-kompleksisuus} % (fold)
+  \subsection{\kolmogorov} % (fold)
 \label{sub:kolmogorov_kompleksisuus}
 
-  Lyhimmän tietokoneohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \emph{Kolmogorov kompleksisuus} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$. Kolmogorov-kompleksisuus $x$:stä on lyhimmän tietokoneohjelman pituus, joka ilman syötettä palauttaa $x$; tämä merkitään $K(x)=K(x|\lambda)$, $\lambda$ esittää tyhjää syötettä. Pohjimmillaan Kolmogorov kompleksisuus tiedostosta on sen äärimmäisesti pakatun version pituus.
+  Lyhimmän tietokoneohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \emph{\kolmogorov} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$. \kolmogorov $x$:stä on lyhimmän tietokoneohjelman pituus, joka ilman syötettä palauttaa $x$; tämä merkitään $K(x)=K(x|\lambda)$, $\lambda$ esittää tyhjää syötettä. Pohjimmillaan \kolmogorov tiedostosta on sen äärimmäisesti pakatun version pituus.
 
 % subsection kolmogorov_kompleksisuus (end)
 \subsection{Normalisoitu informaatioetäisyys} % (fold)
@@ -205,7 +206,7 @@
   \end{align}
 
   % TODO: NID on paras mahdollinen etäisyyden metriikka
-  Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettavissa tai edes semi-laskettavissa, koska Turingin määritelmän mukaan Kolmogorov kompleksisuus ei ole laskettavissa \cite{CV05}.
+  Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi. \emph{NID} ei kuitenkaan ole laskettava tai edes semi-laskettava, koska Turingin määritelmän mukaan \kolmogorov ei ole laskettava \cite{CV05}.
   Nimittäjän approksimointi annetulla pakkaajalla $C$ on $max \{C(x),C(y)\}$. Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
   Kun \emph{NID} approksimoidaan oikealla pakkaajalla, saadaa tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}. Tämä esitellään formaalisti myöhemmin.
 % subsection normalisoitu_informaatioet_isyys (end)
@@ -245,9 +246,9 @@
     NCD(x,y) = \frac{C(xy)-C(x)}{C(y)}.
  \end{align}
 
-  Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
+  Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta, kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
 
-  Kun pakkaaja on normaali niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
+  Kun pakkaaja on normaali, niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
 
 
   % TODO: O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
