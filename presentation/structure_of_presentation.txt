@@ -1,0 +1,45 @@
+Introduction
+Outline
+  Example
+  NID
+  NCD
+  Googling for similarity
+    Google Distribution
+    Google Similarity Distance
+  Applications and Experiments
+    Hierachical Clustering
+    Painters
+    Novelists
+Example
+  At the time of doing the experiment, a Google search for “horse” returned 46,700,000 hits. The number of hits for the search term “rider” was 12,200,000. Searching for the pages where both “horse” and “rider” occur gave 2,630,000 hits, and Google indexed 8,058,044,651 Web pages. Using these numbers in (6), we derive below, with N 1= 8 058 044 651, a Normalized Google Distance between the terms “horse” and “rider” as follows:
+    NGD(horse, rider) ≈ 0.443
+    Values between 0 (identical) and 1 (unrelated)
+Technical Preliminaries
+  NID
+  NCD
+Theory of googling for similarity
+    The number of Web pages currently indexed by Google is approaching 10^10. Every common search term occurs in millions of Web pages. This number is so vast, and the number of Web authors generating Web pages is so enormous (and can be assumed to be a truly representative very large sample from humankind), that the probabilities of Google search terms, conceived as the frequencies of page counts returned by Google divided by the number of pages indexed by Google, approximate the actual relative frequencies of those search terms as actually used in society.
+  The Google Distribution
+    Let the set of singleton Google search terms be denoted by S. In the sequel, we use both singleton search terms and doubleton search terms {{x,y}:x,y e S}. Let the set of Web pages indexed (possibility of being returned) by Google be \Omega. The cardinality of \Omega is denoted by M = |\Omega|
+
+    There are |S| singleton terms, and |S| over 2 doubletons consisting of a pair of nonidentical terms. Define N = \Sum{\{x,y\}\subset S} |x \cap y|. N \geq M
+  Google Similarity Distance
+    NGD(x,y) = max{log f(x),log f(y)} - log f(x,y) / log N - min{log f (x), log f (y)}
+    where f(x) denotes the number of pages containing x, and f (x, y) denotes the number of pages containing both x and y, as reported by Google.
+Applications and Experiments
+  Hierarchical Clustering
+    The objects to be clustered are search terms consisting of the names of colors, numbers, and some tricky words. The program automatically organized the colors toward one side of the tree and the numbers toward the other.
+    Insert Fig. 1
+  Dutch 17th Century Painters
+    The names of 15 paintings by Steen, Rembrandt, and Bol were entered. We use the full name as a single Google search term (also in the next experiment with book titles). In the experiment, only painting title names were used.
+    Insert Fig 2.
+  English Novelists
+    Another example is English novelists. The authors and texts used are:
+    - William Shakespeare: A Midsummer Night’s Dream, Julius Caesar, Love’s Labours Lost, and Romeo and Juliet. - Jonathan Swift: The Battle of the Books, Gulliver’s Travels, Tale of a Tub, and A Modest Proposal.
+    - Oscar Wilde: Lady Windermere’s Fan, A Woman of No Importance, Salome, and The Picture of Dorian Gray
+    Insert Fig. 3.
+Recap
+  NID
+  NCD
+  Google Distribution
+  Google Similarity Distance
