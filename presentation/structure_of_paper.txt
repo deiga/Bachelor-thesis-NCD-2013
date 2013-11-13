@@ -1,0 +1,55 @@
+Introduction
+    Long-term and labor-intensive efforts like the Cyc project [22] and the WordNet project [33] try to establish semantic relations between common objects, or, more precisely, names for those objects. The idea is to create a semantic Web of such vast proportions that rudimentary intelligence, and knowledge about the real world, sponta- neously emerge. This comes at the great cost of designing structures capable of manipulating knowledge and entering high quality contents in these structures by knowledgeable human experts. While the efforts are long-running and large scale, the overall information entered is minute compared to what is available on the WWW.
+    The rise of the WWW has enticed millions of users to type in trillions of characters to create billions of Web pages of, on average, low-quality contents. The sheer mass of the information about almost every conceivable topic makes it likely that extremes will cancel and the majority or average is meaningful in a low-quality approximate sense. We devise a general method to tap the amorphous low-grade knowledge available for free on the WWW, typed in by local users aiming at personal gratification of diverse objectives, and, yet, globally achieving what is effectively the largest semantic electronic database in the world. Moreover, this database is available for all by using any search engine that can return aggregate page-count esti- mates for a large range of search-queries, like Google.
+  Example
+    At the time of doing the experiment, a Google search for “horse” returned 46,700,000 hits. The number of hits for the search term “rider” was 12,200,000. Searching for the pages where both “horse” and “rider” occur gave 2,630,000 hits, and Google indexed 8,058,044,651 Web pages. Using these numbers in (6), we derive below, with N 1= 8 058 044 651, a Normalized Google Distance between the terms “horse” and “rider” as follows:
+    NGD(horse, rider) ≈ 0.443
+    Values between 0 (identical) and 1 (unrelated)
+  Related Work
+  Outline
+  Materials and methods
+Technical Preliminaries
+    The basis of much of the theory explored in this paper is Kolmogorov complexity.
+    We assume a fixed reference universal programming system. Such a system may be a general computer language like LISP or Ruby, and it may also be a fixed reference universal Turing machine in a given standard enumeration of Turing machines.
+    The Kolmogorov complexity of a string x is the length, in bits, of the shortest computer program of the fixed reference computing system that produces x as output. The Kolmogorov complexity K(x) gives a lower bound on the ultimate value: For every existing compressor, or compressors that are possible but not known, we have that K(x) is less than or equal to the length of the compressed version of x.
+  Normalized Information Distance
+    Given two strings x and y, what is the length of the shortest binary program in the reference universal computing system such that the program computes output y from input x, and also output x from input y? This is called the information distance and denoted as E(x,y).
+    E(x, y) = K(x, y) - min{K(x), K(y)}
+    K(x,y) is the binary length of the shortest program that produces the pair x, y and a way to tell them apart.
+    [We now consider a large class of admissible distances: All distances (not necessa- rily metric) that are nonnegative, symmetric, and computable in the sense that, for every such distance D there is a prefix program that, given two strings x and y, has binary length equal to the distance D(x, y) between x and y.]
+    NID(x,y) =  K(x, y) - min(K(x), K(y)) / max(K(x), K(y))
+  Normalized Compression Distance
+    The NID is uncomputable since the Kolmogorov complexity is uncomputable. But, we can use real data compression programs to approximate the Kolmogorov complexities. A compression algorithm defines a computable function from strings to the lengths of the compressed versions of those strings.
+    Thus, if C is a compressor and we use C(x) to denote the length of the compressed version of a string x, then we arrive at the Normalized Compression Distance:
+    NCD(x,y) =  C(xy) - min(C(x), C(y)) / max(C(x), C(y))
+Theory of Googling for similarity
+    The number of Web pages currently indexed by Google is approaching 10^10. Every common search term occurs in millions of Web pages. This number is so vast, and the number of Web authors generating Web pages is so enormous (and can be assumed to be a truly representative very large sample from humankind), that the probabilities of Google search terms, conceived as the frequencies of page counts returned by Google divided by the number of pages indexed by Google, approximate the actual relative frequencies of those search terms as actually used in society.
+  The Google Distribution
+    Let the set of singleton Google search terms be denoted by S. In the sequel, we use both singleton search terms and doubleton search terms {{x,y}:x,y e S}. Let the set of Web pages indexed (possibility of being returned) by Google be \Omega. The cardinality of \Omega is denoted by M = |\Omega|
+  Google Semantics
+  Google Code
+    There are |S| singleton terms, and |S| over 2 doubletons consisting of a pair of nonidentical terms. Define N = \Sum{\{x,y\}\subset S} |x \cap y|. N \geq M.
+    Web pages contain, on average, not more than a certain constant \alpha search terms. Therefore, N \leq \alpha M. Define g(x) = g(x,x), g(x,y) = L(x\cap y)M/N = |x\cap{}y|/N
+    The Google code-word length G is defined by G(x) = G(x,x), G(x,y) = log 1/g(x,y)
+  Google Similarity Distance
+    In contrast to strings x where the complexity C(x) represents the length of the compressed version of x using compressor C, for a search term x (just the name for an object rather than the object itself), the Google code of length G(x) represents the shortest expected prefix-code word length of the associated Google event x.
+    In this sense, we can use the Google distribution as a compressor for the Google semantics associated with the search terms. The associated NCD, now called the normalized Google distance (NGD)
+
+    NGD(x,y) = G(x, y) - min(G(x), G(y)) / max(G(x),G(y))
+              = max{log f(x),log f(y)} - log f(x,y) / log N - min{log f (x), log f (y)}
+    where f(x) denotes the number of pages containing x, and f (x, y) denotes the number of pages containing both x and y, as reported by Google.
+  Universality of Google Distribution
+  Universality of Normalized Google Distance
+Applications and Experiments
+  Hierarchical Clustering
+    The objects to be clustered are search terms consisting of the names of colors, numbers, and some tricky words. The program automatically organized the colors toward one side of the tree and the numbers toward the other, as shown in Fig. 1.
+    It arranges the terms which have as only meaning a color or a number, and nothing else, on the farthest reach of the color side and the number side, respectively. It puts the more general terms black and white, and zero, one, and two, toward the center, thus indicating their more ambiguous interpretation. Also, things which were not exactly colors or numbers are also put toward the center, like the word “small.”
+  Dutch 17th Century Painters
+    In the example in Fig. 2, the names of 15 paintings by Steen, Rembrandt, and Bol were entered. We use the full name as a single Google search term (also in the next experiment with book titles). In the experiment, only painting title names were used
+  English Novelists
+    The clustering is given in Fig. 3.
+  SVM - NGD Learning
+  NGD Translation
+Systematic Comparison with WordNet Semantics
+Conclusion
+Appendix
