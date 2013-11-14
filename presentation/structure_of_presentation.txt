@@ -23,7 +23,7 @@ Theory of googling for similarity
     where f(x) denotes the number of pages containing x, and f (x, y) denotes the number of pages containing both x and y, as reported by Google.
 Applications and Experiments
   Hierarchical Clustering
-    The objects to be clustered are search terms consisting of the names of colors, numbers, and some tricky words. The program automatically organized the colors toward one side of the tree and the numbers toward the other.
+    The objects toward be clustered are search terms consisting of the names of colors, numbers, and some tricky words. The program automatically organized the colors toward one side of the tree and the numbers toward the other.
     Insert Fig. 1
   Dutch 17th Century Painters
     The names of 15 paintings by Steen, Rembrandt, and Bol were entered. We use the full name as a single Google search term (also in the next experiment with book titles). In the experiment, only painting title names were used.
