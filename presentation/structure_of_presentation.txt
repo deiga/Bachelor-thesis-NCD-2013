@@ -1,15 +1,10 @@
-Introduction
+introduction
+  The rise of the WWW has enticed millions of users to type in trillions of characters to create billions of Web pages of, on average, low-quality contents. The sheer mass of the information about almost every conceivable topic makes it likely that extremes will cancel and the majority or average is meaningful in a low-quality approximate sense. We devise a general method to tap the amorphous low-grade knowledge available for free on the WWW, typed in by local users aiming at personal gratification of diverse objectives, and, yet, globally achieving what is effectively the largest semantic electronic database in the world. Moreover, this database is available for all by using any search engine that can return aggregate page-count esti- mates for a large range of search-queries, like Google.
 Outline
   Example
-  NID
-  NCD
+  Technical preliminaries
   Googling for similarity
-    Google Distribution
-    Google Similarity Distance
   Applications and Experiments
-    Hierachical Clustering
-    Painters
-    Novelists
 Example
   At the time of doing the experiment, a Google search for “horse” returned 46,700,000 hits. The number of hits for the search term “rider” was 12,200,000. Searching for the pages where both “horse” and “rider” occur gave 2,630,000 hits, and Google indexed 8,058,044,651 Web pages. Using these numbers in (6), we derive below, with N 1= 8 058 044 651, a Normalized Google Distance between the terms “horse” and “rider” as follows:
     NGD(horse, rider) ≈ 0.443
