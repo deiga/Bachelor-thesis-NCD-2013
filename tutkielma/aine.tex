@@ -2,7 +2,7 @@
 %
 % last updated 2013/02/15 for tkltiki2 v1.02
 
-\documentclass[11pt,finnish]{tktltiki2}
+\documentclass[12pt,finnish,draft,twoside]{tktltiki2}
 
 % tktltiki2 automatically loads babel, so you can simply
 % give the language parameter (e.g. finnish, swedish, english, british) as
@@ -32,8 +32,12 @@
 \usepackage{amsfonts,amsmath,amssymb,amsthm,booktabs,color,enumitem,graphicx}
 \usepackage[pdftex,hidelinks]{hyperref}
 
+\usepackage{url}
 \usepackage{setspace}
 \onehalfspacing
+
+\setlength{\parskip}{1ex} % kappaleiden välinen tyhjä tila
+\setlength{\parindent}{0pt} % kappaleen alun sisennys
 
 % Automatically set the PDF metadata fields
 \makeatletter
@@ -78,11 +82,11 @@
 \author{Timo Sand}
 \date{\today}
 \level{Kandidaatintutkielma}
-\abstract{Aine}
+\abstract{Tähän tulee tutkielman tiivistelmä} % TODO: Tiivistelmä
 
 % The following can be used to specify keywords and classification of the paper:
 
-\keywords{avainsana 1, avainsana 2, avainsana 3}
+\keywords{Samankaltaisuus}
 
 % classification according to ACM Computing Classification System (http://www.acm.org/about/class/)
 % This is probably mostly relevant for computer scientists
@@ -120,7 +124,7 @@
 \frontmatter      % roman page numbering for front matter
 
 \maketitle        % title page
-% \makeabstract     % abstract page
+\makeabstract     % abstract page
 
 \tableofcontents  % table of contents
 
@@ -297,7 +301,7 @@
     \label{ssub:k_yt_nn_n_esimerkki}
       GSD muodostetaan siten että haetaan ensiksi yhdellä hakutermillä, sitten toisella ja sen jälkeen kummallakin yhdessä. Hakujen lukumäärät vertaillaan keskenään ja normalisoidaan ja tästä saadaan samankaltaisuusetäisyys.
 
-      Paperissa \cite{cilibrasi2007google} käytettiin hakusanoja `horse' ja `rider' esimerkkinä ja vuonna 2007 tuloksena oli $NGD(horse, rider) \approx 0.443$. Toistin kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$. Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja on internetin kasvu, sekä epäselvyys mikä on tarkka lukumäärä Googlen indeksoituja sivuja.
+      Paperissa \cite{cilibrasi2007google} käytettiin hakusanoja ``horse'' ja ``rider'' esimerkkinä ja vuonna 2007 tuloksena oli $NGD(horse, rider) \approx 0.443$. Toistin kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$. Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja on internetin kasvu, sekä epäselvyys mikä on tarkka lukumäärä Googlen indeksoituja sivuja.
 
     % subsubsection k_yt_nn_n_esimerkki (end)
 
