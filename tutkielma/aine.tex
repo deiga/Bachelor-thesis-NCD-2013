@@ -288,8 +288,18 @@
 
 \section{Muita samankaltaisuuden metriikoita} % (fold)
 \label{sec:muita_samankaltaisuuden_metriikoita}
-  \subsection{Google Similarity Distance} % (fold)
+  Tässä kappaleessa esitellään muita samankaltaisuuden metriikoita, kuten Google samankaltaisuusetäisyys \engl{Google Similarity Distance}
+  \subsection{Google samankaltaisuusetäisyys} % (fold)
   \label{sub:google_similarity_distance}
+    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa NCD:iin, kummatki pohjautuvat samoihin tekniikoihin, kuten Kolmogorv-kompleksisuus \ref{sub:kolmogorov_kompleksisuus} ja Normalisoitu informaatioetäisyys \ref{sub:normalisoitu_informaatioet_isyys}. Eroavaisuus esiintyykin siinä, että mitä nämä kaksi käyttävät samankaltaisuuden arvioimiseksi. Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen.
+
+    \subsubsection{Käytännön esimerkki} % (fold)
+    \label{ssub:k_yt_nn_n_esimerkki}
+      GSD muodostetaan siten että haetaan ensiksi yhdellä hakutermillä, sitten toisella ja sen jälkeen kummallakin yhdessä. Hakujen lukumäärät vertaillaan keskenään ja normalisoidaan ja tästä saadaan samankaltaisuusetäisyys.
+
+      Paperissa \cite{cilibrasi2007google} käytettiin hakusanoja `horse' ja `rider' esimerkkinä ja vuonna 2007 tuloksena oli $NGD(horse, rider) \approx 0.443$. Toistin kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$. Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja on internetin kasvu, sekä epäselvyys mikä on tarkka lukumäärä Googlen indeksoituja sivuja.
+
+    % subsubsection k_yt_nn_n_esimerkki (end)
 
   % subsection google_similarity_distance (end)
 % section muita_samankaltaisuuden_metriikoita (end)
