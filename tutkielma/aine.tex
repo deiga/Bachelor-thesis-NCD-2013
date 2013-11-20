@@ -152,16 +152,15 @@
 
 \paragraph{} % (fold)
 \label{par:intro-2}
-  Pakkaukseen perustuva samankaltaisuus \engl{Compression-Based Similarity} on ``universaali'' metriikka, jonka kehittivät Cilibrasi ja Vitanyi \cite{CV05}. Yksinkertaistettuna tämä tarkoitta, että kaksi objektia ovat lähellä toisiaan, jos voimme ``pakata'' yhden objektin huomattavasti tiiviimmin toisen objektin datalla. Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden palan toisen avulla, mikäli palat ovat samankaltaisia. Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja samalla käymme läpi mihin teoriaan algoritmi perustuu sekä miten se toimii. Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmiä: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistoa (gzip), lohkoperusteista (bzip2) tai erityistä (Gencompress).
-\\
+  Pakkaukseen perustuva samankaltaisuus \engl{Compression-Based Similarity} on universaali metriikka, jonka kehittivät Cilibrasi ja Vitanyi \cite{CV05}. Yksinkertaistettuna tämä tarkoitta, että kaksi objektia ovat lähellä toisiaan, jos voimme ``pakata'' yhden objektin huomattavasti tiiviimmin toisen objektin datalla. Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden palan toisen avulla, mikäli palat ovat samankaltaisia. Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja samalla käymme läpi mihin teoriaan algoritmi perustuu sekä miten se toimii. Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmiä: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistoa (gzip), lohkoperusteista (bzip2) tai erityistä (Gencompress).
   \subparagraph{} % (fold)
 
   Tarkoituksemme on koota yksittäiseen samankaltaisuuden metriikkaan kaikki todelliset etäisyydet; tehokkaat versiot Hammingin etäisyydestä, Euklidisestä etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen. Tämän metriikan pitäisi olla niin yleinen, että se toimii, yhtäläisesti ja samanaikaisesti, kaikille aloille: musiikki, teksti, kirjallisuus, ohjelmat, genomit, luonnollisen kielen määritykset. Sen pitäisi pystyä samankaltaisesti havaitsemaan kaikki samankaltaisuudet, joita muut etäisyydet havaitsevat erikseen, palojen välillä.
   % subparagraph  (end)
   \subparagraph{} % (fold)
 
-  Kun määrittelemme ryhmän sallittavia etäisyyksia \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$. Saavutamme tämän rajoittamalla objektien lukumäärän annetussa etäisyydessä objektiin. Teemme tämän huomioimalla vain todellisia etäisyyksia seuraavasti: Määräämme sopivan ja tietyn ohjelmointikielen, joka toimii tutkielman ajan referenssikielenä. \cite{CV05}
 
+  Kun määrittelemme ryhmän sallittavia etäisyyksia \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$. Saavutamme tämän rajoittamalla objektien lukumäärän annetussa etäisyydessä objektiin. Teemme tämän huomioimalla vain todellisia etäisyyksia seuraavasti: Oletamme kiinnitetyn ohjelmointikielen, joka toimii tutkielman ajan viitekielenä. Tämä ohjelmointikieli voi olla yleinen kieli kuten LISP tai Ruby tai se voi myös olla kiinitetty universaali Turingin kone. \cite{CV05,cilibrasi2007google} Valinnalla ei kuitenkaan ole merkitystä, sillä teoria on invariantti ohjelmointikielin muutoksille, kunhan pysytään tehdyssä valinnassa.
   % subparagraph  (end)
 % paragraph  (end)
 
@@ -314,6 +313,8 @@
       Paperissa \cite{cilibrasi2007google} käytettiin hakusanoja ``horse'' ja ``rider'' esimerkkinä ja vuonna 2007 tuloksena oli $NGD(horse, rider) \approx 0.443$. Toistin kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$. Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja on internetin kasvu, sekä epäselvyys mikä on tarkka lukumäärä Googlen indeksoituja sivuja.
 
     % subsubsection k_yt_nn_n_esimerkki (end)
+
+
 
   % subsection google_similarity_distance (end)
 % section muita_samankaltaisuuden_metriikoita (end)
