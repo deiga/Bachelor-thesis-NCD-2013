@@ -144,7 +144,7 @@
 \paragraph{} % (fold)
 \label{par:intro-1}
   Kaikki data on luotu samanveroiseksi, mutta jotkut ovat samankaltaisempia kuin toiset.
-  Esitämme tavan jolla esittää tämä samankaltaisuus, käyttäen uutta samankaltaisuuden metriikkaa \engl{similarity metric}, joka perustuu tiedoston pakkaamiseen.
+  Esitämme tavan jolla esittää tämä samankaltaisuus, käyttäen Cilibrasin ja Vitanyin esittelemää samankaltaisuuden metriikkaa \engl{similarity metric}, joka perustuu tiedoston pakkaamiseen. \cite{CV05}
   Metriikka on parametriton, eli se ei käytä datan ominaisuuksia tai taustatietoja, ja sitä voi soveltaa eri aloihin ilman muunnoksia.
   Metriikka on universaali siten, että se approksimoi parametrin, joka kaikissa pareittain vertailuissa ilmaisee samankaltaisuutta hallitsevassa piirteessä.
   Se on vakaa siinä mielessä, että sen tulokset ovat riippumattomia käytetystä pakkaajasta \cite{CV05}. Pakkaajalla tarkoitetaan pakkausohjelmaa kuten \emph{gzip, ppmz, bzip2}.
@@ -318,7 +318,7 @@
   \subsection{Kohinansietokyky} % (fold)
   \label{sub:kohinansietokyky}
     Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä.
-    Progressivisen kohinan lisääminen tiedostoon voi tuottaa tietoa mittarista(measure) itsestään.
+    Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
     Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
 
   % subsection kohinansietokyky (end)
