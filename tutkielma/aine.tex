@@ -329,6 +329,15 @@
     \iffalse
       TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
     \fi
+
+    NCD vaikuttaa tuottavan vaikuttavia tuloksia klusteroinnissa, mutta tulokset ovat hyvin vahvasti riippuvaisia käytetyn pakkaajan ominaisuuksista. Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} vertailtiin NCD:n kanssa \cite{cebrian2005common}, selvittääksen mitä heikkouksia, jos mitään, näillä on.
+
+    \begin{itemize}
+      \item bzip2 ja lohkon koko
+      \item gzip, liukuva ikkuna ja eteenpäinkatselikkuna
+      \item ppmz, hidasta mutta tehokasta, koska ei mitään rajoitteita materiaalin koolle
+      \item Lopputulos, jos pyritään klusteroimaan NCD:llä pitäisi aina käyttää PPMZ:taa tai vastaavaa pakkaajaa joka ei rajoita tiedostonkokoa jollain tapaa
+    \end{itemize}
   % subsection pakkaajan_valinta (end)
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
 
