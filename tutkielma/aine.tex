@@ -197,7 +197,7 @@
 
 % section johdanto (end)
 
-\section{Normalisoitu Pakkausetäisyys: Mistä se koostuu, miten se toimii?} % (fold)
+\section{Normalisoitu Pakkausetäisyys} % (fold)
 \label{sec:normalisoitu_pakkauset_isyys}
   \subsection{\kolmogorov} % (fold)
 \label{sub:kolmogorov_kompleksisuus}
@@ -238,10 +238,11 @@
 
   Pakkaaja $C$ on \emph{normaali} jos se täyttää seuraavat aksioomat, $O(log n)$ termiin saakka:
 
+  \label{idempotency}
   \begin{enumerate}
-    \item \emph{Idempotenssi}: $C(xx) == C(x)$ ja $C(\lambda) = 0$, jossa $\lambda$ on tyhjä merkkijono,
+    \item \emph{Idempotenssi}: $C(xx) = C(x)$ ja $C(\lambda) = 0$, jossa $\lambda$ on tyhjä merkkijono,
     \item \emph{Monotonisuus}: $C(xy) \geq C(x)$,
-    \item \emph{Symmetrisuus}: $C(xy) == C(yx)$ ja
+    \item \emph{Symmetrisuus}: $C(xy) = C(yx)$ ja
     \item \emph{Distributiivisuus}: $C(xy) + C(z) \leq C(xz) + C(yz)$.
   \end{enumerate}
 % subsection normaali_pakkaaja (end)
@@ -270,6 +271,8 @@
     NCD(x,y) = \frac{C(xy)-C(x)}{C(y)}.
  \end{align}
 
+ % TODO: Kuva jossa taulukko miten eri numeroarvot vaikuttaa NCD:hen
+
   Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta, kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
 
   Kun pakkaaja on normaali, niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
@@ -297,6 +300,9 @@
 \label{sec:algoritmin_ongelmat_ja_ominaisuudet}
   \subsection{Kohinansietokyky} % (fold)
   \label{sub:kohinansietokyky}
+
+  % TODO: Kuvakäppyrä
+  % TODO: Approximoi differentiaaliyhtälöllä
     Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä.
     Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
     Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
@@ -306,6 +312,8 @@
   \subsection{Pakkaajan valinta} % (fold)
   \label{sub:pakkaajan_valinta}
 
+  % TODO: Kuvia paperista
+
     \iffalse
       TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
     \fi
@@ -313,18 +321,20 @@
       Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} vertailtiin NCD:n kanssa \cite{cebrian2005common}, selvittääksen mitä heikkouksia, jos mitään, näillä on.
 
 
-      Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat. Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä. Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkaussalgoritmin toiminnasta. Mukana muun muassa on kuva, kirja, artikkeleita ja tietokoneohjelmia.
+      Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat. Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä. Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkaussalgoritmin toiminnasta. Mukana muun muassa on kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
 
+      Kaikkia vertailun objekteja käsitellään merkkijonoinen, jotka koostuvat tavuista. Jotta voitiin todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertailtiin itsensä kanssa.
 
       Näistä vertailtiin ensiksi bzip2 pakkaajaa, jolle pitää määrittää lohkon koko
 
-
+  \iffalse
     \begin{itemize}
       \item bzip2 ja lohkon koko
       \item gzip, liukuva ikkuna ja eteenpäinkatselikkuna
       \item ppmz, hidasta mutta tehokasta, koska ei mitään rajoitteita materiaalin koolle
       \item Lopputulos, jos pyritään klusteroimaan NCD:llä pitäisi aina käyttää PPMZ:taa tai vastaavaa pakkaajaa joka ei rajoita tiedostonkokoa jollain tapaa
     \end{itemize}
+    \fi
   % subsection pakkaajan_valinta (end)
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
 
@@ -333,7 +343,7 @@
   Tässä kappaleessa esitellään muita samankaltaisuuden metriikoita, kuten Google samankaltaisuusetäisyys \engl{Google Similarity Distance}
   \subsection{Google samankaltaisuusetäisyys} % (fold)
   \label{sub:google_similarity_distance}
-    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa NCD:iin, kummatki pohjautuvat samoihin tekniikoihin, kuten Kolmogorv-kompleksisuus \ref{sub:kolmogorov_kompleksisuus} ja Normalisoitu informaatioetäisyys \ref{sub:normalisoitu_informaatioet_isyys}.
+    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa NCD:iin, kummatki pohjautuvat samoihin tekniikoihin, kuten Kolmogorv-kompleksisuus (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoitu informaatioetäisyys (\ref{sub:normalisoitu_informaatioet_isyys}).
     Eroavaisuus esiintyykin siinä, että mitä nämä kaksi käyttävät samankaltaisuuden arvioimiseksi.
     Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen.
 
@@ -352,6 +362,14 @@
 
   % subsection google_similarity_distance (end)
 % section muita_samankaltaisuuden_metriikoita (end)
+
+\section{``Loppukaneetti''} % (fold)
+\label{sec:loppukaneetti}
+
+% TODO: Yhteenveto ongelmissa ja ominaisuuksista
+% TODO: Viittaus johonkin muuhun klusterointiin
+
+% section loppukaneetti (end)
 \pagebreak
 % --- References ---
 %
