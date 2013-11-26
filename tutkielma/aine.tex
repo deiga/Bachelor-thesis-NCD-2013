@@ -141,71 +141,59 @@
 
   To apply this ideal precise mathematical theory in real life, we have to replace the use of the non computable Kolmogorov complexity by an approximation using a standard real-world compressor. Earlier approaches resulted in the first completely automatic construction of the phylogeny tree based on whole mitochondrial genomes, [29]–[31], a completely automatic construction of a language tree for over 50 Euro-Asian languages [31], detects plagiarism in student programming assignments[8],givesphylogenyofchainletters[5],andclusters music [10]. Moreover, the method turns out to be robust under change of the underlying compressor-types: statistical (\emph{PPMZ}), Lempel–Ziv based dictionary (\emph{gzip}), block based (\emph{bzip2}), or special purpose (\emph{Gencompress}).
 \fi
-\paragraph{} % (fold)
 \label{par:intro-1}
   Kaikki data on luotu samanveroiseksi, mutta jotkut ovat samankaltaisempia kuin toiset.
-  Esitämme tavan jolla esittää tämä samankaltaisuus, käyttäen Cilibrasin ja Vitanyin esittelemää samankaltaisuuden metriikkaa \engl{similarity metric}, joka perustuu tiedoston pakkaamiseen. \cite{CV05}
+  Esitämme tavan, jolla havaita tämä samankaltaisuus, käyttäen Cilibrasin ja Vitanyin esittelemää samankaltaisuuden metriikkaa \engl{similarity metric}, joka perustuu tiedoston pakkaamiseen. \cite{CV05}
   Metriikka on parametriton, eli se ei käytä datan ominaisuuksia tai taustatietoja, ja sitä voi soveltaa eri aloihin ilman muunnoksia.
-  Metriikka on universaali siten, että se approksimoi parametrin, joka kaikissa pareittain vertailuissa ilmaisee samankaltaisuutta hallitsevassa piirteessä.
+  Metriikka on universaali siten, että se approksimoi parametrin, joka kaikissa pareittaisissa vertailuissa ilmaisee samankaltaisuutta hallitsevassa piirteessä.
   Se on vakaa siinä mielessä, että sen tulokset ovat riippumattomia käytetystä pakkaajasta \cite{CV05}. Pakkaajalla tarkoitetaan pakkausohjelmaa kuten \emph{gzip, ppmz, bzip2}.
 
-% paragraph  (end)
 
-
-\paragraph{} % (fold)
-\label{par:intro-2}
+  \label{par:intro-2}
   Pakkaukseen perustuva samankaltaisuus \engl{Compression-Based Similarity} on universaali metriikka, jonka kehittivät Cilibrasi ja Vitanyi \cite{CV05}.
   Yksinkertaistettuna tämä tarkoitta, että kaksi objektia ovat lähellä toisiaan, jos voimme ``pakata'' yhden objektin huomattavasti tiiviimmin toisen objektin datalla.
   Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden palan toisen avulla, mikäli palat ovat samankaltaisia.
-  Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja samalla käymme läpi mihin teoriaan algoritmi perustuu sekä miten se toimii.
+  Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja samalla käymme läpi, mihin teoriaan algoritmi perustuu sekä miten se toimii.
   Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmiä: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistoa (gzip), lohkoperusteista (bzip2) tai erityistä (Gencompress).
 
 
-  Tarkoituksemme on koota yksittäiseen samankaltaisuuden metriikkaan kaikki todelliset etäisyydet; tehokkaat versiot Hammingin etäisyydestä, Euklidisestä etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
-  Tämän metriikan pitäisi olla niin yleinen, että se toimii, yhtäläisesti ja samanaikaisesti, kaikille aloille: musiikki, teksti, kirjallisuus, ohjelmat, genomit, luonnollisen kielen määritykset.
+  Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki todelliset etäisyydet: tehokkaat versiot Hammingin etäisyydestä, Euklidisestä etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
+  Tämän metriikan pitäisi olla niin yleinen, että se toimii yhtäläisesti ja samanaikaisesti kaikilla aloilla: musiikille, tekstille, kirjallisuudelle, ohjelmille, genomeille, luonnollisen kielen määrityksille.
   Sen pitäisi pystyä samankaltaisesti havaitsemaan kaikki samankaltaisuudet, joita muut etäisyydet havaitsevat erikseen, palojen välillä.
 
 
-  Kun määrittelemme ryhmän sallittavia etäisyyksia \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$.
+  Kun määrittelemme ryhmän sallittavia etäisyyksiä \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$.
   Saavutamme tämän rajoittamalla objektien lukumäärän annetussa etäisyydessä objektiin.
-  Teemme tämän huomioimalla vain todellisia etäisyyksia seuraavasti: Oletamme kiinnitetyn ohjelmointikielen, joka toimii tutkielman ajan viitekielenä.
+  Teemme tämän huomioimalla vain todellisia etäisyyksiä seuraavasti: Oletamme kiinnitetyn ohjelmointikielen, joka toimii tutkielman ajan viitekielenä.
   Tämä ohjelmointikieli voi olla yleinen kieli kuten LISP, Ruby tai se voi myös olla kiinitetty universaali Turingin kone. \cite{CV05,cilibrasi2007google}
   Valinnalla ei kuitenkaan ole merkitystä, sillä teoria on invariantti ohjelmointikielin muutoksille, kunhan pysytään tehdyssä valinnassa.
-% paragraph  (end)
 
-\paragraph{} % (fold)
+
 \label{par:intro-3}
   Luvussa \ref{sec:k_ytt_kohteet} esittelemme algoritmin käyttökohteita monelta eri alueelta.
-  Aloitamme siitä, miten yleiseti NCD:n avulla pystymme klusteroimaan tuloksia eri kategorioihin; miten musiikkikappaleet klusteroituvat saman artistin alle, miten kuvantunnistuksessa saamme ryhmitettyä samankaltaiset kuvat ja miten sienten genomeista saamme tarkan lajiryhmityksen.
+  Aloitamme siitä, miten yleisesti \emph{Normalisoidun pakkausetäisyyden} (\emph{NCD}) avulla pystymme klusteroimaan tuloksia eri kategorioihin; miten musiikkikappaleet klusteroituvat saman artistin alle, miten kuvantunnistuksessa saamme ryhmitettyä samankaltaiset kuvat ja miten sienten genomeista saamme tarkan lajiryhmityksen.
 
 
-  Syvennymme musiikin, kuvantunnistuken ja dokumenttien kategorisoinnin tuloksiin luvun lopussa.
+  Luvun lopussa syvennymme musiikin, kuvantunnistuksen ja dokumenttien kategorisoinnin tuloksiin.
 
-% paragraph  (end)
 
-\paragraph{} % (fold)
 \label{par:intro-4}
   Luvussa \ref{sec:algoritmin_ongelmat_ja_ominaisuudet} esitellään NCD:n kestävyyttä ja ongelmia.
   Ensiksi esitellään NCD:n kohinansietokykä, eli katsotaan mitä tapahtuu kun lisätään vähitellen kohinaa toiseen tiedostoista, jota pakataan, ja mittaamalla samankaltaisuutta tämän jälkeen \cite{4167725}.
   Saamme nähdä miten paljon kohina vaikuttaa NCD:n laskemiin etäisyyksiin ja huonontaako se klusteroinnin tuloksia.
 
 
-  Mikään algoritmi ei ole täydellinen ja niin NCD-algoritmilläkin on ongelmansa.
-  Algoritmissä itsessään ei ole selvää heikkoutta, mutta sen käytössä on otettava pakkaajan valinta huomioon, koska monet suosituista pakkausalgoritmeistä ovat optimoituja tietyn kokoisille tiedostoille.
+  Mikään algoritmi ei ole täydellinen, ja NCD-algoritmillakin on ongelmansa.
+  Algoritmissa itsessään ei ole selvää heikkoutta, mutta sen käytössä on otettava pakkaajan valinta huomioon, koska monet suosituista pakkausalgoritmeista ovat optimoituja tietyn kokoisille tiedostoille.
   Niissä on niin kutsuttu ikkunakoko \engl{window size}, joka määrittelee mikä tiedostokoko on sopiva \cite{cebrian2005common}.
-  Jos tiedostokoko on pienempi kuin ikkunakoko, niin pakkaus on tehokasta, kun mennään siitä yli, niin pakkauksesta tulee huomattavasti tehottomampaa.
-  Esittelemme tuloksia eri pakkausalgoritmien vertailuista ja mikä näistä algoritmeistä on parhaimmaksi havaittu NCD:n kanssa käytettäväksi.
+  Jos tiedostokoko on pienempi kuin ikkunakoko, niin pakkaus on tehokasta, mutta kun mennään siitä yli, pakkauksesta tulee huomattavasti tehottomampaa.
+  Esittelemme tuloksia eri pakkausalgoritmien vertailuista ja mikä näistä algoritmeista on parhaimmaksi havaittu NCD:n kanssa käytettäväksi.
 
-% paragraph  (end)
 
-\paragraph{} % (fold)
 \label{par:intro-5}
   NCD ei ole ainut metriikka, jolla voidaan mitata samankaltaisuutta.
-  Internettiä hyödyntäen on tehty metriikka, joka käyttää hakukoneita samankaltaisuuden tutkimiseen; tämä on nimetty Google samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}.
+  Internettiä hyödyntäen on tehty metriikka, joka käyttää hakukoneita samankaltaisuuden tutkimiseen; tämä on nimetty Google-samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}.
   Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esitellemme tämän sekä muita samankaltaisuuden metriikoita.
-
-% paragraph  (end)
-\pagebreak
 
 % section johdanto (end)
 
@@ -234,8 +222,7 @@
     NID(x,y) &= \frac{ max\{K{(x|y)},K{(y|x)}\} }{ max \{K(x),K(y)\}}.
   \end{align}
 
-  % TODO: NID on paras mahdollinen etäisyyden metriikka
-  Tätä kutsutaan \emph{samankaltaisuuden metriikaksi}, koska tämän on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi.
+  Tämä on paras mahdollinen \emph{samankaltaisuuden metriikka}, ja sen on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi.
   \emph{NID} ei kuitenkaan ole laskettava tai edes semi-laskettava, koska Turingin määritelmän mukaan \kolmogorov ei ole laskettava \cite{CV05}.
   Nimittäjän approksimointi annetulla pakkaajalla $C$ on $max \{C(x),C(y)\}$.
   Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
