@@ -92,7 +92,7 @@
 % This is probably mostly relevant for computer scientists
 % uncomment the following; contents of \classification will be printed under the abstract with a title
 % "ACM Computing Classification System (CCS):"
-% \classification{}
+\classification{\textbf{tärkeä avainsana} \\ \textit{keskimääräinen avainsana} \\ matalamerkityksinen avainsana}
 
 % If the automatic page number counting is not working as desired in your case,
 % uncomment the following to manually set the number of pages displayed in the abstract page:
@@ -326,6 +326,9 @@
       Kaikkia vertailun objekteja käsitellään merkkijonoinen, jotka koostuvat tavuista. Jotta voitiin todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertailtiin itsensä kanssa.
 
       Näistä vertailtiin ensiksi bzip2 pakkaajaa, jolle pitää määrittää lohkon koko
+
+      \immediate\write18{pdfcrop img/bzip2-best}
+      \includegraphics{img/bzip2-best}
 
   \iffalse
     \begin{itemize}
