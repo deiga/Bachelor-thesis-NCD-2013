@@ -273,6 +273,22 @@
 
   Kun pakkaaja on normaali, niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
 
+  Taulukossa \ref{tab:NCD-values} esitellään muutama arvo joilla NCD lasketaan ja mikä tulos näistä saadaan. Taulukon arvot saatu paperista \cite{cebrian2005common}
+
+  \begin{table}
+    \centering
+    \begin{tabular}{c|c|l}
+      Arvot                    & Laskutoimitus      & NCD:n arvo \\ \hline
+      $ C(xx) = 26, C(x) = 17$ & $\frac{26-17}{17} $ & $0.529$    \\ \hline
+      $ C(xx) = 33, C(x) = 22$ & $\frac{33-22}{22} $ & $0.5$      \\ \hline
+      $ C(xx) = 30, C(x) = 17$ & $\frac{30-17}{17} $ & $0.765$    \\ \hline
+      $ C(xx) = 20, C(x) = 14$ & $\frac{20-14}{14} $ & $0.428$    \\ \hline
+      $ C(xx) = 16, C(x) = 14$ & $\frac{16-14}{14} $ & $0.143$    \\ \hline
+      $ C(xx) = 28, C(x) = 14$ & $\frac{28-14}{14} $ & $1$        \\
+    \end{tabular}
+    \caption{Taulukossa NCD:n avoja eri syötteille.}
+    \label{tab:NCD-values}
+  \end{table}
 
   % TODO: O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
 % section normalisoitu_pakkauset_isyys (end)
