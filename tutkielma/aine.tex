@@ -297,8 +297,28 @@
 \label{sec:k_ytt_kohteet}
   \subsection{Klusterointi} % (fold)
   \label{sub:klusterointi}
+    \begin{itemize}
+      \item Miten klusteroidaan
+      \item Etäisyysmatriisi
+    \end{itemize}
+    \subsubsection{Kvartettimetodi} % (fold)
+    \label{ssub:quartet_metodi}
+
+    \begin{itemize}
+      \item puun rakentaimnen etäisyysmatriisistä
+      \item Puun operaatiot
+      \item normalisoiti puun hyötyarvo $S(T)$
+      \item Satunnaisuuden käyttö tarkistusiteraatiossa parhaan puun approksimoimiseksi
+    \end{itemize}
+    % subsubsection quartet_metodi (end)
     \subsubsection{Tuloksia} % (fold)
     \label{ssub:tuloksia}
+      \begin{itemize}
+        \item Musiikin genrepuu
+        \item Musiikin pieni vertaus
+        \item Musiikin keskikokoinen vertaus
+        \item Musiikin suuri vertaus
+      \end{itemize}
 
     % subsubsection tuloksia (end)
   % subsection klusterointi (end)
@@ -339,6 +359,12 @@
 
       Näistä vertailtiin ensiksi bzip2 pakkaajaa, jolle pitää määrittää lohkon koko
 
+    \begin{itemize}
+      \item bzip2 ja lohkon koko
+      \item gzip, liukuva ikkuna ja eteenpäinkatselikkuna
+      \item ppmz, hidasta mutta tehokasta, koska ei mitään rajoitteita materiaalin koolle
+      \item Lopputulos, jos pyritään klusteroimaan NCD:llä pitäisi aina käyttää PPMZ:taa tai vastaavaa pakkaajaa joka ei rajoita tiedostonkokoa
+    \end{itemize}
       \immediate\write18{pdfcrop img/bzip2-best}
       \includegraphics{img/bzip2-best}
 
@@ -351,14 +377,6 @@
       \immediate\write18{pdfcrop img/ppmz}
       \includegraphics{img/ppmz}
 
-  \iffalse
-    \begin{itemize}
-      \item bzip2 ja lohkon koko
-      \item gzip, liukuva ikkuna ja eteenpäinkatselikkuna
-      \item ppmz, hidasta mutta tehokasta, koska ei mitään rajoitteita materiaalin koolle
-      \item Lopputulos, jos pyritään klusteroimaan NCD:llä pitäisi aina käyttää PPMZ:taa tai vastaavaa pakkaajaa joka ei rajoita tiedostonkokoa jollain tapaa
-    \end{itemize}
-    \fi
   % subsection pakkaajan_valinta (end)
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
 
