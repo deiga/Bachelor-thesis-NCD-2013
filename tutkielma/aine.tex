@@ -365,17 +365,46 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \item ppmz, hidasta mutta tehokasta, koska ei mitään rajoitteita materiaalin koolle
       \item Lopputulos, jos pyritään klusteroimaan NCD:llä pitäisi aina käyttää PPMZ:taa tai vastaavaa pakkaajaa joka ei rajoita tiedostonkokoa
     \end{itemize}
-      \immediate\write18{pdfcrop img/bzip2-best}
-      \includegraphics{img/bzip2-best}
 
-      \immediate\write18{pdfcrop img/bzip2-fast}
+    \begin{figure}
+      \begin{center}
+        \immediate\write18{pdfcrop img/bzip2-best}
+          \includegraphics{img/bzip2-best}
+      \end{center}
+      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
+      \label{fig:(bzip2-best)}
+    \end{figure}
+    \begin{figure}
+      \begin{center}
+        \immediate\write18{pdfcrop img/bzip2-fast}
       \includegraphics{img/bzip2-fast}
-
-      \immediate\write18{pdfcrop img/gzip-best}
+      \end{center}
+      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--fast' \cite{cebrian2005common}}
+      \label{fig:bzip2-fast}
+    \end{figure}
+    \begin{figure}
+      \begin{center}
+        \immediate\write18{pdfcrop img/gzip-best}
       \includegraphics{img/gzip-best}
 
-      \immediate\write18{pdfcrop img/ppmz}
+      \end{center}
+      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{gzip} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
+      \label{fig:gzip-best}
+    \end{figure}
+    \begin{figure}
+      \begin{center}
+        \immediate\write18{pdfcrop img/ppmz}
       \includegraphics{img/ppmz}
+      \end{center}
+      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{PPMZ} pakkaajaa \cite{cebrian2005common}}
+      \label{fig:ppmz}
+    \end{figure}
+
+
+
+
+
+
 
   % subsection pakkaajan_valinta (end)
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
