@@ -92,7 +92,7 @@
 % This is probably mostly relevant for computer scientists
 % uncomment the following; contents of \classification will be printed under the abstract with a title
 % "ACM Computing Classification System (CCS):"
-\classification{\textbf{Information systems - Similarity measures} \\ \textit{Theory of computation - Unsupervised learning and clustering} \\ Information systems - Clustering and classification}
+\classification{\textbf{Information systems - Similarity measures} \\ \textit{Theory of computation - Unsupervised learning and clustering} \\ Data mining - Clustering}
 
 % If the automatic page number counting is not working as desired in your case,
 % uncomment the following to manually set the number of pages displayed in the abstract page:
@@ -148,9 +148,11 @@
   \label{par:intro-2}
   Pakkaukseen perustuva samankaltaisuus \engl{Compression-Based Similarity} on universaali metriikka, jonka kehittivät Cilibrasi ja Vitanyi \cite{CV05}.
   Yksinkertaistettuna tämä tarkoitta, että kaksi objektia ovat lähellä toisiaan, jos voimme ``pakata'' yhden objektin huomattavasti tiiviimmin toisen objektin datalla.
-  Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden palan toisen avulla, mikäli palat ovat samankaltaisia.
+  Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden objektin toisen avulla, mikäli objektit ovat samankaltaisia.
   Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja samalla käymme läpi, mihin teoriaan algoritmi perustuu sekä miten se toimii.
   Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmiä: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten (Gencompress).
+
+  Kaikissa kohdissa  operoimme $O(log n)$ tarkkuudella, joka on hinta siitä että siirrytään Kolmogorv-kompleksisuudesta laskettavaan approksimaatioo
 
   Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki tehokkaat etäisyydet \engl{effective distances}: tehokkaat versiot Hammingin etäisyydestä, Euklidisestä etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
   Tämän metriikan tulee olla niin yleinen, että se toimii yhtäläisesti ja samanaikaisesti kaikilla aloilla: musiikillä, tekstillä, kirjallisuudella, ohjelmilla, genomeilla, luonnollisen kielen määrityksillä.
@@ -162,6 +164,9 @@
   Tämä ohjelmointikieli voi olla yleinen kieli kuten LISP, Ruby tai se voi myös olla kiinitetty universaali Turingin kone. \cite{CV05,cilibrasi2007google}
   Valinnalla ei kuitenkaan ole merkitystä, sillä teoria on invariantti ohjelmointikielin muutoksille, kunhan pysytään tehdyssä valinnassa.
 
+
+Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approximaatiolla käyttäen standardia pakkaajaa.
+  % TODO: O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
 
 \label{par:intro-3}
   Luvussa \ref{sec:k_ytt_kohteet} esittelemme algoritmin käyttökohteita monelta eri alueelta.
@@ -230,7 +235,7 @@
   Seuraavaksi esitämme aksioomia, jotka määrittelevät laajan joukon pakkaajia ja samalla varmistavat \emph{normalisoidussa pakkausetäisyydessä} halutut ominaisuudet.
   Näihin pakkaajiin kuuluvat monet tosielämän pakkaajat.
 
-  Pakkaaja $C$ on \emph{normaali} jos se täyttää seuraavat aksioomat, $O(log n)$ termiin saakka:
+  Pakkaaja $C$ on \emph{normaali} jos se täyttää seuraavat aksioomat:
 
   \label{idempotency}
   \begin{enumerate}
@@ -267,8 +272,6 @@
     NCD(x,y) = \frac{C(xy)-C(x)}{C(y)}.
  \end{align}
 
- % TODO: Kuva jossa taulukko miten eri numeroarvot vaikuttaa NCD:hen
-
   Eli etäisyys $x$:n ja $y$:n välillä on suhde $y$:n parannuksesta, kun $y$ pakataan käyttäen $x$:ää, ja $y$:n pakkauksesta yksinään; suhde ilmaistaan etäisyytenä bittien lukumääränä kummankin pakatun version välillä.
 
   Kun pakkaaja on normaali, niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
@@ -290,7 +293,6 @@
     \label{tab:NCD-values}
   \end{table}
 
-  % TODO: O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
 % section normalisoitu_pakkauset_isyys (end)
 
 \section{Käyttökohteet} % (fold)
@@ -343,8 +345,6 @@
 
   \subsection{Pakkaajan valinta} % (fold)
   \label{sub:pakkaajan_valinta}
-
-  % TODO: Kuvia paperista
 
     \iffalse
       TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
