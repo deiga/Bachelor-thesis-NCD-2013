@@ -419,7 +419,13 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Tässä kappaleessa esitellään muita samankaltaisuuden metriikoita, kuten Google samankaltaisuusetäisyys \engl{Google Similarity Distance}
   \subsection{Google samankaltaisuusetäisyys} % (fold)
   \label{sub:google_similarity_distance}
-    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen, sillä kummatkin pohjautuvat samoihin tekniikoihin, kuten Kolmogorv-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioet_isyys}).
+
+    % TODO: meaningful
+    % TODO: aggregoidun
+
+    Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat keskiarvoltaan heikkolaatuisia. Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten surin osa tai keskiverto on meaningful heikkolaatuisena approksimaationa. Täten kehitettiin yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä. Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan aggregoidun sivulukumäärä arvion, kuten Google.
+
+    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkauset_isyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorv-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioet_isyys}).
     Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmiä käyttävät samankaltaisuuden arvioimiseksi.
     Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen.
 
@@ -433,6 +439,11 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja on internetin kasvu, sekä epäselvyys mikä on tarkka lukumäärä Googlen indeksoituja sivuja.
 
     % subsubsection k_yt_nn_n_esimerkki (end)
+
+    \subsubsection{Theory of Googling for similarity} % (fold) % TODO: Otsikko
+    \label{ssub:theory_of_googling_for_similarity}
+
+    % subsubsection theory_of_googling_for_similarity (end)
 
 
 
