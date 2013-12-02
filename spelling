@@ -1,0 +1,2 @@
+#!/bin/sh
+cat tutkielma/tutkielma.tex | grep -v "^\s*%" | grep -v "usepackage" | grep "^\s*[^\\]" | grep -v "\\label" | ./split | sort | uniq | grep -v "\\$" | grep -v "\\|" | voikkospell -s | grep -v "^C"
