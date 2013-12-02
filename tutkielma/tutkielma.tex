@@ -2,7 +2,7 @@
 %
 % last updated 2013/02/15 for tkltiki2 v1.02
 
-\documentclass[12pt,finnish,draft]{tktltiki2}
+\documentclass[12pt,finnish]{tktltiki2}
 
 % tktltiki2 automatically loads babel, so you can simply
 % give the language parameter (e.g. finnish, swedish, english, british) as
@@ -166,7 +166,6 @@
 
 
 Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approximaatiolla käyttäen standardia pakkaajaa.
-  % TODO: O(log n) alkuun "hinta siitä että siirrytänä Kolmogorov-kompleksisuudesta laskettavaan"
 
 \label{par:intro-3}
   Luvussa \ref{sec:k_ytt_kohteet} esittelemme algoritmin käyttökohteita monelta eri alueelta.
@@ -289,7 +288,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       $ C(xx) = 16, C(x) = 14$ & $\frac{16-14}{14} $ & $0.143$    \\ \hline
       $ C(xx) = 28, C(x) = 14$ & $\frac{28-14}{14} $ & $1$        \\
     \end{tabular}
-    \caption{Taulukossa NCD:n avoja eri syötteille.}
+    \caption{Normalisoituja pakkausetäisyyksiä eri syötteille.}
     \label{tab:NCD-values}
   \end{table}
 
@@ -340,6 +339,17 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä.
     Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
     Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
+
+    \begin{figure}
+      \begin{center}
+        % \immediate\write18{pdfcrop img/noise-005}
+        % \includegraphics{img/noise-005}
+      \end{center}
+      \caption{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkkinnän ensimmäiset pari merkkiä ovt kirjailijan initials: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.
+      % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
+      \cite{4167725}}
+      \label{fig:(bzip2-best)}
+    \end{figure}
 
   % subsection kohinansietokyky (end)
 
