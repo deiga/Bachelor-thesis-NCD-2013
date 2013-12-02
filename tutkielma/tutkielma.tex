@@ -150,18 +150,18 @@
   Yksinkertaistettuna tämä tarkoitta, että kaksi objektia ovat lähellä toisiaan, jos voimme ``pakata'' yhden objektin huomattavasti tiiviimmin toisen objektin datalla.
   Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden objektin toisen avulla, mikäli objektit ovat samankaltaisia.
   Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja samalla käymme läpi, mihin teoriaan algoritmi perustuu sekä miten se toimii.
-  Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmiä: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten (Gencompress).
+  Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmia: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten (Gencompress).
 
-  Kaikissa kohdissa  operoimme $O(log n)$ tarkkuudella, joka on hinta siitä että siirrytään Kolmogorv-kompleksisuudesta laskettavaan approksimaatioo
+  Kaikissa kohdissa  operoimme $O(log n)$ tarkkuudella, joka on hinta siitä että siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatio
 
-  Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki tehokkaat etäisyydet \engl{effective distances}: tehokkaat versiot Hammingin etäisyydestä, Euklidisestä etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
-  Tämän metriikan tulee olla niin yleinen, että se toimii yhtäläisesti ja samanaikaisesti kaikilla aloilla: musiikillä, tekstillä, kirjallisuudella, ohjelmilla, genomeilla, luonnollisen kielen määrityksillä.
+  Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki tehokkaat etäisyydet \engl{effective distances}: tehokkaat versiot Hammingin etäisyydestä, Euklidisesta etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
+  Tämän metriikan tulee olla niin yleinen, että se toimii yhtäläisesti ja samanaikaisesti kaikilla aloilla: musiikilla, tekstillä, kirjallisuudella, ohjelmilla, genomeilla, luonnollisen kielen määrityksillä.
   Sen pitäisi pystyä samanaikaisesti havaitsemaan kaikki samankaltaisuudet objektien välillä, joita muut etäisyydet havaitsevat erikseen.
 
   Kun määrittelemme ryhmän sallittavia etäisyyksiä \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$.
   Saavutamme tämän rajoittamalla objektien lukumäärän annetussa etäisyydessä objektiin.
   Teemme tämän huomioimalla vain todellisia etäisyyksiä seuraavasti: Oletamme kiinnitetyn ohjelmointikielen, joka toimii tutkielman ajan viitekielenä.
-  Tämä ohjelmointikieli voi olla yleinen kieli kuten LISP, Ruby tai se voi myös olla kiinitetty universaali Turingin kone. \cite{CV05,cilibrasi2007google}
+  Tämä ohjelmointikieli voi olla yleinen kieli kuten LISP, Ruby tai se voi myös olla kiinnitetty universaali Turingin kone. \cite{CV05,cilibrasi2007google}
   Valinnalla ei kuitenkaan ole merkitystä, sillä teoria on invariantti ohjelmointikielin muutoksille, kunhan pysytään tehdyssä valinnassa.
 
 
@@ -190,7 +190,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 \label{par:intro-5}
   NCD ei ole ainut metriikka, jolla voidaan mitata samankaltaisuutta.
-  Internettiä hyödyntäen on tehty metriikka, joka käyttää hakukoneita samankaltaisuuden tutkimiseen; tämä on nimetty Google-samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}.
+  Internetiä hyödyntäen on tehty metriikka, joka käyttää hakukoneita samankaltaisuuden tutkimiseen; tämä on nimetty Google-samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}.
   Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esitellemme tämän sekä muita samankaltaisuuden metriikoita.
 
 % section johdanto (end)
@@ -224,7 +224,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \emph{NID} ei kuitenkaan ole laskettava tai edes semi-laskettava, koska Turingin määritelmän mukaan \kolmogorov ei ole laskettava \cite{CV05}.
   Nimittäjän approksimointi annetulla pakkaajalla $C$ on $max \{C(x),C(y)\}$.
   Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
-  Kun \emph{NID} approksimoidaan oikealla pakkaajalla, saadaa tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}.
+  Kun \emph{NID} approksimoidaan oikealla pakkaajalla, saadaan tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}.
   Tämä esitellään formaalisti myöhemmin.
 % subsection normalisoitu_informaatioet_isyys (end)
 
@@ -240,7 +240,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \begin{enumerate}
     \item \emph{Idempotenssi}: $C(xx) = C(x)$ ja $C(\lambda) = 0$, jossa $\lambda$ on tyhjä merkkijono,
     \item \emph{Monotonisuus}: $C(xy) \geq C(x)$,
-    \item \emph{Symmetrisuus}: $C(xy) = C(yx)$ ja
+    \item \emph{Symmetrisyys}: $C(xy) = C(yx)$ ja
     \item \emph{Distributiivisuus}: $C(xy) + C(z) \leq C(xz) + C(yz)$.
   \end{enumerate}
 % subsection normaali_pakkaaja (end)
@@ -257,12 +257,12 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}.
   \end{align}
 
-  \emph{NCD} on funktioden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä.
-  Tämä funktioden joukko on parametrisoitu käytetyn pakkaajan $C$ mukaan.
+  \emph{NCD} on funktioiden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä.
+  Tämä funktioiden joukko on parametrisoitu käytetyn pakkaajan $C$ mukaan.
 
   Käytännössä \emph{NCD}:n tulos on välillä $0 \leq r \leq 1+ \epsilon$, joka vastaa kahden tiedoston eroa toisistaan; mitä pienempi luku, sitä enemmän tiedostot ovat samankaltaisia.
   Tosielämässä pakkausalgoritmit eivät ole yhtä tehokkaita kuin teoreettiset mallit, joten virhemarginaali $\epsilon$ on lisätty ylärajaan.
-  Suurimmalle osalle näistä algoritmeistä on epätodennäköistä että  $\epsilon > 0.1$.
+  Suurimmalle osalle näistä algoritmeista on epätodennäköistä että  $\epsilon > 0.1$.
 % subsection normalisoitu_pakkauset_isyys (end)
 
   Luonnollinen tulkinta \emph{NCD}:stä, jos oletetaan $C(y) \geq C(x)$, on
@@ -306,9 +306,9 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \label{ssub:quartet_metodi}
 
     \begin{itemize}
-      \item puun rakentaimnen etäisyysmatriisistä
+      \item puun rakentaminen etäisyysmatriisista
       \item Puun operaatiot
-      \item normalisoiti puun hyötyarvo $S(T)$
+      \item normalisoitu puun hyötyarvo $S(T)$
       \item Satunnaisuuden käyttö tarkistusiteraatiossa parhaan puun approksimoimiseksi
     \end{itemize}
     % subsubsection quartet_metodi (end)
@@ -323,10 +323,10 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     % subsubsection tuloksia (end)
   % subsection klusterointi (end)
-  \subsection{Kuvantunnnistus} % (fold)
-  \label{sub:kuvantunnnistus}
+  \subsection{Kuvantunnistus} % (fold)
+  \label{sub:kuvantunnistus}
 
-  % subsection kuvantunnnistus (end)
+  % subsection kuvantunnistus (end)
 % section k_ytt_kohteet (end)
 
 \section{Algoritmin ongelmat ja ominaisuudet} % (fold)
@@ -345,7 +345,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
         % \immediate\write18{pdfcrop img/noise-005}
         % \includegraphics{img/noise-005}
       \end{center}
-      \caption{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkkinnän ensimmäiset pari merkkiä ovt kirjailijan initials: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.
+      \caption{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkinnän ensimmäiset pari merkkiä ovt kirjailijan initials: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.
       % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
       \cite{4167725}}
       \label{fig:(bzip2-best)}
@@ -393,10 +393,10 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
     \fi
       NCD vaikuttaa tuottavan vaikuttavia tuloksia klusteroinnissa, mutta tulokset ovat hyvin vahvasti riippuvaisia käytetyn pakkaajan ominaisuuksista.
-      Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} vertailtiin NCD:n kanssa \cite{cebrian2005common}, selvittääksen mitä heikkouksia, jos mitään, näillä on.
+      Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} vertailtiin NCD:n kanssa \cite{cebrian2005common}, selvittääkseen mitä heikkouksia, jos mitään, näillä on.
 
 
-      Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat. Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä. Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkaussalgoritmin toiminnasta. Mukana muun muassa on kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
+      Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat. Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä. Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkausalgoritmin toiminnasta. Mukana muun muassa on kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
 
       Kaikkia vertailun objekteja käsitellään merkkijonoinen, jotka koostuvat tavuista. Jotta voitiin todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertailtiin itsensä kanssa.
 
@@ -425,8 +425,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat keskiarvoltaan heikkolaatuisia. Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten surin osa tai keskiverto on meaningful heikkolaatuisena approksimaationa. Täten kehitettiin yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä. Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan aggregoidun sivulukumäärä arvion, kuten Google.
 
-    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkauset_isyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorv-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioet_isyys}).
-    Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmiä käyttävät samankaltaisuuden arvioimiseksi.
+    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkauset_isyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioet_isyys}).
+    Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
     Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen.
 
     \subsubsection{Käytännön esimerkki} % (fold)
