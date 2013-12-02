@@ -2,7 +2,7 @@
 %
 % last updated 2013/02/15 for tkltiki2 v1.02
 
-\documentclass[12pt,finnish]{tktltiki2}
+\documentclass[12pt,finnish,draft]{tktltiki2}
 
 % tktltiki2 automatically loads babel, so you can simply
 % give the language parameter (e.g. finnish, swedish, english, british) as
@@ -176,7 +176,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 
 \label{par:intro-4}
-  Luvussa \ref{sec:algoritmin_ongelmat_ja_ominaisuudet} esitellään NCD:n kestävyyttä ja ongelmia.
+  Luvussa \ref{sec:algoritmin_ongelmat_ja_ominaisuudet} esitellään NCD:n ominaisuuksia ja ongelmia.
   Ensiksi esitellään NCD:n kohinansietokykyä, eli katsotaan mitä tapahtuu kun lisätään vähitellen kohinaa toiseen tiedostoista, jota pakataan, ja mittaamalla samankaltaisuutta tämän jälkeen \cite{4167725}.
   Saamme nähdä miten paljon kohina vaikuttaa NCD:n laskemiin etäisyyksiin ja huonontaako se klusteroinnin tuloksia.
 
@@ -202,7 +202,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   Merkkijonon $x$ \emph{\kolmogorov} on pituus bitteinä, lyhimmästä tietokoneohjelmasta joka ilman syötettä palauttaa merkkijonon $x$; tämä merkitään $K(x)=K(x|\lambda)$, $\lambda$ esittää tyhjää syötettä.
   Lyhimmän tietokoneohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \kolmogorov $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$.
-  Yksi tapa hahmottaa Kolmogorv-kompleksisuutta $K(x)$ on ajatella se pituutena bitteinä $x$:n parhaimmin pakatussa muodossa, josta voidaan purkaa $x$ pakkauksenpurkuohjelmalla.
+  Yksi tapa hahmottaa Kolmogorov-kompleksisuutta $K(x)$ on ajatella se pituutena bitteinä $x$:n tiiviimmin pakatussa muodossa, josta voidaan purkaa $x$ pakkauksenpurkuohjelmalla.
 
 % subsection kolmogorov_kompleksisuus (end)
 \subsection{Normalisoitu informaatioetäisyys} % (fold)
@@ -277,7 +277,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   Taulukossa \ref{tab:NCD-values} esitellään muutama arvo joilla NCD lasketaan ja mikä tulos näistä saadaan. Taulukon arvot saatu paperista \cite{cebrian2005common}
 
-  \begin{table}
+  \begin{table}[t]
     \centering
     \begin{tabular}{c|c|l}
       Arvot                    & Laskutoimitus      & NCD:n arvo \\ \hline
@@ -340,7 +340,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
     Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
 
-    \begin{figure}
+    \begin{figure}[t]
       \begin{center}
         % \immediate\write18{pdfcrop img/noise-005}
         % \includegraphics{img/noise-005}
@@ -356,6 +356,39 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \subsection{Pakkaajan valinta} % (fold)
   \label{sub:pakkaajan_valinta}
 
+    \begin{figure}[t]
+      \begin{center}
+        \immediate\write18{pdfcrop img/bzip2-best}
+          \includegraphics{img/bzip2-best}
+      \end{center}
+      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
+      \label{fig:(bzip2-best)}
+    \end{figure}
+    \begin{figure}[t]
+      \begin{center}
+        \immediate\write18{pdfcrop img/bzip2-fast}
+      \includegraphics{img/bzip2-fast}
+      \end{center}
+      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--fast' \cite{cebrian2005common}}
+      \label{fig:bzip2-fast}
+    \end{figure}
+    \begin{figure}[t]
+      \begin{center}
+        \immediate\write18{pdfcrop img/gzip-best}
+      \includegraphics{img/gzip-best}
+
+      \end{center}
+      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{gzip} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
+      \label{fig:gzip-best}
+    \end{figure}
+    \begin{figure}[t]
+      \begin{center}
+        \immediate\write18{pdfcrop img/ppmz}
+      \includegraphics{img/ppmz}
+      \end{center}
+      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{PPMZ} pakkaajaa \cite{cebrian2005common}}
+      \label{fig:ppmz}
+    \end{figure}
     \iffalse
       TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
     \fi
@@ -376,44 +409,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \item Lopputulos, jos pyritään klusteroimaan NCD:llä pitäisi aina käyttää PPMZ:taa tai vastaavaa pakkaajaa joka ei rajoita tiedostonkokoa
     \end{itemize}
 
-    \begin{figure}
-      \begin{center}
-        \immediate\write18{pdfcrop img/bzip2-best}
-          \includegraphics{img/bzip2-best}
-      \end{center}
-      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
-      \label{fig:(bzip2-best)}
-    \end{figure}
-    \begin{figure}
-      \begin{center}
-        \immediate\write18{pdfcrop img/bzip2-fast}
-      \includegraphics{img/bzip2-fast}
-      \end{center}
-      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--fast' \cite{cebrian2005common}}
-      \label{fig:bzip2-fast}
-    \end{figure}
-    \begin{figure}
-      \begin{center}
-        \immediate\write18{pdfcrop img/gzip-best}
-      \includegraphics{img/gzip-best}
-
-      \end{center}
-      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{gzip} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
-      \label{fig:gzip-best}
-    \end{figure}
-    \begin{figure}
-      \begin{center}
-        \immediate\write18{pdfcrop img/ppmz}
-      \includegraphics{img/ppmz}
-      \end{center}
-      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{PPMZ} pakkaajaa \cite{cebrian2005common}}
-      \label{fig:ppmz}
-    \end{figure}
-
-
-
-
-
 
 
   % subsection pakkaajan_valinta (end)
@@ -424,8 +419,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Tässä kappaleessa esitellään muita samankaltaisuuden metriikoita, kuten Google samankaltaisuusetäisyys \engl{Google Similarity Distance}
   \subsection{Google samankaltaisuusetäisyys} % (fold)
   \label{sub:google_similarity_distance}
-    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa NCD:iin, kummatki pohjautuvat samoihin tekniikoihin, kuten Kolmogorv-kompleksisuus (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoitu informaatioetäisyys (\ref{sub:normalisoitu_informaatioet_isyys}).
-    Eroavaisuus esiintyykin siinä, että mitä nämä kaksi käyttävät samankaltaisuuden arvioimiseksi.
+    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen, sillä kummatkin pohjautuvat samoihin tekniikoihin, kuten Kolmogorv-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioet_isyys}).
+    Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmiä käyttävät samankaltaisuuden arvioimiseksi.
     Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen.
 
     \subsubsection{Käytännön esimerkki} % (fold)
