@@ -134,10 +134,6 @@
 
 \section{Johdanto} % (fold)
 \label{sec:johdanto}
-\iffalse
-  TODO:
-
-\fi
 \label{par:intro-1}
   Kaikki data on luotu samanveroiseksi, mutta jotkut datat ovat samankaltaisempia kuin toiset.
   Esitämme tavan, jolla ilmaista tämä samankaltaisuus, käyttäen Cilibrasin ja Vitanyin esittelemää samankaltaisuuden metriikkaa \engl{similarity metric}, joka perustuu tiedoston pakkaamiseen. \cite{CV05}
@@ -149,7 +145,7 @@
   Pakkaukseen perustuva samankaltaisuus \engl{Compression-Based Similarity} on universaali metriikka, jonka kehittivät Cilibrasi ja Vitanyi \cite{CV05}.
   Yksinkertaistettuna tämä tarkoitta, että kaksi objektia ovat lähellä toisiaan, jos voimme ``pakata'' yhden objektin huomattavasti tiiviimmin toisen objektin datalla.
   Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden objektin toisen avulla, mikäli objektit ovat samankaltaisia.
-  Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkauset_isyys} ja samalla käymme läpi, mihin teoriaan algoritmi perustuu sekä miten se toimii.
+  Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkausetaisyys} ja samalla käymme läpi, mihin teoriaan algoritmi perustuu sekä miten se toimii.
   Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmia: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten (Gencompress).
 
   Kaikissa kohdissa  operoimme $O(log n)$ tarkkuudella, joka on hinta siitä että siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatio
@@ -196,7 +192,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 % section johdanto (end)
 
 \section{Normalisoitu Pakkausetäisyys} % (fold)
-\label{sec:normalisoitu_pakkauset_isyys}
+\label{sec:normalisoitu_pakkausetaisyys}
   \subsection{\kolmogorov} % (fold)
 \label{sub:kolmogorov_kompleksisuus}
 
@@ -206,7 +202,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 % subsection kolmogorov_kompleksisuus (end)
 \subsection{Normalisoitu informaatioetäisyys} % (fold)
-\label{sub:normalisoitu_informaatioet_isyys}
+\label{sub:normalisoitu_informaatioetaisyys}
 
   Artikkelissa \cite{CV05} on esitelty \emph{informaatioetäisyys} $E(x,y)$, joka on määritelty lyhimpänä binääriohjelman pituutena, joka syötteellä $x$ laskee $y$:n ja syötteellä $y$ laskee $x$:n. Tämä lasketaan seuraavasti:
 
@@ -226,7 +222,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
   Kun \emph{NID} approksimoidaan oikealla pakkaajalla, saadaan tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}.
   Tämä esitellään formaalisti myöhemmin.
-% subsection normalisoitu_informaatioet_isyys (end)
+% subsection normalisoitu_informaatioetaisyys (end)
 
 \subsection{Normaali pakkaaja} % (fold)
 \label{sub:normaali_pakkaaja}
@@ -246,7 +242,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 % subsection normaali_pakkaaja (end)
 
 \subsection{Normalisoitu Pakkausetäisyys} % (fold)
-\label{sub:normalisoitu_pakkauset_isyys}
+\label{sub:normalisoitu_pakkausetaisyys}
 
   Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approximaatiolla käyttäen standardia pakkaajaa.
 
@@ -263,7 +259,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Käytännössä \emph{NCD}:n tulos on välillä $0 \leq r \leq 1+ \epsilon$, joka vastaa kahden tiedoston eroa toisistaan; mitä pienempi luku, sitä enemmän tiedostot ovat samankaltaisia.
   Tosielämässä pakkausalgoritmit eivät ole yhtä tehokkaita kuin teoreettiset mallit, joten virhemarginaali $\epsilon$ on lisätty ylärajaan.
   Suurimmalle osalle näistä algoritmeista on epätodennäköistä että  $\epsilon > 0.1$.
-% subsection normalisoitu_pakkauset_isyys (end)
+% subsection normalisoitu_pakkausetaisyys (end)
 
   Luonnollinen tulkinta \emph{NCD}:stä, jos oletetaan $C(y) \geq C(x)$, on
 
@@ -292,7 +288,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \label{tab:NCD-values}
   \end{table}
 
-% section normalisoitu_pakkauset_isyys (end)
+% section normalisoitu_pakkausetaisyys (end)
 
 \section{Käyttökohteet} % (fold)
 \label{sec:k_ytt_kohteet}
@@ -390,7 +386,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \label{fig:ppmz}
     \end{figure}
     \iffalse
-      TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
+     % TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
     \fi
       NCD vaikuttaa tuottavan vaikuttavia tuloksia klusteroinnissa, mutta tulokset ovat hyvin vahvasti riippuvaisia käytetyn pakkaajan ominaisuuksista.
       Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} vertailtiin NCD:n kanssa \cite{cebrian2005common}, selvittääkseen mitä heikkouksia, jos mitään, näillä on.
@@ -425,12 +421,12 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat keskiarvoltaan heikkolaatuisia. Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten surin osa tai keskiverto on meaningful heikkolaatuisena approksimaationa. Täten kehitettiin yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä. Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan aggregoidun sivulukumäärä arvion, kuten Google.
 
-    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkauset_isyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioet_isyys}).
+    Google samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkausetaisyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
     Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
     Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen.
 
     \subsubsection{Käytännön esimerkki} % (fold)
-    \label{ssub:k_yt_nn_n_esimerkki}
+    \label{ssub:kaytannon_esimerkki}
       GSD muodostetaan siten että haetaan ensiksi yhdellä hakutermillä, sitten toisella ja sen jälkeen kummallakin yhdessä.
       Hakujen lukumäärät vertaillaan keskenään ja normalisoidaan ja tästä saadaan samankaltaisuusetäisyys.
 
@@ -438,7 +434,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Toistimme kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$.
       Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja on internetin kasvu, sekä epäselvyys mikä on tarkka lukumäärä Googlen indeksoituja sivuja.
 
-    % subsubsection k_yt_nn_n_esimerkki (end)
+    % subsubsection kaytannon_esimerkki (end)
 
     \subsubsection{Theory of Googling for similarity} % (fold) % TODO: Otsikko
     \label{ssub:theory_of_googling_for_similarity}
