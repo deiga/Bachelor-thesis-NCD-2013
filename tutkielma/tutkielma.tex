@@ -339,7 +339,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \subsection{Kohinansietokyky} % (fold)
   \label{sub:kohinansietokyky}
 
-  % TODO: Kuvakäppyrä
   % TODO: Approximoi differentiaaliyhtälöllä
     Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä.
     Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
@@ -427,7 +426,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     % subsection kaytannon_esimerkki (end)
 
-    \subsection{Hakukoneet samankaltaisuuden mittaamisessa} % (fold) % TODO: Otsikko
+    \subsection{Hakukoneet samankaltaisuuden mittaamisessa} % (fold)
     \label{sub:theory_of_googling_for_similarity}
 
     % TODO: number of webpages indexed by google
@@ -438,12 +437,20 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \subsection{Google-jakauma} % (fold)
     \label{sub:google_jakauma}
       Olkoon yksittäisten Google-hakujen joukko $S$. Jatkossa käytämme yksittäisten ja pareittaisten hakujen joukkoja $\{\{x,y\}:x,y \in S\}$. Olkoon joukko Googlen indeksoimia internetsivuja $\Omega$. Joukon $\Omega$ koko merkitään $M = |\Omega|$.
-      Oletamme että internetsivut ovat tasajakautuneita, eli todennäköisyys että se palautuu Google-hausta on $\frac{1}{\Omega}$. $\Omega$:n osajoukkoa kutsutaan \emph{tapahtumaksi} ja määrittelemme jokaisen hakuehdon olevan tapahtuma $x$, $x \subseteq \Omega$
+      Oletamme että jokaisella internetsivulla on yhtä todennäköistä palautua Google-hausta, eli todennäköisyys on $\frac{1}{\Omega}$. $\Omega$:n osajoukkoa kutsutaan \emph{tapahtumaksi}. Jokainen hakuehto $x$ määrittelee yksittäisen haun tapahtuman $\mathbf{x}\subseteq \Omega$, tämä on joukko internetsivuja joista löytyy $x$ kun suoritetaan Google-haku $x$:llä.
+      Olkoon $L: \Omega \rightarrow [0,1]$ tasajakauman todennäköisyysfunktio. Tapahtuman $\mathbf{x}$ todennäköisyys on $L(\mathbf{x}) = \frac{|\mathbf{x}|}{M}$.
+      Samoin toimii pareittain haun tapahtuma $\mathbf{x}\cap\mathbf{y}\subseteq\Omega$, jossa haetaan pareittain hakuehdoilla $x$ ja $y$.
 
-      On olemassa $|S|$ yksittäistä hakuja ja $\binom{|S|}{2}$  pareittain hakua. Määrittelemme $N = \sum_{\{x,y\} \subseteq S} |x \cap y|$. $N \geq M$. Internetsivuilla ei keskivertona ole enempää kuin vakio $\alpha$ hakutermiä, täten $N \leq \alpha{}M$.
+      $|S|$ on yksittäisten hakujen tulosten lukumäärä ja $\binom{|S|}{2}$ parittaisten.
+      $N \geq M$, koska N sisältää kummatkin lukumäärät.
       Määrittelemme
       \begin{align}
-        g(x) = g(x,x),\, g(x,y) = L(x \cap y)\frac{M}{N} = \frac{|x\cap y|}{N}.
+        N = \sum_{\{x,y\} \subseteq S} |x \cap y|.
+      \end{align}
+      Internetsivuilla ei keskivertona ole enempää kuin $\alpha$ hakutermiä, täten $N \leq \alpha{}M$.
+      Määrittelemme
+      \begin{align}
+        g(x) = g(x,x),\, g(x,y) = L(\mathbf{x} \cap \mathbf{y})\frac{M}{N} = \frac{|\mathbf{x}\cap \mathbf{y}|}{N}.
       \end{align}
     % subsection google_jakauma (end)
 
