@@ -438,7 +438,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     % TODO: number of webpages indexed by google
 
-    Googlen indeksoityjen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa.
+    Googlen indeksoitujen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa.
     Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa.
     Haun tulos on frekvenssi haun tuottamista osumista ja Googlen indeksoitujen sivujen lukumäärästä. \cite{cilibrasi2007google}
 
@@ -456,18 +456,44 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Tapahtuman $\mathbf{x}$ todennäköisyys on $L(\mathbf{x}) = \frac{|\mathbf{x}|}{M}$.
       Samoin toimii pareittain haun tapahtuma $\mathbf{x}\cap\mathbf{y}\subseteq\Omega$, jossa haetaan pareittain hakuehdoilla $x$ ja $y$.
 
-      $|S|$ on yksittäisten hakujen tulosten lukumäärä ja $\binom{|S|}{2}$ parittaisten.
-      $N \geq M$, koska N sisältää kummatkin lukumäärät.
+      Kaikkien tapahtumien todennäköisyydet yhteensä on suurempi kuin $1$, koska tapahtumat menevät päällekkäin, joten tarvitaan normalisointia.
+      $|S|$ on yksittäisten ja $\binom{|S|}{2}$ parittaisten hakujen tulosten lukumäärä.
       Määrittelemme
       \begin{align}
-        N = \sum_{\{x,y\} \subseteq S} |x \cap y|.
+        N = \sum_{\{x,y\} \subseteq S} |x \cap y|,
       \end{align}
-      Internetsivuilla ei keskivertona ole enempää kuin $\alpha$ hakutermiä, täten $N \leq \alpha{}M$.
+      yksittäisten ja parittaisten hakujen tulosten lukumäärä yhteensä.
+      $N \geq M$, koska jokainen Googlen indeksoima internetsivu sisältää vähintään yhden hakusanan esiintymän. Toisaalta internetsivuilla ei keskivertona ole enempää kuin $\alpha$ hakutermiä, täten $N \leq \alpha{}M$.
       Määrittelemme
       \begin{align}
         g(x) = g(x,x),\, g(x,y) = L(\mathbf{x} \cap \mathbf{y})\frac{M}{N} = \frac{|\mathbf{x}\cap \mathbf{y}|}{N}.
       \end{align}
+      Ja sitten on pystytään määrittelemään $\sum_{\{x,y\}\subseteq S} g(x,y) = 1$, eli $g$ määrittelee todennäköisyysjakauman.
     % subsection google_jakauma (end)
+
+    \subsection{Google-samankaltaisuusetäisyys} % (fold)
+    \label{sub:google_samankaltaisuusetäisyys}
+      \emph{Normalisoitu google-etäisyys} (\emph{NGD}) \engl{Normalized Google Distance}  voidaan määritellä seuraavasti,
+      \begin{align}
+        NGD(x,y) = \frac{max\{\log{f(x)},\log{f(y)}\}-\log{f(x,y)}}{\log{N}-min\{\log{f(x)},\log{f(y)}\}},
+      \end{align}
+      % TODO: denotes
+      jossa $f(x)$ denotes internetsivujen lukumäärää, jotka sisältävät hakutermin $x$ ja $f(x,y)$ denotes saman mutta sivuille jotka sisältävät termit $x$ ja $y$.
+      Tämä normalisoitu google-etäisyys on approksimaation normalisuidusta informaatioetäisyydestä \ref{sub:normalisoitu_informaatioetaisyys}.
+      Käytännössä käytämme Googlen palauttamia sivujen lukumääriä frekvensseinä ja valitaan $N$.
+      On huomattu että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
+      NGD:llä on seuraavat ominaisuudet, olettaen että valitaan parametri $N\geq{}M$:
+      \begin{enumerate}
+        \item NGD:n arvo on väliltä $0$ ja $\infty$ (joskus jopa hieman negatiivisiä, jos Googlen lukumäärät ovat epäluotettavia ja täten $f(x,y) > max\{f(x),f(y)\}$)
+        \begin{enumerate}
+          \item Jos $x=y$ tai $x\neq{}y$, mutta frekvenssi on
+          \[
+            f(x) = f(y) = f(x,y) > 0,
+          \]
+          niin $NGD(x,y)=0$. Eli $x$ ja $y$ ovat Googlen mielestä samat.
+        \end{enumerate}
+      \end{enumerate}
+    % subsection google_samankaltaisuuset_isyys (end)
 
 
   % section google_similarity_distance (end)
