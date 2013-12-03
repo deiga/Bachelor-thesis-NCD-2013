@@ -150,9 +150,9 @@
   Yksinkertaistettuna tämä tarkoitta, että kaksi objektia ovat lähellä toisiaan, jos voimme ``pakata'' yhden objektin huomattavasti tiiviimmin toisen objektin datalla.
   Abstraktina ideana toimii se, että voimme kuvailla ytimekkäämmin yhden objektin toisen avulla, mikäli objektit ovat samankaltaisia.
   Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkausetaisyys} ja samalla käymme läpi, mihin teoriaan algoritmi perustuu sekä miten se toimii.
-  Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmia: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten (Gencompress).
+  Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmia: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten suunniteltua (Gencompress).
 
-  Kaikissa kohdissa  operoimme $O(log n)$ tarkkuudella, joka on hinta siitä että siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatio
+  Kaikissa kohdissa  operoimme $O(log n)$ tarkkuudella, joka on hinta siitä että siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatioon.
 
   Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki tehokkaat etäisyydet \engl{effective distances}: tehokkaat versiot Hammingin etäisyydestä, Euklidisesta etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
   Tämän metriikan tulee olla niin yleinen, että se toimii yhtäläisesti ja samanaikaisesti kaikilla aloilla: musiikilla, tekstillä, kirjallisuudella, ohjelmilla, genomeilla, luonnollisen kielen määrityksillä.
@@ -165,7 +165,7 @@
   Valinnalla ei kuitenkaan ole merkitystä, sillä teoria on invariantti ohjelmointikielin muutoksille, kunhan pysytään tehdyssä valinnassa.
 
 
-Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approximaatiolla käyttäen standardia pakkaajaa.
+Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approksimaatiolla käyttäen standardia pakkaajaa.
 
 \label{par:intro-3}
   Luvussa \ref{sec:k_ytt_kohteet} esittelemme algoritmin käyttökohteita monelta eri alueelta.
@@ -191,17 +191,17 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \label{par:intro-5}
   NCD ei ole ainut metriikka, jolla voidaan mitata samankaltaisuutta.
   Internetiä hyödyntäen on tehty metriikka, joka käyttää hakukoneita samankaltaisuuden tutkimiseen; tämä on nimetty Google-samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}.
-  Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esitellemme tämän sekä muita samankaltaisuuden metriikoita.
+  Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esittellemme tämän sekä muita samankaltaisuuden metriikoita.
 
 % section johdanto (end)
 
-\section{Normalisoitu Pakkausetäisyys} % (fold)
+\section{Normalisoitu iakkausetäisyys} % (fold)
 \label{sec:normalisoitu_pakkausetaisyys}
   \subsection{\kolmogorov} % (fold)
 \label{sub:kolmogorov_kompleksisuus}
 
   Merkkijonon $x$ \emph{\kolmogorov} on pituus bitteinä, lyhimmästä tietokoneohjelmasta joka ilman syötettä palauttaa merkkijonon $x$; tämä merkitään $K(x)=K(x|\lambda)$, $\lambda$ esittää tyhjää syötettä.
-  Lyhimmän tietokoneohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \kolmogorov $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$.
+  Lyhimmän tietokoneohjelman pituus, joka palauttaa $x$ syötteellä $y$, on \kolmogorov{} $x$:stä syötteellä $y$; tämä merkitään $K(x|y)$.
   Yksi tapa hahmottaa Kolmogorov-kompleksisuutta $K(x)$ on ajatella se pituutena bitteinä $x$:n tiiviimmin pakatussa muodossa, josta voidaan purkaa $x$ pakkauksenpurkuohjelmalla.
 
 % subsection kolmogorov_kompleksisuus (end)
@@ -221,7 +221,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \end{align}
 
   Tämä on paras mahdollinen \emph{samankaltaisuuden metriikka}, ja sen on osoitettu \cite{CV05} täyttävän vaatimukset etäisyyden metriikaksi.
-  \emph{NID} ei kuitenkaan ole laskettava tai edes semi-laskettava, koska Turingin määritelmän mukaan \kolmogorov ei ole laskettava \cite{CV05}.
+  \emph{NID} ei kuitenkaan ole laskettava tai edes semi-laskettava, koska Turingin määritelmän mukaan \kolmogorov{} ei ole laskettava \cite{CV05}.
   Nimittäjän approksimointi annetulla pakkaajalla $C$ on $max \{C(x),C(y)\}$.
   Osoittajan paras approksimaatio on $max\{C(xy),C(yx)\} - \min\{C(x),C(y)\}$ \cite{CV05}.
   Kun \emph{NID} approksimoidaan oikealla pakkaajalla, saadaan tulos jota kutsutaan \emph{normalisoiduksi pakkausetäisyydeksi}.
@@ -248,7 +248,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \subsection{Normalisoitu Pakkausetäisyys} % (fold)
 \label{sub:normalisoitu_pakkausetaisyys}
 
-  Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approximaatiolla käyttäen standardia pakkaajaa.
+  Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approksimaatiolla käyttäen standardia pakkaajaa.
 
   Normalisoitua versiota \emph{hyväksyttävästä etäisyydestä} $E_c(x,y)$, joka on pakkaajaan $C$ pohjautuva approksimaatio normalisoidusta informaatioetäisyydestä, kutsutaan nimellä \emph{Normalisoitu Pakkausetäisyys (NCD)} \cite{CV05}.
   Tämä lasketaan seuraavasti
@@ -382,7 +382,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
      % TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
     \fi
       NCD vaikuttaa tuottavan vaikuttavia tuloksia klusteroinnissa, mutta tulokset ovat hyvin vahvasti riippuvaisia käytetyn pakkaajan ominaisuuksista.
-      Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} vertailtiin NCD:n kanssa \cite{cebrian2005common}, selvittääkseen mitä heikkouksia, jos mitään, näillä on.
+      Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} on vertailtu NCD:n kanssa \cite{cebrian2005common}, selvittääkseen mitä heikkouksia, jos mitään, näillä on.
 
 
       Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat. Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä. Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkausalgoritmin toiminnasta. Mukana muun muassa on kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
@@ -412,7 +412,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     % TODO: meaningful
     % TODO: aggregoidun
 
-    Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat keskiarvoltaan heikkolaatuisia. Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten surin osa tai keskiverto on meaningful heikkolaatuisena approksimaationa. Täten kehitettiin yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä. Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan aggregoidun sivulukumäärä arvion, kuten Google.
+    Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat sisällöltään ja piirteiltään hyvin vaihtelevia. Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten surin osa tai keskiverto on meaningful heikkolaatuisena approksimaationa. Täten kehitettiin yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä. Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan aggregoidun sivulukumääräarvion, kuten Google.
 
     Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkausetaisyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
     Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
@@ -434,13 +434,13 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     % TODO: number of webpages indexed by google
 
-    Googlen indeksöityjen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa. Tämän perusteella uskomme että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisistä frekvensseistä yhteiskunnassa. Haun tulos on frekvenssi haun tuottamista osumista ja Googlen indeksoitujen sivujen lukumäärästä. \cite{cilibrasi2007google}
+    Googlen indeksöityjen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa. Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisistä frekvensseistä yhteiskunnassa. Haun tulos on frekvenssi haun tuottamista osumista ja Googlen indeksoitujen sivujen lukumäärästä. \cite{cilibrasi2007google}
 
     % subsubsection theory_of_googling_for_similarity (end)
     \subsubsection{Google-jakauma} % (fold)
     \label{ssub:google_jakauma}
       Olkoon yksittäisten Google-hakujen joukko $S$. Jatkossa käytämme yksittäisten ja pareittaisten hakujen joukkoja $\{\{x,y\}:x,y \in S\}$. Olkoon joukko Googlen indeksöimiä internetsivuja $\Omega$. Joukon $\Omega$ koko merkitään $M = |\Omega|$.
-      Oletamme että internetsivut ovat tasajakauteuneita, eli todennäköisyys että se palautuu Google-hausta on $\frac{1}{\Omega}$. $\Omega$:n alijoukkoa kutsutaan \emph{tapahtumaksi} ja määrittelemme jokaisen hakuehdon olevan tapahtuma $x$, $x \subseteq \Omega$
+      Oletamme että internetsivut ovat tasajakautuneita, eli todennäköisyys että se palautuu Google-hausta on $\frac{1}{\Omega}$. $\Omega$:n osajoukkoa kutsutaan \emph{tapahtumaksi} ja määrittelemme jokaisen hakuehdon olevan tapahtuma $x$, $x \subseteq \Omega$
     % subsubsection google_jakauma (end)
 
     \subsubsection{Google-koodi} % (fold)
