@@ -72,6 +72,10 @@
 \theoremstyle{remark}
 \newtheorem*{huom}{Huomautus}
 
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
 
 % --- tktltiki2 options ---
 %
@@ -274,7 +278,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Taulukossa \ref{tab:NCD-values} esitellään muutama arvo joilla NCD lasketaan ja mikä tulos näistä saadaan. Taulukon arvot saatu paperista \cite{cebrian2005common}
 
   \begin{table}[t]
-    \centering
     \begin{tabular}{c|c|l}
       Arvot                    & Laskutoimitus      & NCD:n arvo \\ \hline
       $ C(xx) = 26, C(x) = 17$ & $\frac{26-17}{17} $ & $0.529$    \\ \hline
@@ -298,9 +301,14 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \item Miten klusteroidaan
       \item Etäisyysmatriisi
     \end{itemize}
-    \subsubsection{Kvartettimetodi} % (fold)
+    \subsubsection{Nelikkomenetelmä} % (fold)
     \label{ssub:quartet_metodi}
 
+    %"quartet topology" -> "nelikkotopologia",
+
+  %"minimum quartet tree cost" -> "pienin nelikkopuukustannus"
+
+  %"quartet-based tree construction" -> "nelikkopohjainen puunrakennus"
     \begin{itemize}
       \item puun rakentaminen etäisyysmatriisista
       \item Puun operaatiot
@@ -336,14 +344,12 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
     Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
 
-    \begin{figure}[t]
-      \begin{center}
-        \includegraphics{img/noise-005}
-      \end{center}
+    \begin{figure}[!htb]
+      \includegraphics[width=\textwidth]{img/noise-005}
       \caption{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkinnän ensimmäiset pari merkkiä ovt kirjailijan initials: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.
       % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
       \cite{4167725}}
-      \label{fig:(noise-1)}
+      \label{fig:(noise-005)}
     \end{figure}
 
   % subsection kohinansietokyky (end)
@@ -351,36 +357,24 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \subsection{Pakkaajan valinta} % (fold)
   \label{sub:pakkaajan_valinta}
 
-    \begin{figure}[t]
-      \begin{center}
-        \immediate\write18{pdfcrop img/bzip2-best}
-          \includegraphics{img/bzip2-best}
-      \end{center}
+    \begin{figure}[!htb]
+      \includegraphics[width=\textwidth]{img/bzip2-best}
       \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
       \label{fig:(bzip2-best)}
     \end{figure}
-    \begin{figure}[t]
-      \begin{center}
-        \immediate\write18{pdfcrop img/bzip2-fast}
-      \includegraphics{img/bzip2-fast}
-      \end{center}
+    \begin{figure}[!htb]
+      \includegraphics[width=\textwidth]{img/bzip2-fast}
       \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--fast' \cite{cebrian2005common}}
       \label{fig:bzip2-fast}
     \end{figure}
-    \begin{figure}[t]
-      \begin{center}
-        \immediate\write18{pdfcrop img/gzip-best}
-      \includegraphics{img/gzip-best}
-
-      \end{center}
+    \begin{figure}[!htb]
+      \includegraphics[width=\textwidth]{img/gzip-best}
       \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{gzip} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
       \label{fig:gzip-best}
     \end{figure}
-    \begin{figure}[t]
-      \begin{center}
+    \begin{figure}[!htb]
         \immediate\write18{pdfcrop img/ppmz}
       \includegraphics{img/ppmz}
-      \end{center}
       \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{PPMZ} pakkaajaa \cite{cebrian2005common}}
       \label{fig:ppmz}
     \end{figure}
@@ -435,7 +429,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     % subsubsection kaytannon_esimerkki (end)
 
-    \subsubsection{Theory of Googling for similarity} % (fold) % TODO: Otsikko
+    \subsubsection{Okeitus hakukoneiden käytölle samankaltiasuudessa} % (fold) % TODO: Otsikko
     \label{ssub:theory_of_googling_for_similarity}
 
     % TODO: number of webpages indexed by google
@@ -469,6 +463,15 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 % TODO: Yhteenveto ongelmissa ja ominaisuuksista
 % TODO: Viittaus johonkin muuhun klusterointiin
+\begin{itemize}
+  \item Nähty että toimii klusterointiin
+  \item riippumaton tiedosta
+\end{itemize}
+
+\begin{itemize}
+  \item kohinansieto
+  \item pakkaajan valinta
+\end{itemize}
 
 \paragraph{Muita klusteroinnin menetelmiä} % (fold)
 \label{par:muita_klusteroinnin_menetelmia}
