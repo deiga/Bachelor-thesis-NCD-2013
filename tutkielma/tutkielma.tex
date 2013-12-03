@@ -385,9 +385,13 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} on vertailtu NCD:n kanssa \cite{cebrian2005common}, selvittääkseen mitä heikkouksia, jos mitään, näillä on.
 
 
-      Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat. Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä. Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkausalgoritmin toiminnasta. Mukana muun muassa on kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
+      Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat.
+      Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä.
+      Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkausalgoritmin toiminnasta.
+      Mukana muun muassa on kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
 
-      Kaikkia vertailun objekteja käsitellään merkkijonoinen, jotka koostuvat tavuista. Jotta voitiin todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertailtiin itsensä kanssa.
+      Kaikkia vertailun objekteja käsitellään merkkijonoinen, jotka koostuvat tavuista.
+      Jotta voitiin todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertailtiin itsensä kanssa.
 
       Näistä vertailtiin ensiksi bzip2 pakkaajaa, jolle pitää määrittää lohkon koko
 
@@ -409,7 +413,10 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     % TODO: meaningful
     % TODO: aggregoidun
 
-    Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat sisällöltään ja piirteiltään hyvin vaihtelevia. Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten surin osa tai keskiverto on meaningful heikkolaatuisena approksimaationa. Täten kehitettiin yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä. Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan aggregoidun sivulukumääräarvion, kuten Google.
+    Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat sisällöltään ja piirteiltään hyvin vaihtelevia.
+    Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten surin osa tai keskiverto on meaningful heikkolaatuisena approksimaationa.
+    Täten on kehitetty yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä.
+    Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan aggregoidun sivulukumääräarvion, kuten Google.
 
     Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkausetaisyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
     Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
@@ -431,14 +438,22 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     % TODO: number of webpages indexed by google
 
-    Googlen indeksoityjen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa. Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa. Haun tulos on frekvenssi haun tuottamista osumista ja Googlen indeksoitujen sivujen lukumäärästä. \cite{cilibrasi2007google}
+    Googlen indeksoityjen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa.
+    Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa.
+    Haun tulos on frekvenssi haun tuottamista osumista ja Googlen indeksoitujen sivujen lukumäärästä. \cite{cilibrasi2007google}
 
     % subsection theory_of_googling_for_similarity (end)
     \subsection{Google-jakauma} % (fold)
     \label{sub:google_jakauma}
-      Olkoon yksittäisten Google-hakujen joukko $S$. Jatkossa käytämme yksittäisten ja pareittaisten hakujen joukkoja $\{\{x,y\}:x,y \in S\}$. Olkoon joukko Googlen indeksoimia internetsivuja $\Omega$. Joukon $\Omega$ koko merkitään $M = |\Omega|$.
-      Oletamme että jokaisella internetsivulla on yhtä todennäköistä palautua Google-hausta, eli todennäköisyys on $\frac{1}{\Omega}$. $\Omega$:n osajoukkoa kutsutaan \emph{tapahtumaksi}. Jokainen hakuehto $x$ määrittelee yksittäisen haun tapahtuman $\mathbf{x}\subseteq \Omega$, tämä on joukko internetsivuja joista löytyy $x$ kun suoritetaan Google-haku $x$:llä.
-      Olkoon $L: \Omega \rightarrow [0,1]$ tasajakauman todennäköisyysfunktio. Tapahtuman $\mathbf{x}$ todennäköisyys on $L(\mathbf{x}) = \frac{|\mathbf{x}|}{M}$.
+      Olkoon yksittäisten Google-hakujen joukko $S$.
+      Jatkossa käytämme yksittäisten ja pareittaisten hakujen joukkoja $\{\{x,y\}:x,y \in S\}$.
+      Olkoon joukko Googlen indeksoimia internetsivuja $\Omega$.
+      Joukon $\Omega$ koko merkitään $M = |\Omega|$.
+      Oletamme että jokaisella internetsivulla on yhtä todennäköistä palautua Google-hausta, eli todennäköisyys on $\frac{1}{\Omega}$.
+      $\Omega$:n osajoukkoa kutsutaan \emph{tapahtumaksi}.
+      Jokainen hakuehto $x$ määrittelee yksittäisen haun tapahtuman $\mathbf{x}\subseteq \Omega$, tämä on joukko internetsivuja joista löytyy $x$ kun suoritetaan Google-haku $x$:llä.
+      Olkoon $L: \Omega \rightarrow [0,1]$ tasajakauman todennäköisyysfunktio.
+      Tapahtuman $\mathbf{x}$ todennäköisyys on $L(\mathbf{x}) = \frac{|\mathbf{x}|}{M}$.
       Samoin toimii pareittain haun tapahtuma $\mathbf{x}\cap\mathbf{y}\subseteq\Omega$, jossa haetaan pareittain hakuehdoilla $x$ ja $y$.
 
       $|S|$ on yksittäisten hakujen tulosten lukumäärä ja $\binom{|S|}{2}$ parittaisten.
@@ -467,11 +482,13 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 Kuten esitimme aiemmin niin NCD toimii edelleen hyvin samankaltaisuuden mittarina vaikka syötteessä olisi kohinaa.
 
-Vaikka NCD:n kehittäjät luulivat osoittaneen, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainaostaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa \ref{sub:pakkaajan_valinta}. Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
+Vaikka NCD:n kehittäjät luulivat osoittaneen, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainaostaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa \ref{sub:pakkaajan_valinta}.
+Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
 
 \paragraph{Muita klusteroinnin menetelmiä} % (fold)
 \label{par:muita_klusteroinnin_menetelmia}
-  NCD ei tietenkään ole ainut menetelmä jota Unsupervised learningissä voi käyttää datan klusteroimiseen. Vaihtoehtoisia menetelmiä ovat muunmuassa: Hierarkinen klusterointi, joka ..., K-keskiä klusterointi, joka ... ja ...
+  NCD ei tietenkään ole ainut menetelmä jota Unsupervised learningissä voi käyttää datan klusteroimiseen.
+  Vaihtoehtoisia menetelmiä ovat muunmuassa: Hierarkinen klusterointi, joka ..., K-keskiä klusterointi, joka ... ja ...
   \begin{itemize}
     \item Hierarkinen klusterointi % TODO: http://en.wikipedia.org/wiki/Hierarchical_clustering
     \item K-keskiö klusterointi % TODO: http://en.wikipedia.org/wiki/K-means_clustering
