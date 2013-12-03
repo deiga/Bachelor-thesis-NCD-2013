@@ -191,11 +191,11 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \label{par:intro-5}
   NCD ei ole ainut metriikka, jolla voidaan mitata samankaltaisuutta.
   Internetiä hyödyntäen on tehty metriikka, joka käyttää hakukoneita samankaltaisuuden tutkimiseen; tämä on nimetty Google-samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}.
-  Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esittellemme tämän sekä muita samankaltaisuuden metriikoita.
+  Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esittelemme tämän sekä muita samankaltaisuuden metriikoita.
 
 % section johdanto (end)
 
-\section{Normalisoitu iakkausetäisyys} % (fold)
+\section{Normalisoitu pakkausetäisyys} % (fold)
 \label{sec:normalisoitu_pakkausetaisyys}
   \subsection{\kolmogorov} % (fold)
 \label{sub:kolmogorov_kompleksisuus}
@@ -293,16 +293,14 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 % section normalisoitu_pakkausetaisyys (end)
 
-\section{Käyttökohteet} % (fold)
-\label{sec:k_ytt_kohteet}
-  \subsection{Klusterointi} % (fold)
-  \label{sub:klusterointi}
+\section{Klusterointi} % (fold)
+  \label{sec:klusterointi}
     \begin{itemize}
       \item Miten klusteroidaan
       \item Etäisyysmatriisi
     \end{itemize}
-    \subsubsection{Nelikkomenetelmä} % (fold)
-    \label{ssub:quartet_metodi}
+    \subsection{Nelikkomenetelmä} % (fold)
+    \label{sub:nelikkomenetelma}
 
     %"quartet topology" -> "nelikkotopologia",
 
@@ -315,9 +313,9 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \item normalisoitu puun hyötyarvo $S(T)$
       \item Satunnaisuuden käyttö tarkistusiteraatiossa parhaan puun approksimoimiseksi
     \end{itemize}
-    % subsubsection quartet_metodi (end)
-    \subsubsection{Tuloksia} % (fold)
-    \label{ssub:tuloksia}
+    % subsection nelikkomenetelma (end)
+    \subsection{Tuloksia} % (fold)
+    \label{sub:tuloksia}
       \begin{itemize}
         \item Musiikin genrepuu
         \item Musiikin pieni vertaus
@@ -325,13 +323,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
         \item Musiikin suuri vertaus
       \end{itemize}
 
-    % subsubsection tuloksia (end)
-  % subsection klusterointi (end)
-  \subsection{Kuvantunnistus} % (fold)
-  \label{sub:kuvantunnistus}
-
-  % subsection kuvantunnistus (end)
-% section k_ytt_kohteet (end)
+    % subsection tuloksia (end)
+  % section klusterointi (end)
 
 \section{Algoritmin ongelmat ja ominaisuudet} % (fold)
 \label{sec:algoritmin_ongelmat_ja_ominaisuudet}
@@ -346,7 +339,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     \begin{figure}[!htb]
       \includegraphics[width=\textwidth]{img/noise-005}
-      \caption{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkinnän ensimmäiset pari merkkiä ovt kirjailijan initials: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.
+      \caption{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkinnät ovat kirjailijan nimikirjaimet: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.
       % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
       \cite{4167725}}
       \label{fig:(noise-005)}
@@ -403,11 +396,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   % subsection pakkaajan_valinta (end)
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
 
-\section{Muita samankaltaisuuden metriikoita} % (fold)
-\label{sec:muita_samankaltaisuuden_metriikoita}
-  Tässä kappaleessa esitellään muita samankaltaisuuden metriikoita, kuten Google-samankaltaisuusetäisyys \engl{Google Similarity Distance}
-  \subsection{Google-samankaltaisuusetäisyys} % (fold)
-  \label{sub:google_similarity_distance}
+\section{Google-samankaltaisuusetäisyys} % (fold)
+  \label{sec:google_similarity_distance}
 
     % TODO: meaningful
     % TODO: aggregoidun
@@ -418,8 +408,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
     Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen. \cite{cilibrasi2007google}
 
-    \subsubsection{Käytännön esimerkki} % (fold)
-    \label{ssub:kaytannon_esimerkki}
+    \subsection{Käytännön esimerkki} % (fold)
+    \label{sub:kaytannon_esimerkki}
       GSD muodostetaan siten että haetaan ensiksi yhdellä hakutermillä, sitten toisella ja sen jälkeen kummallakin yhdessä.
       Hakujen lukumäärät vertaillaan keskenään ja normalisoidaan ja tästä saadaan samankaltaisuusetäisyys.
 
@@ -427,36 +417,30 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Toistimme kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$.
       Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja on internetin kasvu, sekä epäselvyys mikä on tarkka lukumäärä Googlen indeksoituja sivuja.
 
-    % subsubsection kaytannon_esimerkki (end)
+    % subsection kaytannon_esimerkki (end)
 
-    \subsubsection{Okeitus hakukoneiden käytölle samankaltiasuudessa} % (fold) % TODO: Otsikko
-    \label{ssub:theory_of_googling_for_similarity}
+    \subsection{Hakukoneet samankaltaisuuden mittaamisessa} % (fold) % TODO: Otsikko
+    \label{sub:theory_of_googling_for_similarity}
 
     % TODO: number of webpages indexed by google
 
-    Googlen indeksöityjen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa. Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisistä frekvensseistä yhteiskunnassa. Haun tulos on frekvenssi haun tuottamista osumista ja Googlen indeksoitujen sivujen lukumäärästä. \cite{cilibrasi2007google}
+    Googlen indeksoityjen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa. Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa. Haun tulos on frekvenssi haun tuottamista osumista ja Googlen indeksoitujen sivujen lukumäärästä. \cite{cilibrasi2007google}
 
-    % subsubsection theory_of_googling_for_similarity (end)
-    \subsubsection{Google-jakauma} % (fold)
-    \label{ssub:google_jakauma}
-      Olkoon yksittäisten Google-hakujen joukko $S$. Jatkossa käytämme yksittäisten ja pareittaisten hakujen joukkoja $\{\{x,y\}:x,y \in S\}$. Olkoon joukko Googlen indeksöimiä internetsivuja $\Omega$. Joukon $\Omega$ koko merkitään $M = |\Omega|$.
+    % subsection theory_of_googling_for_similarity (end)
+    \subsection{Google-jakauma} % (fold)
+    \label{sub:google_jakauma}
+      Olkoon yksittäisten Google-hakujen joukko $S$. Jatkossa käytämme yksittäisten ja pareittaisten hakujen joukkoja $\{\{x,y\}:x,y \in S\}$. Olkoon joukko Googlen indeksoimia internetsivuja $\Omega$. Joukon $\Omega$ koko merkitään $M = |\Omega|$.
       Oletamme että internetsivut ovat tasajakautuneita, eli todennäköisyys että se palautuu Google-hausta on $\frac{1}{\Omega}$. $\Omega$:n osajoukkoa kutsutaan \emph{tapahtumaksi} ja määrittelemme jokaisen hakuehdon olevan tapahtuma $x$, $x \subseteq \Omega$
-    % subsubsection google_jakauma (end)
 
-    \subsubsection{Google-koodi} % (fold)
-    \label{ssub:google_koodi}
       On olemassa $|S|$ yksittäistä hakuja ja $\binom{|S|}{2}$  pareittain hakua. Määrittelemme $N = \sum_{\{x,y\} \subseteq S} |x \cap y|$. $N \geq M$. Internetsivuilla ei keskivertona ole enempää kuin vakio $\alpha$ hakutermiä, täten $N \leq \alpha{}M$.
       Määrittelemme
       \begin{align}
-        g(x) = g(x,x),\, g(x,y) = L(x \cap y)M/N = |x\cap y|/N.
+        g(x) = g(x,x),\, g(x,y) = L(x \cap y)\frac{M}{N} = \frac{|x\cap y|}{N}.
       \end{align}
-    % subsubsection google_koodi (end)
+    % subsection google_jakauma (end)
 
 
-
-
-  % subsection google_similarity_distance (end)
-% section muita_samankaltaisuuden_metriikoita (end)
+  % section google_similarity_distance (end)
 
 \section{``Loppukaneetti''} % (fold)
 \label{sec:loppukaneetti}
@@ -476,7 +460,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \paragraph{Muita klusteroinnin menetelmiä} % (fold)
 \label{par:muita_klusteroinnin_menetelmia}
   \begin{itemize}
-    \item Hieraskinen klusterointi % TODO: http://en.wikipedia.org/wiki/Hierarchical_clustering
+    \item Hierarkinen klusterointi % TODO: http://en.wikipedia.org/wiki/Hierarchical_clustering
     \item k-means klusterointi % TODO: http://en.wikipedia.org/wiki/K-means_clustering
     \item Muita: \url{http://en.wikipedia.org/wiki/Data_clustering#Clustering_algorithms}
   \end{itemize}
