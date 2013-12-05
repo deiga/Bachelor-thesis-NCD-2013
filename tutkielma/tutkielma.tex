@@ -386,11 +386,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \label{fig:ppmz}
     \end{figure}
     \iffalse
-     % TODO: This paper shows that the compressors used to compute the normalized compression distance are not idempotent in some cases, being strongly skewed with the size of the objects and window size, and therefore causing a deviation in the identity property of the distance if we don’t take care that the objects to be compressed fit the windows. The relationship underlying the precision of the distance and the size of the objects has been analyzed for several well-known compressors, and specially in depth for three cases, bzip2, gzip and PPMZ which are examples of the three main types of compressors: block-sorting, Lempel-Ziv, and statistic.
     \fi
-      NCD vaikuttaa tuottavan vaikuttavia tuloksia klusteroinnissa, mutta tulokset ovat hyvin vahvasti riippuvaisia käytetyn pakkaajan ominaisuuksista.
-      Suosittuja pakkaajia \emph{bzip2}, \emph{gzip} ja \emph{PPMZ} on vertailtu NCD:n kanssa \cite{cebrian2005common}, selvittääkseen mitä heikkouksia, jos mitään, näillä on.
-
+      Paperissa \cite{cebrian2005common} on osoitettu että, pakkaaja jota käytetään NCD:m laskemiseen ei ole idempotentti (\ref{idempotency}) kaikissa tapauksissa, koska objektien koko ja pakkaajan ikkunakoko vääristävät etäisyyksiä ja täten aiheuttavat poikkeuksia samankaltaisuuksissa. Yhteyttä etäisyyden tarkkuudesta ja objektien koosta on analysoitu monella tunnetulla pakkaajalla ja erityisesti seuraavilla kolmella:  \emph{bzip2}, \emph{gzip} ja \emph{PPMZ}.
 
       Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat.
       Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä.
@@ -455,8 +452,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     \subsection{Hakukoneet samankaltaisuuden mittaamisessa} % (fold)
     \label{sub:hakukoneet_samankaltaisuuden_mittaamisessa}
-
-    % TODO: number of webpages indexed by google
 
     Googlen indeksoitujen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa.
     Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa.
@@ -546,41 +541,26 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   % section google_samankaltaisuusetaisyys (end)
 
-\section{``Loppukaneetti''} % (fold)
-\label{sec:loppukaneetti}
+\section{Yhteenveto} % (fold)
+\label{sec:yhteenveto}
 
-\begin{itemize}
-  \item Nähty että toimii klusterointiin
-  \item riippumaton tiedosta
-\end{itemize}
+  Luvussa \ref{sec:klusterointi} näytettiin että NCD toimii hyvin klusterointiin ja on helppo soveltaa mihin tahansa alaan, kuten esimerkiksi: musiikki, kirjallisuus ja genomit, koska algoritmin käyttö on täysin riippumaton datasta ja sen ominaisuuksista. Algoritmi kykenee aina löytämään merkittävimmät ominaisuudet datasta ja vertailemaan näin samankaltaisuuden etäisyyksiä datan eri objektien välillä.
+  NCD:n tehokkuutta parantaa huomattavasti että algoritmi vaikuttaa olevan hyvin kohinansietokykyinen, eli kykenee edelleen yhdistämään samankaltaisen objektit vaikka toisessa olisikin kohinaa.
+  Vaikka NCD:n kehittäjät luulivat osoittaneen, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainoastaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa \ref{sub:pakkaajan_valinta}.
+  Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
 
-Kuten esitimme aiemmin niin NCD toimii edelleen hyvin samankaltaisuuden mittarina vaikka syötteessä olisi kohinaa.
-
-Vaikka NCD:n kehittäjät luulivat osoittaneen, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainoastaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa \ref{sub:pakkaajan_valinta}.
-Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
-
-\paragraph{Muita klusteroinnin menetelmiä} % (fold)
-\label{par:muita_klusteroinnin_menetelmia}
   NCD ei tietenkään ole ainut menetelmä jota ohjaamattomassa oppimisessa voi käyttää datan klusteroimiseen.
-  Vaihtoehtoisia menetelmiä ovat muun muassa: Hierarkinen klusterointi, joka ..., K-keskiö klusterointi, joka ... ja ...
-  \begin{itemize}
-    \item Hierarkinen klusterointi % TODO: http://en.wikipedia.org/wiki/Hierarchical_clustering
-    \item K-keskiö klusterointi % TODO: http://en.wikipedia.org/wiki/K-means_clustering
-  \end{itemize}
-% paragraph muita_klusteroinnin_menetelmia (end)
+  Hierarkinen klusterointi on tapa jota NCD:n kanssa klusteroidessa käytetään, eli toisiaan lähemmät objektit liittyvät enemmän toisiinsa kuin kauempana olevat. Vaihtoehtoisesti voidaan käyttää K-keskiö klusterointia, jossa pyritään klusteroimaan objektit $k$ eri klusteriin, klusterin keskipisteen etäisyyden perusteella; taikka jakautumaan pohjatuvaa klusterointia, jossa klsuteroidaan objektit jotka todennäköisesti kuuluvat samaan jakaumaan.
 
-\subsection{Aiheesta lisää luettavaa} % (fold)
-\label{sub:aiheesta_lisaa_luettavaa}
-
-  Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin, lisätietoa NCD:n käytöstä genetiikassa löytyy paperista Geeniekspressioanalyysi \cite{nykter2005normalized}.
+  Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin ja tässä esitellään muutama alue, joita tämän tutkielman pohjalta voi lukea.
+  Geeniekspressioanalyysi on ... ja on tutkittu NCD:n käyttöä tässä \cite{nykter2005normalized}.
   Tarkempaa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta \cite{terwijn2011nonapproximability}.
-  NCD:n käyttöä erilaisissa kuvantunnistusongelmissa on tutkittu, asiasta lisää \cite{doi:10.1117/12.704334}.
+  Tutkimusta on myös tehty siitä, että miten NCD toimiin kuvantunnistuksessa, asiasta lisää \cite{doi:10.1117/12.704334}.
   NCD:n kohinan sietokykyä on tutkittu ja se on avannut tutkimuksen mahdollisuuksia tälle aiheelle, tämän lisäksi on myös tutkittu miten NCD:tä voi hyödyntää kohinan poistossa \cite{vitanyi2013similarity}
   Nelikkomenetelmän tarkempaa kuvausta \cite{DBLP:journals/corr/abs-cs-0606048}
-% subsection aiheesta_lisaa_luettavaa (end)
 
 
-% section loppukaneetti (end)
+% section yhteenveto (end)
 \pagebreak
 % --- References ---
 %
