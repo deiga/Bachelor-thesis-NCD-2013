@@ -404,7 +404,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \label{par:bzip2}
         Kuvassa \ref{fig:bzip2-best} huomataan että $NCD(x,x)$ on väliltä $0.2$ ja $0.3$, kun tiedostojen koko on sopiva bzip2 pakkaajalle, kun taas arvo on väliltä $0.25$ ja $0.9$ kun tiedostokoko ei ole enää sopiva.
         Rajoittava tekijä bzip2 pakkaajassa on tälle määriteltävä lohkokoko \engl{block size}, joka on oletusarvoisesti 900 kilotavua, eli jos pakattavan tiedoston koko on tätä suurempi niin se pilkotaan alle 900 kilotavun kokoisiksi palasiksi ennen pakkausta.
-        Tälläisesta pilkkomisesta aiheutuu se, ettei eri osien välillä pysty enää pakkaamaan samankaltaisuuksia ja täten pakattu koko ei ole paras mahdollinen.
+        Tällaisesta pilkkomisesta aiheutuu se, ettei eri osien välillä pysty enää pakkaamaan samankaltaisuuksia ja täten pakattu koko ei ole paras mahdollinen.
         Tämä näkyy hyvin kuvassa \ref{fig:bzip2-fast}, jossa lohkokoko on huomattavasti pienempi kuin 900 kilotavua ja täten NCD:n arvot nousevat hyvin pienillä tiedostoilla jo korkealle.
       % paragraph bzip2 (end)
 
@@ -498,7 +498,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       On huomattu että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
       NGD:llä on seuraavat ominaisuudet, olettaen että valitaan parametri $N\geq{}M$:
       \begin{enumerate}
-        \item NGD:n arvo on väliltä $0$ ja $\infty$ (joskus jopa hieman negatiivisiä, jos Googlen lukumäärät ovat epäluotettavia ja täten $f(x,y) > max\{f(x),f(y)\}$)
+        \item NGD:n arvo on väliltä $0$ ja $\infty$ (joskus jopa hieman negatiivisia, jos Googlen lukumäärät ovat epäluotettavia ja täten $f(x,y) > max\{f(x),f(y)\}$)
         \begin{enumerate}
           \item Jos $x=y$ tai $x\neq{}y$, mutta frekvenssi on
           \[
@@ -552,13 +552,13 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 Kuten esitimme aiemmin niin NCD toimii edelleen hyvin samankaltaisuuden mittarina vaikka syötteessä olisi kohinaa.
 
-Vaikka NCD:n kehittäjät luulivat osoittaneen, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainaostaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa \ref{sub:pakkaajan_valinta}.
+Vaikka NCD:n kehittäjät luulivat osoittaneen, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainoastaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa \ref{sub:pakkaajan_valinta}.
 Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
 
 \paragraph{Muita klusteroinnin menetelmiä} % (fold)
 \label{par:muita_klusteroinnin_menetelmia}
-  NCD ei tietenkään ole ainut menetelmä jota Unsupervised learningissä voi käyttää datan klusteroimiseen.
-  Vaihtoehtoisia menetelmiä ovat muunmuassa: Hierarkinen klusterointi, joka ..., K-keskiä klusterointi, joka ... ja ...
+  NCD ei tietenkään ole ainut menetelmä jota ohjaamattomassa oppimisessa voi käyttää datan klusteroimiseen.
+  Vaihtoehtoisia menetelmiä ovat muun muassa: Hierarkinen klusterointi, joka ..., K-keskiö klusterointi, joka ... ja ...
   \begin{itemize}
     \item Hierarkinen klusterointi % TODO: http://en.wikipedia.org/wiki/Hierarchical_clustering
     \item K-keskiö klusterointi % TODO: http://en.wikipedia.org/wiki/K-means_clustering
@@ -569,7 +569,7 @@ Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksi
 \label{sub:aiheesta_lisaa_luettavaa}
 
   Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin, lisätietoa NCD:n käytöstä genetiikassa löytyy paperista Geeniekspressioanalyysi \cite{nykter2005normalized}.
-  Tarkemppa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta \cite{terwijn2011nonapproximability}.
+  Tarkempaa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta \cite{terwijn2011nonapproximability}.
   NCD:tä käytetään myös erilaisissa kuvantunnistus ongelmissa, asiasta lisää \cite{doi:10.1117/12.704334}.
   NCD:n kohinan sietokykyä on tutkittu ja se on avannut tutkimuksen mahdollisuuksia tälle aiheelle, tämän lisäksi on myös tutkittu miten NCD:tä voi hyödyntää kohinan poistossa \cite{vitanyi2013similarity}
 % subsection aiheesta_lisaa_luettavaa (end)
