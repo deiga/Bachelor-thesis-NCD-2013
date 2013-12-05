@@ -351,8 +351,13 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
     Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
 
-    \begin{figure}[!htb]
-      \includegraphics[width=\textwidth]{img/noise-005}
+    \begin{figure}
+      \vspace{-5em}
+      \hbox{
+        \hspace{-8.5em}
+        \immediate\write18{pdfcrop img/noise-005}
+        \includegraphics[scale=1.1]{img/noise-005}
+      }
       \caption{\emph{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkinnät ovat kirjailijan nimikirjaimet: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.}
       % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
       \cite{4167725}}
@@ -407,7 +412,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
       \paragraph{gzip} % (fold)
       \label{par:gzip}
-
+        Kuva \ref{fig:gzip-best}
       % paragraph gzip (end)
 
       \paragraph{ppmz} % (fold)
