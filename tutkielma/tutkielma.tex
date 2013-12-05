@@ -366,23 +366,23 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     \begin{figure}[!htb]
       \includegraphics[width=\textwidth]{img/bzip2-best}
-      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--best'} \cite{cebrian2005common}}
-      \label{fig:(bzip2-best)}
+      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--best'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
+      \label{fig:bzip2-best}
     \end{figure}
     \begin{figure}[!htb]
       \includegraphics[width=\textwidth]{img/bzip2-fast}
-      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--fast'} \cite{cebrian2005common}}
+      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--fast'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:bzip2-fast}
     \end{figure}
     \begin{figure}[!htb]
       \includegraphics[width=\textwidth]{img/gzip-best}
-      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{gzip} pakkaajaa asetuksella `--best'} \cite{cebrian2005common}}
+      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{gzip} pakkaajaa asetuksella `--best'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:gzip-best}
     \end{figure}
     \begin{figure}[!htb]
         \immediate\write18{pdfcrop img/ppmz}
       \includegraphics{img/ppmz}
-      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{PPMZ} pakkaajaa} \cite{cebrian2005common}}
+      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{PPMZ} pakkaajaa. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:ppmz}
     \end{figure}
     \iffalse
@@ -397,14 +397,13 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkausalgoritmin toiminnasta.
       Mukana muun muassa on kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
 
-      Kaikkia vertailun objekteja käsitellään merkkijonoinen, jotka koostuvat tavuista.
+      Kaikkia vertailun objekteja käsitellään merkkijonoina, jotka koostuvat tavuista.
       Jotta voitiin todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertailtiin itsensä kanssa.
 
-      Näistä vertailtiin ensiksi bzip2 pakkaajaa, jolle pitää määrittää lohkon koko
+      Kuvassa \ref{fig:bzip2-best} huomataan että $NCD(x,x)$ on väliltä $0.2$ ja $0.3$, kun tiedostojen koko on sopiva bzip2 pakkaajalle, kun taas arvo on väliltä $0.25$ ja $0.9$ kun tiedostokoko ei ole enää sopiva. Rajoittava tekijä bzip2 pakkaajassa on tälle määriteltävä lohkokoko \engl{block size}, joka on oletusarvoisesti 900 kilotavua, eli jos pakattavan tiedoston koko on tätä suurempi niin se pilkotaan alle 900 kilotavun kokoisiksi palasiksi ennen pakkausta. Tälläisesta pilkkomisesta aiheutuu se, ettei eri osien välillä pysty enää pakkaamaan samankaltaisuuksia ja täten pakattu koko ei ole paras mahdollinen. Tämä näkyy hyvin kuvassa \ref{fig:bzip2-fast}, jossa lohkokoko on huomattavasti pienempi kuin 900 kilotavua ja täten NCD:n arvot nousevat hyvin pienillä tiedostoilla jo korkealle.
 
-    \paragraph{TODO} % (fold)
+    % TODO: compressor
     \begin{itemize}
-      \item bzip2 ja lohkon koko
       \item gzip, liukuva ikkuna ja eteenpäinkatselikkuna
       \item ppmz, hidasta mutta tehokasta, koska ei mitään rajoitteita materiaalin koolle
       \item Lopputulos, jos pyritään klusteroimaan NCD:llä pitäisi aina käyttää PPMZ:taa tai vastaavaa pakkaajaa joka ei rajoita tiedostonkokoa
