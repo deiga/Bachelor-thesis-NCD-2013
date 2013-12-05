@@ -343,48 +343,61 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 \section{Algoritmin ongelmat ja ominaisuudet} % (fold)
 \label{sec:algoritmin_ongelmat_ja_ominaisuudet}
+    \begin{figure}[tb]
+      \immediate\write18{pdfcrop img/noise-001}
+      \includegraphics{img/noise-001}
+      \caption{\emph{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta kun tiedostoihin on lisätty 25\% kohinaa. Merkinnät ovat kirjailijan nimikirjaimet: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.}
+      % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
+      \cite{4167725}}
+      \label{fig:noise-001}
+    \end{figure}
+    \begin{figure}[tb]
+      \immediate\write18{pdfcrop img/noise-002}
+      \includegraphics{img/noise-002}
+      \caption{\emph{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta kun tiedostoihin on lisätty 50\% kohinaa. Merkinnät vastaavat kuvaa \ref{fig:noise-001}.}
+      % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
+      \cite{4167725}}
+      \label{fig:noise-002}
+    \end{figure}
+    \begin{figure}[tb]
+      \immediate\write18{pdfcrop img/noise-003}
+      \includegraphics{img/noise-003}
+      \caption{\emph{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta kun tiedostoihin on lisätty 75\% kohinaa. Merkinnät vastaavat kuvaa \ref{fig:noise-001}.}
+      % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
+      \cite{4167725}}
+      \label{fig:noise-003}
+    \end{figure}
   \subsection{Kohinansietokyky} % (fold)
   \label{sub:kohinansietokyky}
 
   % TODO: Approximoi differentiaaliyhtälöllä
     Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä.
     Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
+    Kuvissa \ref{fig:noise-001}, \ref{fig:noise-002}, \ref{fig:noise-003} on ternääripuut kirjojen klusteroinnesta, kun objekteihin on lisätty kohinaa. Kuvissa merkitty kohinan osuus.
     Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
 
-    \begin{figure}
-      \vspace{-5em}
-      \hbox{
-        \hspace{-8.5em}
-        \immediate\write18{pdfcrop img/noise-005}
-        \includegraphics[scale=1.1]{img/noise-005}
-      }
-      \caption{\emph{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkinnät ovat kirjailijan nimikirjaimet: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.}
-      % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
-      \cite{4167725}}
-      \label{fig:(noise-005)}
-    \end{figure}
 
   % subsection kohinansietokyky (end)
 
   \subsection{Pakkaajan valinta} % (fold)
   \label{sub:pakkaajan_valinta}
 
-    \begin{figure}[!htb]
+    \begin{figure}[tb]
       \includegraphics[width=\textwidth]{img/bzip2-best}
       \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--best'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:bzip2-best}
     \end{figure}
-    \begin{figure}[!htb]
+    \begin{figure}[tb]
       \includegraphics[width=\textwidth]{img/bzip2-fast}
       \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--fast'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:bzip2-fast}
     \end{figure}
-    \begin{figure}[!htb]
+    \begin{figure}[tb]
       \includegraphics[width=\textwidth]{img/gzip-best}
       \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{gzip} pakkaajaa asetuksella `--best'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:gzip-best}
     \end{figure}
-    \begin{figure}[!htb]
+    \begin{figure}[tb]
         \immediate\write18{pdfcrop img/ppmz}
       \includegraphics{img/ppmz}
       \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{PPMZ} pakkaajaa. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
@@ -503,7 +516,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       On huomattu että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
       NGD:llä on seuraavat ominaisuudet, olettaen että valitaan parametri $N\geq{}M$:
       \begin{enumerate}
-        \item NGD:n arvo on väliltä $0$ ja $\infty$ (joskus jopa hieman negatiivisia, jos Googlen lukumäärät ovat epäluotettavia ja täten $f(x,y) > max\{f(x),f(y)\}$)
+        \item NGD:n arvo on väliltä $0$ ja $\infty$ (mahdollisesti negatiivinen, jos Googlen lukumäärät ovat epäluotettavia ja täten $f(x,y) > max\{f(x),f(y)\}$)
         \begin{enumerate}
           \item Jos $x=y$ tai $x\neq{}y$, mutta frekvenssi on
           \[
@@ -525,7 +538,9 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \label{sub:klusterointi}
       Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi lasketaan etäisyysmatriisi \ref{sub:etaisyysmatriisi} hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
 
-      Esimerkkinä NGD:n klusteroinnista käytettiin 1600-luvun Hollantilaisten maalareitten teoksia. Kuvassa \ref{fig:dutch-paintings} on ternääripuu valituista 15 maalauksesta Rembrandtilta, Steeniltä ja Bolilta. Hakusanoina käytettiin ainoastaan maalausten koko nimiä. Seuraavaksi lista maalauksista ja teoksista
+      Esimerkkinä klusteroitiin 15, 1600-luvun hollantilaisten maalareitten, teosta.
+      Kuvassa \ref{fig:dutch-paintings} on Rembrandtin, Steenin ja Bolin maalauksia ternääripuu-rakenteessa.
+      Hakusanoina käytettiin ainoastaan maalausten koko nimiä. Seuraavaksi lista maalauksista ja teoksista
 
       \begin{itemize}
         \item \textbf{Rembrandt van Rijn:} \emph{Hendrickje slapend, Portrait of Maria Trip, Portrait of Johannes Wtenbogaert, The Stone Bridge, and The Prophetess Anna.}
@@ -533,10 +548,10 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
         \item \textbf{Ferdinand Bol:} \emph{Maria Rey, Consul Titus Manlius Torquatus, Swartenhout, and Venus and Adonis.}
       \end{itemize}
 
-      \begin{figure}[!htb]
+      \begin{figure}[tb]
         \immediate\write18{pdfcrop img/dutch-paintings}
         \includegraphics[width=\textwidth, height=350pt]{img/dutch-paintings}
-        \caption{\emph{Hierarkinen klusterointi Hollantilaisista maalauksista} \cite{cilibrasi2007google} }
+        \caption{\emph{Hierarkinen klusterointi hollantilaisista maalauksista} \cite{cilibrasi2007google} }
         \label{fig:dutch-paintings}
       \end{figure}
 
@@ -555,7 +570,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
 
   NCD ei tietenkään ole ainut menetelmä jota ohjaamattomassa oppimisessa voi käyttää datan klusteroimiseen.
-  Hierarkinen klusterointi on tapa jota NCD:n kanssa klusteroidessa käytetään, eli toisiaan lähemmät objektit liittyvät enemmän toisiinsa kuin kauempana olevat. Vaihtoehtoisesti voidaan käyttää K-keskiö klusterointia, jossa pyritään klusteroimaan objektit $k$ eri klusteriin, klusterin keskipisteen etäisyyden perusteella; taikka jakautumaan pohjatuvaa klusterointia, jossa klsuteroidaan objektit jotka todennäköisesti kuuluvat samaan jakaumaan.
+  Hierarkinen klusterointi on tapa jota NCD:n kanssa klusteroidessa käytetään, eli toisiaan lähemmät objektit liittyvät enemmän toisiinsa kuin kauempana olevat. Vaihtoehtoisesti voidaan käyttää K-keskiö klusterointia \engl{K-means clustering}, jossa pyritään klusteroimaan objektit $k$ eri klusteriin, klusterin keskipisteen etäisyyden perusteella; taikka jakautumaan pohjatuvaa klusterointia, jossa klsuteroidaan objektit jotka todennäköisesti kuuluvat samaan jakaumaan.
 
   Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin ja tässä esitellään muutama alue, joita tämän tutkielman pohjalta voi lukea.
   Geeniekspressioanalyysi on ... ja on tutkittu NCD:n käyttöä tässä \cite{nykter2005normalized}.
