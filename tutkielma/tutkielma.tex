@@ -176,7 +176,7 @@ Tähän tulee tutkielman tiivistelmä
 Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approksimaatiolla käyttäen standardia pakkaajaa.
 
 \label{par:intro-3}
-  Luvussa \ref{sec:k_ytt_kohteet} esittelemme algoritmin käyttökohteita monelta eri alueelta.
+  Luvussa \ref{sec:klusterointi} esittelemme algoritmin käyttöä klusteroinnissa.
   Aloitamme siitä, miten yleisesti \emph{Normalisoidun pakkausetäisyyden} (\emph{NCD}) avulla pystymme klusteroimaan tuloksia eri kategorioihin; miten musiikkikappaleet klusteroituvat saman artistin alle, miten kuvantunnistuksessa saamme ryhmitettyä samankaltaiset kuvat ja miten sienten genomeista saamme tarkan lajiryhmityksen.
 
 
@@ -199,7 +199,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \label{par:intro-5}
   NCD ei ole ainut metriikka, jolla voidaan mitata samankaltaisuutta.
   Internetiä hyödyntäen on tehty metriikka, joka käyttää hakukoneita samankaltaisuuden tutkimiseen; tämä on nimetty Google-samankaltaisuusetäisyydeksi \engl{Google Similarity Distance}.
-  Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:muita_samankaltaisuuden_metriikoita} esittelemme tämän sekä muita samankaltaisuuden metriikoita.
+  Tämä toimii myös muilla hakukoneilla kuten Bing. Luvussa \ref{sec:google_samankaltaisuusetaisyys} esittelemme tämän.
 
 % section johdanto (end)
 
@@ -413,6 +413,11 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
       % paragraph gzip (end)
 
+      \paragraph{ppmz} % (fold)
+      \label{par:ppmz}
+
+      % paragraph ppmz (end)
+
     % TODO: compressor
     \begin{itemize}
       \item gzip, liukuva ikkuna ja eteenpäinkatselikkuna
@@ -426,7 +431,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
 
 \section{Google-samankaltaisuusetäisyys} % (fold)
-  \label{sec:google_similarity_distance}
+  \label{sec:google_samankaltaisuusetaisyys}
 
     Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat sisällöltään ja piirteiltään hyvin vaihtelevia.
     Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten suurin osa tai keskiverto on merkitsevä heikkolaatuisena approksimaationa.
@@ -487,7 +492,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     % subsection google_jakauma (end)
 
     \subsection{Google-samankaltaisuusetäisyys} % (fold)
-    \label{sub:google_samankaltaisuusetäisyys}
+    \label{sub:google_samankaltaisuusetaisyys}
       \emph{Normalisoitu Google-etäisyys} (\emph{NGD}) \engl{Normalized Google Distance}  voidaan määritellä seuraavasti,
       \begin{align}
         NGD(x,y) = \frac{max\{\log{f(x)},\log{f(y)}\}-\log{f(x,y)}}{\log{N}-min\{\log{f(x)},\log{f(y)}\}},
@@ -514,7 +519,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
         \item NGD on aina epänegatiivinen ja $NGD(x,x)=0$ kaikille $x$. Kaikille $x,y$ pätee $NGD(x,y)=NGD(y,x)$, toisin sanoen se on symmetrinen. NGD ei kuitenkaan ole metriikka, koska se ei täytä ehtoa $NGD(x,y) > 0$ kaikille $x\neq{}y$, eikä se myöskään toteuta metriikan kolmioepäyhtälö-ominaisuutta $NGD(x,z) \leq NGD(x,y) + NGD(y,z)$. \cite{cilibrasi2007google}
         \item NGD on \emph{invariantti skaalautuvuudessa} seuraavassa mielessä: Oletamme, että kun Googlen indeksoimien sivujen lukumäärä $N$ kasvaa, niin sivujen, jotka sisältävät annetun hakusanan, lukumäärä lähestyy määrättyä murto-osaa $N$:stä, ja niin myös sivujen lukumäärä, jotka sisältävät hakusanojen parin.
       \end{enumerate}
-    % subsection google_samankaltaisuuset_isyys (end)
+    % subsection google_samankaltaisuusetaisyys (end)
 
     \subsection{Hierarkinen klusterointi} % (fold)
     \label{sub:klusterointi}
@@ -535,12 +540,11 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
         \label{fig:dutch-paintings}
       \end{figure}
 
-
+      % TODO: johtopäätökset, tuliko klusteroinnista hyviä vai huonoja tuloksia?
 
     % subsection klusterointi (end)
 
-
-  % section google_similarity_distance (end)
+  % section google_samankaltaisuusetaisyys (end)
 
 \section{``Loppukaneetti''} % (fold)
 \label{sec:loppukaneetti}
@@ -570,8 +574,9 @@ Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksi
 
   Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin, lisätietoa NCD:n käytöstä genetiikassa löytyy paperista Geeniekspressioanalyysi \cite{nykter2005normalized}.
   Tarkempaa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta \cite{terwijn2011nonapproximability}.
-  NCD:tä käytetään myös erilaisissa kuvantunnistus ongelmissa, asiasta lisää \cite{doi:10.1117/12.704334}.
+  NCD:n käyttöä erilaisissa kuvantunnistusongelmissa on tutkittu, asiasta lisää \cite{doi:10.1117/12.704334}.
   NCD:n kohinan sietokykyä on tutkittu ja se on avannut tutkimuksen mahdollisuuksia tälle aiheelle, tämän lisäksi on myös tutkittu miten NCD:tä voi hyödyntää kohinan poistossa \cite{vitanyi2013similarity}
+  Nelikkomenetelmän tarkempaa kuvausta \cite{DBLP:journals/corr/abs-cs-0606048}
 % subsection aiheesta_lisaa_luettavaa (end)
 
 
