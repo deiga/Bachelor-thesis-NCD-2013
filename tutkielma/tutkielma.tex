@@ -400,7 +400,18 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Kaikkia vertailun objekteja käsitellään merkkijonoina, jotka koostuvat tavuista.
       Jotta voitiin todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertailtiin itsensä kanssa.
 
-      Kuvassa \ref{fig:bzip2-best} huomataan että $NCD(x,x)$ on väliltä $0.2$ ja $0.3$, kun tiedostojen koko on sopiva bzip2 pakkaajalle, kun taas arvo on väliltä $0.25$ ja $0.9$ kun tiedostokoko ei ole enää sopiva. Rajoittava tekijä bzip2 pakkaajassa on tälle määriteltävä lohkokoko \engl{block size}, joka on oletusarvoisesti 900 kilotavua, eli jos pakattavan tiedoston koko on tätä suurempi niin se pilkotaan alle 900 kilotavun kokoisiksi palasiksi ennen pakkausta. Tälläisesta pilkkomisesta aiheutuu se, ettei eri osien välillä pysty enää pakkaamaan samankaltaisuuksia ja täten pakattu koko ei ole paras mahdollinen. Tämä näkyy hyvin kuvassa \ref{fig:bzip2-fast}, jossa lohkokoko on huomattavasti pienempi kuin 900 kilotavua ja täten NCD:n arvot nousevat hyvin pienillä tiedostoilla jo korkealle.
+      \paragraph{bzip2} % (fold)
+      \label{par:bzip2}
+        Kuvassa \ref{fig:bzip2-best} huomataan että $NCD(x,x)$ on väliltä $0.2$ ja $0.3$, kun tiedostojen koko on sopiva bzip2 pakkaajalle, kun taas arvo on väliltä $0.25$ ja $0.9$ kun tiedostokoko ei ole enää sopiva.
+        Rajoittava tekijä bzip2 pakkaajassa on tälle määriteltävä lohkokoko \engl{block size}, joka on oletusarvoisesti 900 kilotavua, eli jos pakattavan tiedoston koko on tätä suurempi niin se pilkotaan alle 900 kilotavun kokoisiksi palasiksi ennen pakkausta.
+        Tälläisesta pilkkomisesta aiheutuu se, ettei eri osien välillä pysty enää pakkaamaan samankaltaisuuksia ja täten pakattu koko ei ole paras mahdollinen.
+        Tämä näkyy hyvin kuvassa \ref{fig:bzip2-fast}, jossa lohkokoko on huomattavasti pienempi kuin 900 kilotavua ja täten NCD:n arvot nousevat hyvin pienillä tiedostoilla jo korkealle.
+      % paragraph bzip2 (end)
+
+      \paragraph{gzip} % (fold)
+      \label{par:gzip}
+
+      % paragraph gzip (end)
 
     % TODO: compressor
     \begin{itemize}
@@ -422,8 +433,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Täten on kehitetty yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä.
     Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan yhteenlasketun sivulukumääräarvion, kuten Google.
 
-    Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkausetaisyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
-    Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
+    Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen (kts. \ref{sub:normalisoitu_pakkausetaisyys},) sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (kts. \ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
+    Eroavaisuuksia esiintyy siinä, mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
     Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen. \cite{cilibrasi2007google}
 
     \subsection{Käytännön esimerkki} % (fold)
@@ -433,20 +444,20 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
       Paperissa \cite{cilibrasi2007google} käytettiin hakusanoja ``horse'' ja ``rider'' esimerkkinä ja vuonna 2007 tuloksena oli $NGD(horse, rider) \approx 0.443$.
       Toistimme kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$.
-      Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja on internetin kasvu, sekä epäselvyys mikä on tarkka lukumäärä Googlen indeksoituja sivuja.
+      Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja voi olla epäselvyys tarkasta lukumäärästä Googlen indeksoimista sivuista.
 
     % subsection kaytannon_esimerkki (end)
 
     \subsection{Hakukoneet samankaltaisuuden mittaamisessa} % (fold)
-    \label{sub:theory_of_googling_for_similarity}
+    \label{sub:hakukoneet_samankaltaisuuden_mittaamisessa}
 
     % TODO: number of webpages indexed by google
 
     Googlen indeksoitujen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa.
     Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa.
-    Haun tulos on frekvenssi haun tuottamista osumista ja Googlen indeksoitujen sivujen lukumäärästä. \cite{cilibrasi2007google}
+    Frekvenssi on haun tuottamien osumien lukumäärän suhde kaikkien Googlen indeksoimien sivujen lukumäärään. \cite{cilibrasi2007google}
 
-    % subsection theory_of_googling_for_similarity (end)
+    % subsection hakukoneet_samankaltaisuuden_mittaamisessa (end)
     \subsection{Google-jakauma} % (fold)
     \label{sub:google_jakauma}
       Olkoon yksittäisten Google-hakujen joukko $S$.
@@ -472,17 +483,17 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \begin{align}
         g(x) = g(x,x),\, g(x,y) = L(\mathbf{x} \cap \mathbf{y})\frac{M}{N} = \frac{|\mathbf{x}\cap \mathbf{y}|}{N}.
       \end{align}
-      Ja sitten on pystytään määrittelemään $\sum_{\{x,y\}\subseteq S} g(x,y) = 1$, eli $g$ määrittelee todennäköisyysjakauman.
+      Ja siten looginen seuraus on $\sum_{\{x,y\}\subseteq S} g(x,y) = 1$, eli $g$ määrittelee todennäköisyysjakauman.
     % subsection google_jakauma (end)
 
     \subsection{Google-samankaltaisuusetäisyys} % (fold)
     \label{sub:google_samankaltaisuusetäisyys}
-      \emph{Normalisoitu google-etäisyys} (\emph{NGD}) \engl{Normalized Google Distance}  voidaan määritellä seuraavasti,
+      \emph{Normalisoitu Google-etäisyys} (\emph{NGD}) \engl{Normalized Google Distance}  voidaan määritellä seuraavasti,
       \begin{align}
         NGD(x,y) = \frac{max\{\log{f(x)},\log{f(y)}\}-\log{f(x,y)}}{\log{N}-min\{\log{f(x)},\log{f(y)}\}},
       \end{align}
-      jossa $f(x)$:llä merkitään internetsivujen lukumäärää, jotka sisältävät hakutermin $x$ ja $f(x,y)$:llä merkitään sama mutta sivuille jotka sisältävät termit $x$ ja $y$.
-      Tämä normalisoitu google-etäisyys on approksimaation normalisuidusta informaatioetäisyydestä \ref{sub:normalisoitu_informaatioetaisyys}.
+      jossa $f(x)$ merkitsee internetsivujen lukumäärää, jotka sisältävät hakutermin $x$ ja $f(x,y)$ merkitsee samaa mutta sivuille jotka sisältävät termit $x$ ja $y$.
+      Tämä normalisoitu Google-etäisyys on approksimaation normalisoidusta informaatioetäisyydestä \ref{sub:normalisoitu_informaatioetaisyys}.
       Käytännössä käytämme Googlen palauttamia sivujen lukumääriä frekvensseinä ja valitaan $N$.
       On huomattu että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
       NGD:llä on seuraavat ominaisuudet, olettaen että valitaan parametri $N\geq{}M$:
@@ -498,16 +509,16 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
           \[
             NGD(x,y)=\frac{\infty}{\infty}
           \]
-          jonka ymmärrämme tarkoittavan $1$.
+          jonka määrittelemme tarkoittavan $1$.
         \end{enumerate}
-        \item NGD on aina epänegatiivinen ja $NGD(x,x)=0$ kaikille $x$. Kaikille $x,y$ pätee $NGD(x,y)=NGD(y,x)$, koska se on symmetrinen. NGD ei kuitenkaan ole metriikka, koska se ei täytä ehtoa $NGD(x,y) > 0$ kaikille $x\neq{}y$ \cite{cilibrasi2007google}
-        \item NGD on \emph{invariantti skaalautuvuudess} seuraavassa mielessä: Oletamme, että kun Googlen indeksoimien sivujen lukumäärä $N$ kasvaa, niin sivujen, jotka sisältävät annetun hakusanan, lukumäärä lähestyy määrättyä murto-osaa $N$:stä, ja niin myös sivujen lukumäärä, jotka sisältävät hakusanojen parin.
+        \item NGD on aina epänegatiivinen ja $NGD(x,x)=0$ kaikille $x$. Kaikille $x,y$ pätee $NGD(x,y)=NGD(y,x)$, toisin sanoen se on symmetrinen. NGD ei kuitenkaan ole metriikka, koska se ei täytä ehtoa $NGD(x,y) > 0$ kaikille $x\neq{}y$, eikä se myöskään toteuta metriikan kolmioepäyhtälö-ominaisuutta $NGD(x,z) \leq NGD(x,y) + NGD(y,z)$. \cite{cilibrasi2007google}
+        \item NGD on \emph{invariantti skaalautuvuudessa} seuraavassa mielessä: Oletamme, että kun Googlen indeksoimien sivujen lukumäärä $N$ kasvaa, niin sivujen, jotka sisältävät annetun hakusanan, lukumäärä lähestyy määrättyä murto-osaa $N$:stä, ja niin myös sivujen lukumäärä, jotka sisältävät hakusanojen parin.
       \end{enumerate}
     % subsection google_samankaltaisuuset_isyys (end)
 
     \subsection{Hierarkinen klusterointi} % (fold)
     \label{sub:klusterointi}
-      Klusterointi normalisoidun google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi lasketaan etäisyysmatriisi \ref{sub:etaisyysmatriisi} hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
+      Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi lasketaan etäisyysmatriisi \ref{sub:etaisyysmatriisi} hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
 
       Esimerkkinä NGD:n klusteroinnista käytettiin 1600-luvun Hollantilaisten maalareitten teoksia. Kuvassa \ref{fig:dutch-paintings} on ternääripuu valituista 15 maalauksesta Rembrandtilta, Steeniltä ja Bolilta. Hakusanoina käytettiin ainoastaan maalausten koko nimiä. Seuraavaksi lista maalauksista ja teoksista
 
