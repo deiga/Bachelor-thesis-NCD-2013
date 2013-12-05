@@ -295,7 +295,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       $ C(xx) = 16, C(x) = 14$ & $\frac{16-14}{14} $ & $0.143$    \\ \hline
       $ C(xx) = 28, C(x) = 14$ & $\frac{28-14}{14} $ & $1$        \\
     \end{tabular}
-    \caption{Normalisoituja pakkausetäisyyksiä eri syötteille.}
+    \caption{\emph{Normalisoituja pakkausetäisyyksiä eri syötteille.}}
     \label{tab:NCD-values}
   \end{table}
 
@@ -303,10 +303,15 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 \section{Klusterointi} % (fold)
   \label{sec:klusterointi}
+    \paragraph{TODO} % (fold)
     \begin{itemize}
       \item Miten klusteroidaan
       \item Etäisyysmatriisi
     \end{itemize}
+    \subsection{Etäisyysmatriisi} % (fold)
+    \label{sub:etaisyysmatriisi}
+
+    % subsection etaisyysmatriisi (end)
     \subsection{Nelikkomenetelmä} % (fold)
     \label{sub:nelikkomenetelma}
 
@@ -315,6 +320,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   %"minimum quartet tree cost" -> "pienin nelikkopuukustannus"
 
   %"quartet-based tree construction" -> "nelikkopohjainen puunrakennus"
+  \paragraph{TODO} % (fold)
     \begin{itemize}
       \item puun rakentaminen etäisyysmatriisista
       \item Puun operaatiot
@@ -324,6 +330,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     % subsection nelikkomenetelma (end)
     \subsection{Tuloksia} % (fold)
     \label{sub:tuloksia}
+      \paragraph{TODO} % (fold)
       \begin{itemize}
         \item Musiikin genrepuu
         \item Musiikin pieni vertaus
@@ -346,7 +353,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     \begin{figure}[!htb]
       \includegraphics[width=\textwidth]{img/noise-005}
-      \caption{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkinnät ovat kirjailijan nimikirjaimet: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.
+      \caption{\emph{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta ja vaihteleva määrä kohinaa lisättynä. Merkinnät ovat kirjailijan nimikirjaimet: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.}
       % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
       \cite{4167725}}
       \label{fig:(noise-005)}
@@ -359,23 +366,23 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     \begin{figure}[!htb]
       \includegraphics[width=\textwidth]{img/bzip2-best}
-      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
+      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--best'} \cite{cebrian2005common}}
       \label{fig:(bzip2-best)}
     \end{figure}
     \begin{figure}[!htb]
       \includegraphics[width=\textwidth]{img/bzip2-fast}
-      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{bzip2} pakkaajaa asetuksella `--fast' \cite{cebrian2005common}}
+      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--fast'} \cite{cebrian2005common}}
       \label{fig:bzip2-fast}
     \end{figure}
     \begin{figure}[!htb]
       \includegraphics[width=\textwidth]{img/gzip-best}
-      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{gzip} pakkaajaa asetuksella `--best' \cite{cebrian2005common}}
+      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{gzip} pakkaajaa asetuksella `--best'} \cite{cebrian2005common}}
       \label{fig:gzip-best}
     \end{figure}
     \begin{figure}[!htb]
         \immediate\write18{pdfcrop img/ppmz}
       \includegraphics{img/ppmz}
-      \caption{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \emph{PPMZ} pakkaajaa \cite{cebrian2005common}}
+      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{PPMZ} pakkaajaa} \cite{cebrian2005common}}
       \label{fig:ppmz}
     \end{figure}
     \iffalse
@@ -395,6 +402,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
       Näistä vertailtiin ensiksi bzip2 pakkaajaa, jolle pitää määrittää lohkon koko
 
+    \paragraph{TODO} % (fold)
     \begin{itemize}
       \item bzip2 ja lohkon koko
       \item gzip, liukuva ikkuna ja eteenpäinkatselikkuna
@@ -490,10 +498,40 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
           \[
             f(x) = f(y) = f(x,y) > 0,
           \]
-          niin $NGD(x,y)=0$. Eli $x$ ja $y$ ovat Googlen mielestä samat.
+          niin $NGD(x,y)=0$. Eli $x$ ja $y$ ovat Googlen kannalta samat.
+          \item Jos frekvenssi $f(x)=0$, sitten jokaiselle hakutermille $y$ pätee $f(x,y)=0$. Tämän lisäksi pätee
+          \[
+            NGD(x,y)=\frac{\infty}{\infty}
+          \]
+          jonka ymmärrämme tarkoittavan $1$.
         \end{enumerate}
+        \item NGD on aina epänegatiivinen ja $NGD(x,x)=0$ kaikille $x$. Kaikille $x,y$ pätee $NGD(x,y)=NGD(y,x)$, koska se on symmetrinen. NGD ei kuitenkaan ole metriikka, koska se ei täytä ehtoa $NGD(x,y) > 0$ kaikille $x\neq{}y$ \cite{cilibrasi2007google}
+        \item NGD on \emph{invariantti skaalautuvuudess} seuraavassa mielessä: Oletamme, että kun Googlen indeksoimien sivujen lukumäärä $N$ kasvaa, niin sivujen, jotka sisältävät annetun hakusanan, lukumäärä lähestyy määrättyä murto-osaa $N$:stä, ja niin myös sivujen lukumäärä, jotka sisältävät hakusanojen parin.
       \end{enumerate}
     % subsection google_samankaltaisuuset_isyys (end)
+
+    \subsection{Hierarkinen klusterointi} % (fold)
+    \label{sub:klusterointi}
+      Klusterointi normalisoidun google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi lasketaan etäisyysmatriisi \ref{sub:etaisyysmatriisi} hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
+
+      Esimerkkinä NGD:n klusteroinnista käytettiin 1600-luvun Hollantilaisten maalareitten teoksia. Kuvassa \ref{fig:dutch-paintings} on ternääripuu valituista 15 maalauksesta Rembrandtilta, Steeniltä ja Bolilta. Hakusanoina käytettiin ainoastaan maalausten koko nimiä. Seuraavaksi lista maalauksista ja teoksista
+
+      \begin{itemize}
+        \item \textbf{Rembrandt van Rijn:} \emph{Hendrickje slapend, Portrait of Maria Trip, Portrait of Johannes Wtenbogaert, The Stone Bridge, and The Prophetess Anna.}
+        \item \textbf{Jan Steen:} \emph{Leiden Baker Arend Oostwaert, Keyzerswaert, Two Men Playing Backgammon, Woman at her Toilet, Prince’s Day, and The Merry Family.}
+        \item \textbf{Ferdinand Bol:} \emph{Maria Rey, Consul Titus Manlius Torquatus, Swartenhout, and Venus and Adonis.}
+      \end{itemize}
+
+      \begin{figure}[!htb]
+        \immediate\write18{pdfcrop img/dutch-paintings}
+        \includegraphics[width=\textwidth, height=350pt]{img/dutch-paintings}
+        \caption{\emph{Hierarkinen klusterointi Hollantilaisista maalauksista} \cite{cilibrasi2007google} }
+        \label{fig:dutch-paintings}
+      \end{figure}
+
+
+
+    % subsection klusterointi (end)
 
 
   % section google_similarity_distance (end)
