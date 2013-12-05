@@ -418,13 +418,10 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \section{Google-samankaltaisuusetäisyys} % (fold)
   \label{sec:google_similarity_distance}
 
-    % TODO: meaningful
-    % TODO: aggregoidun
-
     Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat sisällöltään ja piirteiltään hyvin vaihtelevia.
-    Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten surin osa tai keskiverto on meaningful heikkolaatuisena approksimaationa.
+    Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten suurin osa tai keskiverto on merkitsevä heikkolaatuisena approksimaationa.
     Täten on kehitetty yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä.
-    Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan aggregoidun sivulukumääräarvion, kuten Google.
+    Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan yhteenlasketun sivulukumääräarvion, kuten Google.
 
     Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen \ref{sub:normalisoitu_pakkausetaisyys}, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (\ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
     Eroavaisuuksia esiintyy siinä, että mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
@@ -485,8 +482,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \begin{align}
         NGD(x,y) = \frac{max\{\log{f(x)},\log{f(y)}\}-\log{f(x,y)}}{\log{N}-min\{\log{f(x)},\log{f(y)}\}},
       \end{align}
-      % TODO: denotes
-      jossa $f(x)$ denotes internetsivujen lukumäärää, jotka sisältävät hakutermin $x$ ja $f(x,y)$ denotes saman mutta sivuille jotka sisältävät termit $x$ ja $y$.
+      jossa $f(x)$:llä merkitään internetsivujen lukumäärää, jotka sisältävät hakutermin $x$ ja $f(x,y)$:llä merkitään sama mutta sivuille jotka sisältävät termit $x$ ja $y$.
       Tämä normalisoitu google-etäisyys on approksimaation normalisuidusta informaatioetäisyydestä \ref{sub:normalisoitu_informaatioetaisyys}.
       Käytännössä käytämme Googlen palauttamia sivujen lukumääriä frekvensseinä ja valitaan $N$.
       On huomattu että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
@@ -559,14 +555,15 @@ Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksi
   \end{itemize}
 % paragraph muita_klusteroinnin_menetelmia (end)
 
-\paragraph{Aiheesta lisää luettavaa} % (fold)
-\label{par:aiheesta_lisaa_luettavaa}
+\subsection{Aiheesta lisää luettavaa} % (fold)
+\label{sub:aiheesta_lisaa_luettavaa}
+
   Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin, lisätietoa NCD:n käytöstä genetiikassa löytyy paperista Geeniekspressioanalyysi \cite{nykter2005normalized}.
   Tarkemppa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta \cite{terwijn2011nonapproximability}.
   NCD:tä käytetään myös erilaisissa kuvantunnistus ongelmissa, asiasta lisää \cite{doi:10.1117/12.704334}.
   NCD:n kohinan sietokykyä on tutkittu ja se on avannut tutkimuksen mahdollisuuksia tälle aiheelle, tämän lisäksi on myös tutkittu miten NCD:tä voi hyödyntää kohinan poistossa \cite{vitanyi2013similarity}
+% subsection aiheesta_lisaa_luettavaa (end)
 
-% paragraph aiheesta_lisaa_luettavaa (end)
 
 % section loppukaneetti (end)
 \pagebreak
