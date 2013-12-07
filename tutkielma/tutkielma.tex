@@ -426,24 +426,18 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
       \paragraph{gzip} % (fold)
       \label{par:gzip}
-        Kuva \ref{fig:gzip-best} osoittaa että $NCD(x,x)$ on väliltä $0.0$ ja $0.1$ kun tiedostokoko on sopiva gzip pakkaajalle, ja kun tiedostokoko on liian suuri niin arvot nousevat jopa yli $1$. Vastaavanlaisesti kuin bzip2 pakkaajassa on rajoittavana tekijänä lohkokoko, on gzip pakkaajassa liukuva ikkuna \engl{sliding window} ja eteenpäinkatseluikkuna \engl{lookahead window}. Liukuva ikkuna on puskuri jossa säilötään $n$ viimeisintä merkkiä, jossa $n$ on liukuvan ikkunan koko. Eteenpäinkatseluikkuna taas on puskuri jossa on $m$ tulevaa merkkiä, jossa $m$ on eteenpäinkatseluikkunan koko.
+        Kuva \ref{fig:gzip-best} osoittaa että $NCD(x,x)$ on väliltä $0.0$ ja $0.1$ kun tiedostokoko on sopiva gzip pakkaajalle, ja kun tiedostokoko on liian suuri niin arvot nousevat jopa yli $1$.
+        Vastaavanlaisesti kuin bzip2 pakkaajassa on rajoittavana tekijänä lohkokoko, on gzip pakkaajassa liukuva ikkuna \engl{sliding window} ja eteenpäinkatseluikkuna \engl{lookahead window}.
+        Liukuva ikkuna on puskuri jossa säilötään $n$ viimeisintä merkkiä, jossa $n$ on liukuvan ikkunan koko.
+        Eteenpäinkatseluikkuna taas on puskuri jossa on $m$ tulevaa merkkiä, jossa $m$ on eteenpäinkatseluikkunan koko.
 
         Nämä ikkunakoot aiheuttavat sen, että parhaimmallakin asetuksella gzip kykenee pakkaamaan tehokkaasti ainoastaan enintään 64 kilotavua olevia tiedostoja.
       % paragraph gzip (end)
 
-      \paragraph{ppmz} % (fold)
-      \label{par:ppmz}
-
-      % paragraph ppmz (end)
-
-    % TODO: compressor
-    \begin{itemize}
-      \item gzip, liukuva ikkuna ja eteenpäinkatselikkuna
-      \item ppmz, hidasta mutta tehokasta, koska ei mitään rajoitteita materiaalin koolle
-      \item Lopputulos, jos pyritään klusteroimaan NCD:llä pitäisi aina käyttää PPMZ:taa tai vastaavaa pakkaajaa joka ei rajoita tiedostonkokoa
-    \end{itemize}
-
-
+      Mikä tahansa samankaltaisuusetäisyys olisi pitänyt arvoltaan olla $0$ tai hyvin lähellä sitä, kun vertaillaan identtisia objekteja.
+      Pakkaajien vertailussa kerätyt empiiriset havainnot osoittavat että objektien koko vääristää NCD:n tulosta, riippumatta datan tyypistä (kirja, artikkeli, kuva, jne.)
+      Siksi suositellaan PPMZ pakkaajan käyttöä kun halutaan klusteroida objekteja NCD:lla \cite{cebrian2005common}.
+      Muitten pakkaajien käyttö on suositeltavaa ainostaan, jos pyritään nopeuteen tai jos tiedostojen kokojen summa on pienempi kuin pakkaajan käyttämä rajoite (lohkokoko, ikkunakoko).
 
   % subsection pakkaajan_valinta (end)
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
