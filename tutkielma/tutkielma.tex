@@ -309,7 +309,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Yksi NCD:n käyttötarkoituksista on objektien klusterointi ilman, että datasta tarvitsee etukäteen kerätä ominaisuuksia.
   Täten samaan menetelmää voidaan hyödyntää klusteroimaan täysin eri tyyppisiä datajoukkoja.
   Klusterit ovat ryhmä objekteja, jotka ovat samankaltaisia valitun metriikan mukaan.
-  Tässä tarkoitus on analysoida dataa, joka on tunnisteeton ja siitä ei tiedetä etukäteen klustereitten lukumäärää.
+  Tässä tarkoitus on analysoida dataa, joka on tunnisteeton ja siitä ei tiedetä etukäteen klustereiden lukumäärää.
   NCD:n kanssa käytetään yleisesti hierarkkista klusterointia, koska sitä pidetään yhtenä parhaista valvomattoman oppimisen \engl{unsupervised learning} metodeina.
   Yksi luonnollisimmista tavoista esittää objektien suhteet on dendrogrammi, joka on yleensä suunattu binääripuu tai suuntaamaton ternääripuu \cite{10.1109/WDM.2004.1358107}.
   Rakentaaksemme tällainen puu etäisyymatriisista käytämme nelikkomenetelmää.
@@ -361,7 +361,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on, että ensiksi klusteroidaan epähierarkkisesti, ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
 
     Esimerkkinä NCD:n kyvystä erotella eri aihelueet tehokkaasti on kuva \ref{fig:classification}.
-    Tässä on klusteroitu seuraavia tiedostotyyppejä: i) neljä mitokondrioitten geenisekvenssiä (jääkarhu, kettu, rotta, mustakarhu); ii) neljä kappaletta kirjasta `The Zeppelin\'s Passenger'; iii) neljä MIDI tiedostoa, joita ei ole käsitelty (Jimi Hendrix, Debussy); iv) kaksi Linux x86 ELF ohjelmatiedostoa ja v) kaksi käännettyä Java luokkaa.
+    Tässä on klusteroitu seuraavia tiedostotyyppejä: i) neljä mitokondrioiden geenisekvenssiä (jääkarhu, kettu, rotta, mustakarhu); ii) neljä kappaletta kirjasta `The Zeppelin\'s Passenger'; iii) neljä MIDI tiedostoa, joita ei ole käsitelty (Jimi Hendrix, Debussy); iv) kaksi Linux x86 ELF ohjelmatiedostoa ja v) kaksi käännettyä Java luokkaa.
     Pakkaajana käytettiin bzip2 -ohjelmaa.
     Puun kustannus on $S(T)=0.984$.
     Tämä koe näyttää miten tehokas ja universaali NCD:n käyttö klusteroinnissa on \cite{CV05}.
@@ -404,7 +404,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   % TODO: Approximoi differentiaaliyhtälöllä
     Kun NCD:tä käytetään kahteen eri tiedostoon toista näistä voi pitää kohinallisena versiona ensimmäisestä.
     Kohinan lisääminen progressiivisesti tiedostoon voi tuottaa tietoa mittarista \engl{measure} itsestään.
-    Kuvissa \ref{fig:noise-001}, \ref{fig:noise-002}, \ref{fig:noise-003} on ternääripuut kirjojen klusteroinnista, kun objekteihin on lisätty kohinaa. Kuvissa merkitty kohinan osuus.
+    Kuvissa \ref{fig:noise-001}, \ref{fig:noise-002}, \ref{fig:noise-003} on ternääripuut kirjojen klusteroinnista, kun objekteihin on lisätty kohinaa. Kuvissa on merkitty kohinan osuus.
     Tämän vastaavuuden perusteella voimme tehdä teoreettisen päätelmän odotetusta kohinan lisäämisen vaikutuksesta algoritmiin, mikä selittää miksi NCD voi saada suurempia arvoja kuin $1$ joissain tapauksissa. \cite{4167725}
 
 
@@ -431,37 +431,31 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \end{figure}
     \iffalse
     \fi
-      Paperissa \cite{cebrian2005common} on osoitettu, että pakkaaja jota käytetään NCD:m laskemiseen ei ole idempotentti (\ref{idempotency}) kaikissa tapauksissa, koska objektien koko ja pakkaajan ikkunakoko vääristävät etäisyyksiä ja täten aiheuttavat poikkeuksia samankaltaisuuksissa. Yhteyttä etäisyyden tarkkuudesta ja objektien koosta on analysoitu monella tunnetulla pakkaajalla ja erityisesti seuraavilla kolmella:  \emph{bzip2}, \emph{gzip} ja \emph{PPMZ}.
+      Artikkelissa \cite{cebrian2005common} on osoitettu, että pakkaaja, jota käytetään NCD:n laskemiseen, ei ole idempotentti (\ref{idempotency}) kaikissa tapauksissa, koska objektien koko ja pakkaajan ikkunakoko vääristävät etäisyyksiä ja täten aiheuttavat poikkeuksia samankaltaisuuksissa. Yhteyttä etäisyyden tarkkuudesta ja objektien koosta on analysoitu monella tunnetulla pakkaajalla ja erityisesti seuraavilla kolmella:  \emph{bzip2}, \emph{gzip} ja \emph{PPMZ}.
 
       Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat.
-      Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä.
+      Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma, jolla mitataan pakkausalgoritmien suorituskykyä.
       Kokoelmassa on 9 eri tyyppistä tiedostoa, jotta voidaan saada laaja näkemys pakkausalgoritmin toiminnasta.
-      Mukana muun muassa on kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
+      Mukana on muun muassa kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
 
       Kaikkia vertailun objekteja käsitellään merkkijonoina, jotka koostuvat tavuista.
-      Jotta voitiin todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertailtiin itsensä kanssa.
+      Jotta voidaan todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertaillaan itsensä kanssa.
 
-      \paragraph{bzip2} % (fold)
-      \label{par:bzip2}
-        Kuvassa \ref{fig:bzip2-best} huomataan että $NCD(x,x)$ on väliltä $0.2$ ja $0.3$, kun tiedostojen koko on sopiva bzip2 pakkaajalle, kun taas arvo on väliltä $0.25$ ja $0.9$ kun tiedostokoko ei ole enää sopiva.
-        Rajoittava tekijä bzip2 pakkaajassa on tälle määriteltävä lohkokoko \engl{block size}, joka on oletusarvoisesti 900 kilotavua, eli jos pakattavan tiedoston koko on tätä suurempi niin se pilkotaan alle 900 kilotavun kokoisiksi palasiksi ennen pakkausta.
-        Tällaisesta pilkkomisesta aiheutuu se, ettei eri osien välillä pysty enää pakkaamaan samankaltaisuuksia ja täten pakattu koko ei ole paras mahdollinen.
-      % paragraph bzip2 (end)
+      Kuvassa \ref{fig:bzip2-best} huomataan, että $NCD(x,x)$ on väliltä $0.2$ ja $0.3$, kun tiedostojen koko on sopiva bzip2 pakkaajalle. Kun taas arvo on väliltä $0.25$ ja $0.9$,  tiedostokoko ei ole enää sopiva.
+      Rajoittava tekijä bzip2 pakkaajassa on tälle määriteltävä lohkokoko \engl{block size}, joka on oletusarvoisesti 900 kilotavua, eli jos pakattavan tiedoston koko on tätä suurempi niin se pilkotaan alle 900 kilotavun kokoisiksi palasiksi ennen pakkausta.
+      Tällaisesta pilkkomisesta aiheutuu se, ettei eri osien välillä pysty enää pakkaamaan samankaltaisuuksia ja täten pakattu koko ei ole paras mahdollinen.
 
-      \paragraph{gzip} % (fold)
-      \label{par:gzip}
-        Kuva \ref{fig:gzip-best} osoittaa että $NCD(x,x)$ on väliltä $0.0$ ja $0.1$ kun tiedostokoko on sopiva gzip pakkaajalle, ja kun tiedostokoko on liian suuri niin arvot nousevat jopa yli $1$.
-        Vastaavanlaisesti kuin bzip2 pakkaajassa on rajoittavana tekijänä lohkokoko, on gzip pakkaajassa liukuva ikkuna \engl{sliding window} ja eteenpäinkatseluikkuna \engl{lookahead window}.
-        Liukuva ikkuna on puskuri jossa säilötään $n$ viimeisintä merkkiä, jossa $n$ on liukuvan ikkunan koko.
-        Eteenpäinkatseluikkuna taas on puskuri jossa on $m$ tulevaa merkkiä, jossa $m$ on eteenpäinkatseluikkunan koko.
+      Kuva \ref{fig:gzip-best} osoittaa, että $NCD(x,x)$ on väliltä $0.0$ ja $0.1$, kun tiedostokoko on sopiva gzip pakkaajalle, ja kun tiedostokoko on liian suuri, niin arvot nousevat jopa yli yhden.
+      Vastaavanlaisesti kuin bzip2 pakkaajassa on rajoittavana tekijänä lohkokoko, on gzip pakkaajassa liukuva ikkuna \engl{sliding window} ja eteenpäinkatseluikkuna \engl{lookahead window}.
+      Liukuva ikkuna on puskuri, jossa säilötään $n$ viimeisintä merkkiä, missä $n$ on liukuvan ikkunan koko.
+      Eteenpäinkatseluikkuna taas on puskuri, jossa on $m$ tulevaa merkkiä, missä $m$ on eteenpäinkatseluikkunan koko.
 
-        Nämä ikkunakoot aiheuttavat sen, että parhaimmallakin asetuksella gzip kykenee pakkaamaan tehokkaasti ainoastaan enintään 64 kilotavua olevia tiedostoja.
-      % paragraph gzip (end)
+      Nämä ikkunakoot aiheuttavat sen, että parhaimmallakin asetuksella gzip kykenee pakkaamaan tehokkaasti vain enintään 64 kilotavua olevia tiedostoja.
 
       Mikä tahansa samankaltaisuusetäisyys olisi pitänyt arvoltaan olla $0$ tai hyvin lähellä sitä, kun vertaillaan identtisiä objekteja.
-      Pakkaajien vertailussa kerätyt empiiriset havainnot osoittavat että objektien koko vääristää NCD:n tulosta, riippumatta datan tyypistä (kirja, artikkeli, kuva, jne.)
+      Pakkaajien vertailussa kerätyt empiiriset havainnot osoittavat, että objektien koko vääristää NCD:n tulosta riippumatta datan tyypistä (kirja, artikkeli, kuva, jne.).
       Siksi suositellaan PPMZ pakkaajan käyttöä kun halutaan klusteroida objekteja NCD:lla \cite{cebrian2005common}.
-      Muitten pakkaajien käyttö on suositeltavaa ainoastaan, jos pyritään nopeuteen tai jos tiedostojen kokojen summa on pienempi kuin pakkaajan käyttämä rajoite (lohkokoko, ikkunakoko).
+      Muiden pakkaajien käyttö on suositeltavaa ainoastaan, jos pyritään nopeuteen tai jos tiedostojen kokojen summa on pienempi kuin pakkaajan käyttämä rajoite (lohkokoko, ikkunakoko).
 
   % subsection pakkaajan_valinta (end)
 % section algoritmin_ongelmat_ja_ominaisuudet (end)
@@ -470,20 +464,20 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \label{sec:google_samankaltaisuusetaisyys}
 
     Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat sisällöltään ja piirteiltään hyvin vaihtelevia.
-    Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee siitä mahdollisen, että ääripäät kumoutuvat ja täten suurin osa tai keskiverto on merkitsevä heikkolaatuisena approksimaationa.
+    Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee mahdolliseksi, että ääripäät kumoutuvat, ja täten suurin osa on merkitsevää heikkolaatuisena approksimaationa.
     Täten on kehitetty yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä.
     Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan yhteenlasketun sivulukumääräarvion, kuten Google.
 
     Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen (kts. \ref{sub:normalisoitu_pakkausetaisyys},) sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (kts. \ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
     Eroavaisuuksia esiintyy siinä, mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
-    Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioitten nimiä esiintymistiheyteen. \cite{cilibrasi2007google}
+    Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioiden nimiä esiintymistiheyteen. \cite{cilibrasi2007google}
 
     \subsection{Käytännön esimerkki} % (fold)
     \label{sub:kaytannon_esimerkki}
-      GSD muodostetaan siten että haetaan ensiksi yhdellä hakutermillä, sitten toisella ja sen jälkeen kummallakin yhdessä.
+      GSD muodostetaan siten, että haetaan ensiksi yhdellä hakutermillä, sitten toisella ja sen jälkeen kummallakin yhdessä.
       Hakujen lukumäärät vertaillaan keskenään ja normalisoidaan ja tästä saadaan samankaltaisuusetäisyys.
 
-      Paperissa \cite{cilibrasi2007google} käytettiin hakusanoja `horse' ja `rider' esimerkkinä ja vuonna 2007 tuloksena oli $NGD(horse, rider) \approx 0.443$.
+      Artikkelissa \cite{cilibrasi2007google} käytettiin hakusanoja `horse' ja `rider' esimerkkinä ja vuonna 2007 tuloksena oli $NGD(horse, rider) \approx 0.443$.
       Toistimme kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$.
       Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja voi olla epäselvyys tarkasta lukumäärästä Googlen indeksoimista sivuista.
 
@@ -503,7 +497,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Jatkossa käytämme yksittäisten ja pareittaisten hakujen joukkoja $\{\{x,y\}:x,y \in S\}$.
       Olkoon joukko Googlen indeksoimia internetsivuja $\Omega$.
       Joukon $\Omega$ koko merkitään $M = |\Omega|$.
-      Oletamme että jokaisella internetsivulla on yhtä todennäköistä palautua Google-hausta, eli todennäköisyys on $\frac{1}{\Omega}$.
+      Oletamme, että jokaisella internetsivulla on yhtä todennäköistä palautua Google-hausta, eli todennäköisyys on $\frac{1}{\Omega}$.
       $\Omega$:n osajoukkoa kutsutaan \emph{tapahtumaksi}.
       Jokainen hakuehto $x$ määrittelee yksittäisen haun tapahtuman $\mathbf{x}\subseteq \Omega$, tämä on joukko internetsivuja joista löytyy $x$ kun suoritetaan Google-haku $x$:llä.
       Olkoon $L: \Omega \rightarrow [0,1]$ tasajakauman todennäköisyysfunktio.
@@ -534,8 +528,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       jossa $f(x)$ merkitsee internetsivujen lukumäärää, jotka sisältävät hakutermin $x$ ja $f(x,y)$ merkitsee samaa mutta sivuille jotka sisältävät termit $x$ ja $y$.
       Tämä normalisoitu Google-etäisyys on approksimaation normalisoidusta informaatioetäisyydestä \ref{sub:normalisoitu_informaatioetaisyys}.
       Käytännössä käytämme Googlen palauttamia sivujen lukumääriä frekvensseinä ja valitaan $N$.
-      On huomattu että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
-      NGD:llä on seuraavat ominaisuudet, olettaen että valitaan parametri $N\geq{}M$:
+      On huomattu, että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
+      NGD:llä on seuraavat ominaisuudet, olettaen, että valitaan parametri $N\geq{}M$:
       \begin{enumerate}
         \item NGD:n arvo on väliltä $0$ ja $\infty$ (mahdollisesti negatiivinen, jos Googlen lukumäärät ovat epäluotettavia ja täten $f(x,y) > max\{f(x),f(y)\}$)
         \begin{enumerate}
@@ -559,7 +553,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \label{sub:klusterointi}
       Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi koostetaan etäisyysmatriisi hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
 
-      Esimerkkinä klusteroitiin 15, 1600-luvun hollantilaisten maalareitten, teosta.
+      Esimerkkinä klusteroitiin 15, 1600-luvun hollantilaisten maalareiden, teosta.
       Kuvassa \ref{fig:dutch-paintings} on Rembrandtin, Steenin ja Bolin maalauksia ternääripuu-rakenteessa.
       Hakusanoina käytettiin ainoastaan maalausten koko nimiä. Seuraavaksi lista maalauksista ja teoksista
 
@@ -588,8 +582,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \section{Yhteenveto} % (fold)
 \label{sec:yhteenveto}
 
-  Luvussa \ref{sec:klusterointi} näytettiin että NCD toimii hyvin klusterointiin ja on helppo soveltaa mihin tahansa alaan, kuten esimerkiksi: musiikki, kirjallisuus ja genomit, koska algoritmin käyttö on täysin riippumaton datasta ja sen ominaisuuksista. Algoritmi kykenee aina löytämään merkittävimmät ominaisuudet datasta ja vertailemaan näin samankaltaisuuden etäisyyksiä datan eri objektien välillä.
-  NCD:n tehokkuutta parantaa huomattavasti että algoritmi vaikuttaa olevan hyvin kohinansietokykyinen, eli kykenee edelleen yhdistämään samankaltaisen objektit vaikka toisessa olisikin kohinaa.
+  Luvussa \ref{sec:klusterointi} näytettiin, että NCD toimii hyvin klusterointiin ja on helppo soveltaa mihin tahansa alaan, kuten esimerkiksi: musiikki, kirjallisuus ja genomit, koska algoritmin käyttö on täysin riippumaton datasta ja sen ominaisuuksista. Algoritmi kykenee aina löytämään merkittävimmät ominaisuudet datasta ja vertailemaan näin samankaltaisuuden etäisyyksiä datan eri objektien välillä.
+  NCD:n tehokkuutta parantaa huomattavasti, että algoritmi vaikuttaa olevan hyvin kohinansietokykyinen, eli kykenee edelleen yhdistämään samankaltaisen objektit vaikka toisessa olisikin kohinaa.
   Vaikka NCD:n kehittäjät luulivat osoittaneen, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainoastaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa \ref{sub:pakkaajan_valinta}.
   Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
 
