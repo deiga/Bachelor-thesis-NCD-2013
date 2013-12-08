@@ -192,7 +192,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   Mikään algoritmi ei ole täydellinen, ja NCD-algoritmillakin on ongelmansa.
   Algoritmissa itsessään ei ole selvää heikkoutta, mutta sen käytössä on otettava pakkaajan valinta huomioon, koska monet suosituista pakkausalgoritmeista ovat optimoituja tietyn kokoisille tiedostoille.
-  Näissä algortimeissa on niin kutsuttu ikkunakoko \engl{window size}, joka määrittelee mikä tiedostokoko on sopiva \cite{cebrian2005common}.
+  Näissä algoritmeissa on niin kutsuttu ikkunakoko \engl{window size}, joka määrittelee mikä tiedostokoko on sopiva \cite{cebrian2005common}.
   Jos tiedostokoko on pienempi kuin ikkunakoko, niin pakkaus on tehokasta, mutta kun mennään siitä yli, pakkauksesta tulee huomattavasti tehottomampaa.
   Esittelemme tuloksia eri pakkausalgoritmien vertailuista ja mikä näistä algoritmeista on parhaimmaksi havaittu NCD:n kanssa käytettäväksi.
 
@@ -311,8 +311,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Klusterit ovat ryhmä objekteja, jotka ovat samankaltaisia valitun metriikan mukaan.
   Tässä tarkoitus on analysoida dataa, joka on tunnisteeton ja siitä ei tiedetä etukäteen klustereiden lukumäärää.
   NCD:n kanssa käytetään yleisesti hierarkkista klusterointia, koska sitä pidetään yhtenä parhaista valvomattoman oppimisen \engl{unsupervised learning} metodeina.
-  Yksi luonnollisimmista tavoista esittää objektien suhteet on dendrogrammi, joka on yleensä suunattu binääripuu tai suuntaamaton ternääripuu \cite{10.1109/WDM.2004.1358107}.
-  Rakentaaksemme tällainen puu etäisyymatriisista käytämme nelikkomenetelmää.
+  Yksi luonnollisimmista tavoista esittää objektien suhteet on dendrogrammi, joka on yleensä suunnattu binääripuu tai suuntaamaton ternääripuu \cite{10.1109/WDM.2004.1358107}.
+  Rakentaaksemme tällainen puu etäisyysmatriisista käytämme nelikkomenetelmää.
 
   \subsection{Nelikkomenetelmä} % (fold)
   \label{sub:nelikkomenetelma}
@@ -349,10 +349,10 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   % subsection nelikkomenetelma (end)
 
-    Klusteroinnista on usea esimerkki olemassa ja käsittelemmä tässä muutaman näistä.
+    Klusteroinnista on usea esimerkki olemassa ja käsittelemme tässä muutaman näistä.
     Ensimmäiseksi tarkastelemme musiikkigenrejen tunnistamista.
     Objekteiksi valittiin 12 klassista kappaletta, 12 jazz kappaletta ja 12 rock kappaletta.
-    Tulokseksi saadun puun $S(T)$ on $0.858$. Kappaleet ryhmittyivät suurimmaksi osaksi oikeisiin katergorioihin, mutta poikkeuksiakin oli.
+    Tulokseksi saadun puun $S(T)$ on $0.858$. Kappaleet ryhmittyivät suurimmaksi osaksi oikeisiin kategorioihin, mutta poikkeuksiakin oli.
     Tämä nähdään jo alhaisesta $S(T)$:n arvosta.
 
     Seuraavaksi on klusteroitu sama 12 klassisen kappaleen joukko. Puun kustannukseksi saatiin $S(T)=0.958$ ja kappaleet ryhmittyvät säveltäjän mukaan.
@@ -360,7 +360,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille (alle 25 objektia), ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia).
     Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on, että ensiksi klusteroidaan epähierarkkisesti, ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
 
-    Esimerkkinä NCD:n kyvystä erotella eri aihelueet tehokkaasti on kuva \ref{fig:classification}.
+    Esimerkkinä NCD:n kyvystä erotella eri aihealueet tehokkaasti on kuva \ref{fig:classification}.
     Tässä on klusteroitu seuraavia tiedostotyyppejä: i) neljä mitokondrioiden geenisekvenssiä (jääkarhu, kettu, rotta, mustakarhu); ii) neljä kappaletta kirjasta `The Zeppelin\'s Passenger'; iii) neljä MIDI tiedostoa, joita ei ole käsitelty (Jimi Hendrix, Debussy); iv) kaksi Linux x86 ELF ohjelmatiedostoa ja v) kaksi käännettyä Java luokkaa.
     Pakkaajana käytettiin bzip2 -ohjelmaa.
     Puun kustannus on $S(T)=0.984$.
@@ -466,7 +466,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Internetin kasvu on houkutellut miljoonia käyttäjiä luomaan miljardeja internetsivuja, jotka ovat sisällöltään ja piirteiltään hyvin vaihtelevia.
     Suunnaton tiedon määrä miltei mistä tahansa aiheesta tekee mahdolliseksi, että ääripäät kumoutuvat, ja täten suurin osa on merkitsevää heikkolaatuisena approksimaationa.
     Täten on kehitetty yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä.
-    Tämä tietovarasto on kaikille käytettävissä käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan yhteenlasketun sivulukumääräarvion, kuten Google.
+    Tämä tietovarasto on kaikille avoin käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan yhteenlasketun sivulukumääräarvion, kuten Google.
 
     Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen (kts. \ref{sub:normalisoitu_pakkausetaisyys},) sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (kts. \ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
     Eroavaisuuksia esiintyy siinä, mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
@@ -475,18 +475,18 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \subsection{Käytännön esimerkki} % (fold)
     \label{sub:kaytannon_esimerkki}
       GSD muodostetaan siten, että haetaan ensiksi yhdellä hakutermillä, sitten toisella ja sen jälkeen kummallakin yhdessä.
-      Hakujen lukumäärät vertaillaan keskenään ja normalisoidaan ja tästä saadaan samankaltaisuusetäisyys.
+      Hakujen lukumäärät vertaillaan keskenään ja normalisoidaan, tästä saadaan samankaltaisuusetäisyys.
 
       Artikkelissa \cite{cilibrasi2007google} käytettiin hakusanoja `horse' ja `rider' esimerkkinä ja vuonna 2007 tuloksena oli $NGD(horse, rider) \approx 0.443$.
       Toistimme kyseisen haun 13.11.2013 ja tuloksena oli $NGD(horse, rider) \approx 0.233$.
-      Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekoja voi olla epäselvyys tarkasta lukumäärästä Googlen indeksoimista sivuista.
+      Arvojen suurta eroa on vaikea selvittää ilman laajempaa tutkimusta, mutta vaikuttavia tekijöitä voi olla epäselvyys tarkasta lukumäärästä Googlen indeksoimista sivuista.
 
     % subsection kaytannon_esimerkki (end)
 
     \subsection{Hakukoneet samankaltaisuuden mittaamisessa} % (fold)
     \label{sub:hakukoneet_samankaltaisuuden_mittaamisessa}
 
-    Googlen indeksoitujen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa.
+    Googlen indeksoitujen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä, ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa.
     Tämän perusteella voidaan argumentoida, että Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa.
     Frekvenssi on haun tuottamien osumien lukumäärän suhde kaikkien Googlen indeksoimien sivujen lukumäärään. \cite{cilibrasi2007google}
 
@@ -499,12 +499,12 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Joukon $\Omega$ koko merkitään $M = |\Omega|$.
       Oletamme, että jokaisella internetsivulla on yhtä todennäköistä palautua Google-hausta, eli todennäköisyys on $\frac{1}{\Omega}$.
       $\Omega$:n osajoukkoa kutsutaan \emph{tapahtumaksi}.
-      Jokainen hakuehto $x$ määrittelee yksittäisen haun tapahtuman $\mathbf{x}\subseteq \Omega$, tämä on joukko internetsivuja joista löytyy $x$ kun suoritetaan Google-haku $x$:llä.
+      Jokainen hakuehto $x$ määrittelee yksittäisen haun tapahtuman $\mathbf{x}\subseteq \Omega$, tämä on joukko internetsivuja, joista löytyy $x$ kun suoritetaan Google-haku $x$:llä.
       Olkoon $L: \Omega \rightarrow [0,1]$ tasajakauman todennäköisyysfunktio.
       Tapahtuman $\mathbf{x}$ todennäköisyys on $L(\mathbf{x}) = \frac{|\mathbf{x}|}{M}$.
       Samoin toimii pareittain haun tapahtuma $\mathbf{x}\cap\mathbf{y}\subseteq\Omega$, jossa haetaan pareittain hakuehdoilla $x$ ja $y$.
 
-      Kaikkien tapahtumien todennäköisyydet yhteensä on suurempi kuin $1$, koska tapahtumat menevät päällekkäin, joten tarvitaan normalisointia.
+      Koska tapahtumat menevät päällekkäin, niin kaikkien tapahtumien todennäköisyys yhteensä on suurempi kuin $1$, joten tarvitaan normalisointia.
       $|S|$ on yksittäisten ja $\binom{|S|}{2}$ parittaisten hakujen tulosten lukumäärä.
       Määrittelemme
       \begin{align}
@@ -525,33 +525,33 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \begin{align}
         NGD(x,y) = \frac{max\{\log{f(x)},\log{f(y)}\}-\log{f(x,y)}}{\log{N}-min\{\log{f(x)},\log{f(y)}\}},
       \end{align}
-      jossa $f(x)$ merkitsee internetsivujen lukumäärää, jotka sisältävät hakutermin $x$ ja $f(x,y)$ merkitsee samaa mutta sivuille jotka sisältävät termit $x$ ja $y$.
-      Tämä normalisoitu Google-etäisyys on approksimaation normalisoidusta informaatioetäisyydestä \ref{sub:normalisoitu_informaatioetaisyys}.
-      Käytännössä käytämme Googlen palauttamia sivujen lukumääriä frekvensseinä ja valitaan $N$.
+      jossa $f(x)$ merkitsee internetsivujen lukumäärää, jotka sisältävät hakutermin $x$, ja $f(x,y)$ merkitsee samaa, mutta sivuille jotka sisältävät termit $x$ ja $y$.
+      Tämä normalisoitu Google-etäisyys on approksimaatio normalisoidusta informaatioetäisyydestä (kts. \ref{sub:normalisoitu_informaatioetaisyys}).
+      Käytännössä Googlen palauttamia sivujen lukumääriä käytetään frekvensseinä ja valitaan $N$.
       On huomattu, että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
-      NGD:llä on seuraavat ominaisuudet, olettaen, että valitaan parametri $N\geq{}M$:
+     Olettaen, että valitaan parametri $N\geq{}M$, NGD:llä on seuraavat ominaisuudet:
       \begin{enumerate}
-        \item NGD:n arvo on väliltä $0$ ja $\infty$ (mahdollisesti negatiivinen, jos Googlen lukumäärät ovat epäluotettavia ja täten $f(x,y) > max\{f(x),f(y)\}$)
+        \item NGD:n arvo on väliltä $0$ ja $\infty$ (mahdollisesti negatiivinen, jos Googlen lukumäärät ovat epäluotettavia, ja täten $f(x,y) > max\{f(x),f(y)\}$).
         \begin{enumerate}
           \item Jos $x=y$ tai $x\neq{}y$, mutta frekvenssi on
           \[
             f(x) = f(y) = f(x,y) > 0,
           \]
           niin $NGD(x,y)=0$. Eli $x$ ja $y$ ovat Googlen kannalta samat.
-          \item Jos frekvenssi $f(x)=0$, sitten jokaiselle hakutermille $y$ pätee $f(x,y)=0$. Tämän lisäksi pätee
+          \item Jos frekvenssi $f(x)=0$, jokaiselle hakutermille $y$ pätee $f(x,y)=0$. Tämän lisäksi pätee
           \[
-            NGD(x,y)=\frac{\infty}{\infty}
+            NGD(x,y)=\frac{\infty}{\infty},
           \]
           jonka määrittelemme tarkoittavan $1$.
         \end{enumerate}
         \item NGD on aina epänegatiivinen ja $NGD(x,x)=0$ kaikille $x$. Kaikille $x,y$ pätee $NGD(x,y)=NGD(y,x)$, toisin sanoen se on symmetrinen. NGD ei kuitenkaan ole metriikka, koska se ei täytä ehtoa $NGD(x,y) > 0$ kaikille $x\neq{}y$, eikä se myöskään toteuta metriikan kolmioepäyhtälö-ominaisuutta $NGD(x,z) \leq NGD(x,y) + NGD(y,z)$. \cite{cilibrasi2007google}
-        \item NGD on \emph{invariantti skaalautuvuudessa} seuraavassa mielessä: Oletamme, että kun Googlen indeksoimien sivujen lukumäärä $N$ kasvaa, niin sivujen, jotka sisältävät annetun hakusanan, lukumäärä lähestyy määrättyä murto-osaa $N$:stä, ja niin myös sivujen lukumäärä, jotka sisältävät hakusanojen parin.
+        \item NGD on \emph{invariantti skaalautuvuudessa} seuraavassa mielessä: oletamme, että kun Googlen indeksoimien sivujen lukumäärä $N$ kasvaa, niin sivujen, jotka sisältävät annetun hakusanan, lukumäärä lähestyy määrättyä murto-osaa $N$:stä, ja niin lähestyy myös sivujen lukumäärä, jotka sisältävät hakusanojen parin.
       \end{enumerate}
     % subsection google_samankaltaisuusetaisyys (end)
 
     \subsection{Hierarkkinen klusterointi} % (fold)
     \label{sub:klusterointi}
-      Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi koostetaan etäisyysmatriisi hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
+      Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samalla tavalla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi koostetaan etäisyysmatriisi hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
 
       Esimerkkinä klusteroitiin 15, 1600-luvun hollantilaisten maalareiden, teosta.
       Kuvassa \ref{fig:dutch-paintings} on Rembrandtin, Steenin ja Bolin maalauksia ternääripuu-rakenteessa.
@@ -591,7 +591,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Hierarkkinen klusterointi on tapa jota NCD:n kanssa klusteroidessa käytetään, eli toisiaan lähemmät objektit liittyvät enemmän toisiinsa kuin kauempana olevat. Vaihtoehtoisesti voidaan käyttää K-keskiö klusterointia \engl{K-means clustering}, jossa pyritään klusteroimaan objektit $k$ eri klusteriin, klusterin keskipisteen etäisyyden perusteella; taikka jakautumaan pohjautuvaa klusterointia, jossa klusteroidaan objektit jotka todennäköisesti kuuluvat samaan jakaumaan.
 
   Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin ja tässä esitellään muutama alue, joita tämän tutkielman pohjalta voi lukea.
-  Geeniekspressioanalyysi on tärkeä työkalu syövän tutkimisessa ja tutkimusta on suoritettu josko NCD:tä voidaan hydyntää siinä \cite{nykter2005normalized}.
+  Geeniekspressioanalyysi on tärkeä työkalu syövän tutkimisessa ja tutkimusta on suoritettu josko NCD:tä voidaan hyödyntää siinä \cite{nykter2005normalized}.
   Tarkempaa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta \cite{terwijn2011nonapproximability}.
   Tutkimusta on myös tehty siitä, että miten NCD toimiin kuvantunnistuksessa, asiasta lisää \cite{doi:10.1117/12.704334}.
   NCD:n kohinan sietokykyä on tutkittu ja se on avannut tutkimuksen mahdollisuuksia tälle aiheelle, tämän lisäksi on myös tutkittu miten NCD:tä voi hyödyntää kohinan poistossa \cite{vitanyi2013similarity}
