@@ -333,20 +333,20 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \end{figure}
 
 
-    Jokaista määrättyä puuta $T$ ja jokaista lapsisolmumerkin ryhmää $\{u,v,w,x\}$ kohden sanomme että $T$ on johdonmukainen $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa.
+    Jokaista määrättyä puuta $T$ ja jokaista lapsisolmumerkin ryhmää $\{u,v,w,x\}$ kohden sanomme että $T$ on konsistentti $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa.
 
-    Voimme kuvitella isomman puun rakentuvan monesta pienemmästä nelikkotopologiasta. Yleisesit nelikkomenetelmän tarkoitus on löytää tai approksimoida mahdollisimman lähelle puu joka sisältää maksimaalisen määrän johdonmukaisia nelikkotopologioita määrtystä joukosta $Q$. Tätä kutsutaan \emph{maksimi nelikkojohdonmukaisuudeksi} (MGC) \engl{maximum quartet consistency}
+    Voimme kuvitella isomman puun rakentuvan monesta pienemmästä nelikosta. Yleisesit nelikkomenetelmän tarkoitus on löytää tai approksimoida mahdollisimman lähelle puu joka sisältää maksimaalisen määrän nelikoita määrätystä joukosta $Q$. Puun $T$ kustannus lasketaan seuraavasti:
+    \[
+      C_{T} = \sum_{\{u,v,w,x\}\subseteq N}\{C_{uv|wx}: T \text{ on konsistentti } uv|wx \text{ kanssa}\}.
+    \]
+    Jotta voimme vertailla puitten pisteitä $C_{T}$, niin nämä pitää normalisoida; nyt $0$ vastaa huonointa ja $1$ parasta pistearvoa. Tätä termiä kutsutaan \emph{normalisoiduksi puun hyötytulokseksi} \engl{normalized tree benefit score} $S(T)$ \cite{CV05}.
+    Pyrkimys on löytää puu jonka $S(T)$:n arvo on maksimaalinen, eli pienin kokonaiskustannus.
+    Tällaisen puun löytäminen tosin on NP-vaikea, eli se on erittäin epätodennäköistä, joskin välillä löytyy vastaus ja aina voidaan approksimoida se.
+    Tämän laskeminen on erittäin intensiivistä ja vaatii paljon resursseja ja siihen on sen takia kehitetty yksinkertainen heuristinen metodi, joka pohjautuu satunnaisuuteen ja vuorikiipeilijä-algoritmiin \engl{hill-climbing}.
+    Ensiksi luodaan satunnainen puu, johon luodaan $2n-2$ solmua. Näistä $n$ on lehtisolmuja, nimettynä objektien mukaan ja $n-2$ sisäsolmua jotka merkitään kirjaimella `n' ja uniikilla numerolla. Jokaisella sisäsolmulla on tasan 3 kaarta. Tälle puulle lasketaan $S(T)$ ja se asetetaan nykyiseksi parhaaksi puuksi. Puulle on määritelty operaatioita mitä voidaan suorittaa \cite{CV05}.
+    Puulle suoritetaan mutaatio (yksi tai useampi operaatio) $T$:stä $T'$:hen ja sitten lasketaan $S(T')$, jos $S(T') > S(T)$, niin $T'$:stä tulee uusi paras puu. Mutaatioita suoritetaan kunnes $S(T')$ on $1$ tai kunnes parempia puita ei löydy järkevässä ajassa. Suorituksen lopussa tulostetaan paras puu.
 
-  %"minimum quartet tree cost" -> "pienin nelikkopuukustannus"
-
-  %"quartet-based tree construction" -> "nelikkopohjainen puunrakennus"
-  \paragraph{TODO} % (fold)
-    \begin{itemize}
-      \item normalisoitu puun hyötyarvo $S(T)$
-      \item Satunnaisuuden käyttö tarkistusiteraatiossa parhaan puun approksimoimiseksi
-    \end{itemize}
-    % subsection nelikkomenetelma (end)
-
+  % subsection nelikkomenetelma (end)
 
     Klusteroinnista on usea esimerkki olemassa ja käsittelemmä tässä muutaman näistä.
     Ensimmäiseksi tarkastelemme musiikkigenrejen tunnistamista.
@@ -354,16 +354,15 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Tulokseksi saadun puun $S(T)$ on $0.858$. Kappaleet ryhmittyivät suurimmaksi osaksi oikeisiin katergorioihin, mutta poikkeuksiakin oli.
     Tämä nähdään jo alhaisesta $S(T)$:n arvosta.
 
-    Seuraavaksi on klusteroitu sama 12 klassisen kappaleen joukko. Puun ... arvoksi saatiin $S(T)=0.958$ ja kappaleet ryhmittyvät säveltäjän mukaan.
+    Seuraavaksi on klusteroitu sama 12 klassisen kappaleen joukko. Puun kustannukseksi saatiin $S(T)=0.958$ ja kappaleet ryhmittyvät säveltäjän mukaan.
 
     Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille dataa (alle 25 objektia) ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia).
     Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on että, ensiksi klusteroidaan epähierarkkisesti ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
 
-    % TODO: ...
     Esimerkkinä NCD:n kyvystä erotella eri aihelueet tehokkaasti on kuva \ref{fig:classification}.
     Tässä on klusteroitu seuraavia tiedostotyyppejä: i) neljä mitokondrioitten geenisekvenssiä (jääkarhu, kettu, rotta, mustakarhu); ii) neljä kappaletta kirjasta `The Zeppelin\'s Passenger'; iii) neljä MIDI tiedostoa, joita ei ole käsitelty (Jimi Hendrix, Debussy); iv) kaksi Linux x86 ELF ohjelmatiedostoa ja v) kaksi käännettyä Java luokkaa.
     Pakkaajana käytettiin bzip2 -ohjelmaa.
-    Puun ... arvoksi tulee $S(T)=0.984$.
+    Puun kustannus on $S(T)=0.984$.
     Tämä koe näyttää miten tehokas ja universaali NCD:n käyttö klusteroinnissa on \cite{CV05}.
 
     \begin{figure}[tb]
@@ -597,7 +596,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Hierarkkinen klusterointi on tapa jota NCD:n kanssa klusteroidessa käytetään, eli toisiaan lähemmät objektit liittyvät enemmän toisiinsa kuin kauempana olevat. Vaihtoehtoisesti voidaan käyttää K-keskiö klusterointia \engl{K-means clustering}, jossa pyritään klusteroimaan objektit $k$ eri klusteriin, klusterin keskipisteen etäisyyden perusteella; taikka jakautumaan pohjautuvaa klusterointia, jossa klusteroidaan objektit jotka todennäköisesti kuuluvat samaan jakaumaan.
 
   Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin ja tässä esitellään muutama alue, joita tämän tutkielman pohjalta voi lukea.
-  Geeniekspressioanalyysi on ... ja on tutkittu NCD:n käyttöä tässä \cite{nykter2005normalized}.
+  Geeniekspressioanalyysi on tärkeä työkalu syövän tutkimisessa ja tutkimusta on suoritettu josko NCD:tä voidaan hydyntää siinä \cite{nykter2005normalized}.
   Tarkempaa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta \cite{terwijn2011nonapproximability}.
   Tutkimusta on myös tehty siitä, että miten NCD toimiin kuvantunnistuksessa, asiasta lisää \cite{doi:10.1117/12.704334}.
   NCD:n kohinan sietokykyä on tutkittu ja se on avannut tutkimuksen mahdollisuuksia tälle aiheelle, tämän lisäksi on myös tutkittu miten NCD:tä voi hyödyntää kohinan poistossa \cite{vitanyi2013similarity}
