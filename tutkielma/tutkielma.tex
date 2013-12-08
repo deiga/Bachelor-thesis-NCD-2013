@@ -2,7 +2,7 @@
 %
 % last updated 2013/02/15 for tkltiki2 v1.02
 
-\documentclass[12pt,finnish]{tktltiki2}
+\documentclass[12pt,finnish,final]{tktltiki2}
 
 % tktltiki2 automatically loads babel, so you can simply
 % give the language parameter (e.g. finnish, swedish, english, british) as
@@ -155,39 +155,35 @@ Esittelemme metodin pakkauspohjaiseen klusterointiin. Tämä metodi ei ole riipp
   Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmia: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten suunniteltua (Gencompress).
 
   % TODO: clearer
-  Käytetyt yhtälöt pätevät aina lähes täsmälleen, sillä siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatioon. Approksimaation virhe on hyvin pieni: $O(\log n)$ ($n$ on esimerkiksi tiedoston pituus).
+  Käytetyt yhtälöt pätevät aina lähes täsmälleen, koska siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatioon. Approksimaation virhe on hyvin pieni: $O(\log n)$ ($n$ on esimerkiksi tiedoston pituus).
 
   Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki tehokkaat etäisyydet \engl{effective distances}: tehokkaat versiot Hammingin etäisyydestä, Euklidisesta etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
   Tämän metriikan tulee olla niin yleinen, että se toimii yhtäläisesti ja samanaikaisesti kaikilla aloilla: musiikilla, tekstillä, kirjallisuudella, ohjelmilla, genomeilla, luonnollisen kielen määrityksillä.
   Sen pitäisi pystyä samanaikaisesti havaitsemaan kaikki samankaltaisuudet objektien välillä, joita muut etäisyydet havaitsevat erikseen.
 
-  Kun määrittelemme ryhmän sallittavia etäisyyksiä \engl{admissible distances} haluamme sulkea pois epärealistiset, kuten $f(x,y) = \frac{1}{2}$ jokaiselle parille $x \neq y$.
-  Saavutamme tämän rajoittamalla objektien lukumäärän annetussa etäisyydessä objektiin.
-  Teemme tämän huomioimalla vain todellisia etäisyyksiä seuraavasti: oletamme kiinnitetyn ohjelmointikielen, joka toimii tutkielman ajan viitekielenä.
+  Kun määrittelemme ryhmän sallittavia etäisyyksiä \engl{admissible distances} haluamme sulkea pois epärealistiset etäisyydet, kuten $f(x,y) = \frac{1}{2}$ jokaiselle $x \neq y$.
+  Saavutamme tämän rajoittamalla objektien määrää annetussa etäisyydessä objektista.
+  Teemme tämän huomioimalla vain todellisia etäisyyksiä seuraavasti: oletamme kiinnitetyn ohjelmointikielen, joka toimii viitekielenä.
   Tämä ohjelmointikieli voi olla yleinen kieli kuten LISP tai Ruby, mutta se voi myös olla määrätty universaali Turingin kone. \cite{CV05,cilibrasi2007google}
-  Valinnalla ei kuitenkaan ole merkitystä, sillä teoria on invariantti ohjelmointikielin muutoksille kunhan pysytään tehdyssä valinnassa.
+  Valinnalla ei kuitenkaan ole merkitystä, sillä teoria on invariantti ohjelmointikielen muutoksille, kunhan pysytään tehdyssä valinnassa.
 
 
-Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approksimaatiolla käyttäen standardia pakkaajaa.
+  Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytäntöön, pitää meidän korvata ei laskettavissa oleva Kolmogorov-kompleksisuus approksimaatiolla käyttäen standardia pakkaajaa.
 
 \label{par:intro-3}
   Luvussa \ref{sec:klusterointi} esittelemme algoritmin käyttöä klusteroinnissa.
-  Aloitamme siitä, miten yleisesti \emph{Normalisoidun pakkausetäisyyden} (\emph{NCD}) avulla pystymme klusteroimaan tuloksia eri kategorioihin; miten musiikkikappaleet klusteroituvat saman artistin alle, miten kuvantunnistuksessa saamme ryhmitettyä samankaltaiset kuvat ja miten sienten genomeista saamme tarkan lajiryhmityksen.
-
-  Tämän luvun lopussa syvennymme musiikin, kuvantunnistuksen ja dokumenttien kategorisoinnin tuloksiin.
-
+  Aloitamme siitä, miten yleisesti \emph{Normalisoidun pakkausetäisyyden} (\emph{NCD}) avulla pystymme klusteroimaan tuloksia eri kategorioihin; miten musiikkikappaleet klusteroituvat saman genren tai artistin alle, miten erityyppiset tiedostot kategorisoituvat oikeisiin ryhmiin.
 
 \label{par:intro-4}
   Luvussa \ref{sec:algoritmin_ongelmat_ja_ominaisuudet} esitellään NCD:n ominaisuuksia ja ongelmia.
   Ensiksi esitellään NCD:n kohinansietokykyä, eli katsotaan mitä tapahtuu kun lisätään vähitellen kohinaa toiseen tiedostoista, jota pakataan, ja mittaamalla samankaltaisuutta tämän jälkeen \cite{4167725}.
   Saamme nähdä miten paljon kohina vaikuttaa NCD:n laskemiin etäisyyksiin ja huonontaako se klusteroinnin tuloksia.
 
-
   Mikään algoritmi ei ole täydellinen, ja NCD-algoritmillakin on ongelmansa.
   Algoritmissa itsessään ei ole selvää heikkoutta, mutta sen käytössä on otettava pakkaajan valinta huomioon, koska monet suosituista pakkausalgoritmeista ovat optimoituja tietyn kokoisille tiedostoille.
-  Näissä algoritmeissa on niin kutsuttu ikkunakoko \engl{window size}, joka määrittelee mikä tiedostokoko on sopiva \cite{cebrian2005common}.
-  Jos tiedostokoko on pienempi kuin ikkunakoko, niin pakkaus on tehokasta, mutta kun mennään siitä yli, pakkauksesta tulee huomattavasti tehottomampaa.
-  Esittelemme tuloksia eri pakkausalgoritmien vertailuista ja mikä näistä algoritmeista on parhaimmaksi havaittu NCD:n kanssa käytettäväksi.
+  Näissä algoritmeissa on jokin rajoittava tekijä, joka määrittelee mikä tiedostokoko on sopiva \cite{cebrian2005common}.
+  Jos tiedostokoko on pienempi kuin rajoitus, on pakkaus tehokasta, mutta kun koko on liian suuri, pakkauksesta tulee huomattavasti tehottomampaa.
+  Esittelemme tuloksia eri pakkausalgoritmien vertailuista ja mikä näistä algoritmeista on havaittu parhaimmaksi NCD:n kanssa käytettäväksi.
 
 
 \label{par:intro-5}
@@ -277,7 +273,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   Kun pakkaaja on normaali, niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
 
-  Taulukossa \ref{tab:NCD-values} esitellään muutama arvo joilla NCD lasketaan ja mikä tulos näistä saadaan. Taulukon arvot saatu artikkelista \cite{cebrian2005common}.
+  Taulukossa \ref{tab:NCD-values} esitellään muutama arvo joilla NCD lasketaan ja mikä tulos näistä saadaan.
 
   \begin{table}[t]
     \begin{tabular}{c|c|l}
@@ -300,7 +296,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \label{sec:klusterointi}
 
   Yksi NCD:n käyttötarkoituksista on objektien klusterointi ilman, että datasta tarvitsee etukäteen kerätä ominaisuuksia.
-  Täten samaan menetelmää voidaan hyödyntää klusteroimaan täysin eri tyyppisiä datajoukkoja.
+  Täten samaa menetelmää voidaan hyödyntää klusteroimaan täysin eri tyyppisiä datajoukkoja.
   Klusterit ovat ryhmä objekteja, jotka ovat samankaltaisia valitun metriikan mukaan.
   Tässä tarkoitus on analysoida dataa, joka on tunnisteeton ja siitä ei tiedetä etukäteen klustereiden lukumäärää.
   NCD:n kanssa käytetään yleisesti hierarkkista klusterointia, koska sitä pidetään yhtenä parhaista valvomattoman oppimisen \engl{unsupervised learning} metodeina.
@@ -316,7 +312,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Käsittelemme jokaista neljän objektin ryhmää $n$ kokoisesta joukosta. Näiden ryhmien lukumäärä on $\binom{n}{4}$.
     Jokaisesta ryhmästä $\{u,v,w,x\}$ rakennamme puun, jossa jokaisella sisäsolmulla on 3 naapuria, eli puu koostuu kahdesta alipuusta, joissa on kummassakin kaksi lapsisolmua.
     Tällaista puuta kutsutaan \emph{nelikkotopologiaksi} \engl{quartet topology} \cite{CV05} tai \emph{nelikoksi} \engl{quartet} \cite{cilibrasi2004algorithmic}.
-    On olemassa kolme vaihtoehtoa miten tämä puu rakentuu: a) $uv|wx$, b) $uw|vx$, c) $ux|vw$, joissa pystyviiva erottelee lapsisolmuparit eri alipuihin (kts. kuva \ref{fig:ternary-tree}).
+    On olemassa kolme vaihtoehtoa miten tämä puu rakentuu: a) $uv|wx$, b) $uw|vx$, c) $ux|vw$, joissa pystyviiva erottelee lapsisolmuparit alipuihin. Kuvassa \ref{fig:ternary-tree} näkyy nelikoiden vaihtoehdot.
 
     \begin{figure}[tb]
       \immediate\write18{pdfcrop img/ternary-tree}
@@ -380,14 +376,14 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \begin{figure}[tb]
       \immediate\write18{pdfcrop img/noise-002}
       \includegraphics{img/noise-002}
-      \caption{\emph{Kuvan \ref{fig:noise-001} tiedostoihin on lisätty 50\% kohinaa. Merkinnät vastaavat kuvaa \ref{fig:noise-001}.}
+      \caption{\emph{Kuvan \ref{fig:noise-001} tiedostoihin on lisätty 50\% kohinaa.}
       \cite{4167725}}
       \label{fig:noise-002}
     \end{figure}
     \begin{figure}[tb]
       \immediate\write18{pdfcrop img/noise-003}
       \includegraphics{img/noise-003}
-      \caption{\emph{Kuvan \ref{fig:noise-001} tiedostoihin on lisätty 75\% kohinaa. Merkinnät vastaavat kuvaa \ref{fig:noise-001}.}
+      \caption{\emph{Kuvan \ref{fig:noise-001} tiedostoihin on lisätty 75\% kohinaa.}
       \cite{4167725}}
       \label{fig:noise-003}
     \end{figure}
@@ -413,18 +409,18 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \end{figure}
     \begin{figure}[tb]
       \includegraphics[width=\textwidth]{img/gzip-best}
-      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{gzip} pakkaajaa asetuksella `--best'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
+      \caption{\emph{Kuva \ref{fig:bzip2-best}, käyttäen \textbf{gzip} pakkaajaa asetuksella `--best'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:gzip-best}
     \end{figure}
     \begin{figure}[tb]
         \immediate\write18{pdfcrop img/ppmz}
       \includegraphics{img/ppmz}
-      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{PPMZ} pakkaajaa. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
+      \caption{\emph{Kuva \ref{fig:bzip2-best}, käyttäen \textbf{PPMZ} pakkaajaa. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:ppmz}
     \end{figure}
     \iffalse
     \fi
-      Artikkelissa \cite{cebrian2005common} on osoitettu, että pakkaaja, jota käytetään NCD:n laskemiseen, ei ole idempotentti (\ref{idempotency}) kaikissa tapauksissa, koska objektien koko ja pakkaajan ikkunakoko vääristävät etäisyyksiä ja täten aiheuttavat poikkeuksia samankaltaisuuksissa. Yhteyttä etäisyyden tarkkuudesta ja objektien koosta on analysoitu monella tunnetulla pakkaajalla ja erityisesti seuraavilla kolmella:  \emph{bzip2}, \emph{gzip} ja \emph{PPMZ}.
+      Artikkelissa \cite{cebrian2005common} on osoitettu, että pakkaaja, jota käytetään NCD:n laskemiseen, ei ole idempotentti kaikissa tapauksissa, koska objektien koko ja pakkaajan ikkunakoko vääristävät etäisyyksiä ja täten aiheuttavat poikkeuksia samankaltaisuuksissa. Yhteyttä etäisyyden tarkkuudesta ja objektien koosta on analysoitu monella tunnetulla pakkaajalla ja erityisesti seuraavilla kolmella:  \emph{bzip2}, \emph{gzip} ja \emph{PPMZ}.
 
       Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat.
       Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma, jolla mitataan pakkausalgoritmien suorituskykyä.
@@ -432,7 +428,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       Mukana on muun muassa kuva, kirjoja, artikkeleita, lähdekoodia ja tietokoneohjelmia.
 
       Kaikkia vertailun objekteja käsitellään merkkijonoina, jotka koostuvat tavuista.
-      Jotta voidaan todeta pakkaajan idempotenssin (\ref{idempotency}) pätevyys, kaikki objektit vertaillaan itsensä kanssa.
+      Jotta voidaan todeta pakkaajan idempotenssin pätevyys, kaikki objektit vertaillaan itsensä kanssa.
 
       Kuvassa \ref{fig:bzip2-best} huomataan, että $NCD(x,x)$ on väliltä $0.2$ ja $0.3$, kun tiedostojen koko on sopiva bzip2 pakkaajalle. Kun taas arvo on väliltä $0.25$ ja $0.9$,  tiedostokoko ei ole enää sopiva.
       Rajoittava tekijä bzip2 pakkaajassa on tälle määriteltävä lohkokoko \engl{block size}, joka on oletusarvoisesti 900 kilotavua, eli jos pakattavan tiedoston koko on tätä suurempi niin se pilkotaan alle 900 kilotavun kokoisiksi palasiksi ennen pakkausta.
@@ -461,7 +457,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Täten on kehitetty yleinen metodi hyödyntämään tätä matalalaatuista tietoa, jota saa ilmaiseksi Internetistä.
     Tämä tietovarasto on kaikille avoin käyttäen mitä tahansa hakukonetta, joka pystyy palauttamaan yhteenlasketun sivulukumääräarvion, kuten Google.
 
-    Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen (kts. \ref{sub:normalisoitu_pakkausetaisyys},) sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen (kts. \ref{sub:kolmogorov_kompleksisuus}) ja Normalisoituun informaatioetäisyyteen (\ref{sub:normalisoitu_informaatioetaisyys}).
+    Google-samankaltaisuusetäisyys (\emph{GSD}) on hyvin vahvasti verrattavissa Normalisoituun pakkausetäisyyteen, sillä kummatkin algoritmit perustuvat samoihin tekniikoihin, kuten Kolmogorov-kompleksisuuteen ja Normalisoituun informaatioetäisyyteen.
     Eroavaisuuksia esiintyy siinä, mitä nämä kaksi algoritmia käyttävät samankaltaisuuden arvioimiseksi.
     Siinä missä NCD pakkaa ja vertaa sisältöä toisiinsa, niin GSD vertaa asioiden nimiä esiintymistiheyteen. \cite{cilibrasi2007google}
 
@@ -519,7 +515,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
         NGD(x,y) = \frac{max\{\log{f(x)},\log{f(y)}\}-\log{f(x,y)}}{\log{N}-min\{\log{f(x)},\log{f(y)}\}},
       \end{align}
       jossa $f(x)$ merkitsee internetsivujen lukumäärää, jotka sisältävät hakutermin $x$, ja $f(x,y)$ merkitsee samaa, mutta sivuille jotka sisältävät termit $x$ ja $y$.
-      Tämä normalisoitu Google-etäisyys on approksimaatio normalisoidusta informaatioetäisyydestä (kts. \ref{sub:normalisoitu_informaatioetaisyys}).
+      Tämä normalisoitu Google-etäisyys on approksimaatio normalisoidusta informaatioetäisyydestä.
       Käytännössä Googlen palauttamia sivujen lukumääriä käytetään frekvensseinä ja valitaan $N$.
       On huomattu, että mikä tahansa järkevä arvo voidaan käyttää normalisoinnin arvona $N$.
      Olettaen, että valitaan parametri $N\geq{}M$, NGD:llä on seuraavat ominaisuudet:
@@ -544,11 +540,11 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     \subsection{Hierarkkinen klusterointi} % (fold)
     \label{sub:klusterointi}
-      Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samalla tavalla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi koostetaan etäisyysmatriisi hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
+      Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samalla tavalla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi koostetaan etäisyysmatriisi hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
 
       Esimerkkinä klusteroitiin 15 1600-luvun hollantilaisten maalareiden teosta.
       Kuvassa \ref{fig:dutch-paintings} on Rembrandtin, Steenin ja Bolin maalauksia ternääripuu-rakenteessa.
-      Hakusanoina käytettiin ainoastaan maalausten koko nimiä. Klusteroinnissa käytettiin seuraavia teoksista:
+      Hakusanoina käytettiin ainoastaan maalausten nimiä. Klusteroinnissa käytettiin seuraavia teoksista:
 
       \begin{itemize}
         \item \textbf{Rembrandt van Rijn:} \emph{Hendrickje slapend, Portrait of Maria Trip, Portrait of Johannes Wtenbogaert, The Stone Bridge, and The Prophetess Anna.}
@@ -577,7 +573,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   Luvussa \ref{sec:klusterointi} näytettiin, että NCD toimii hyvin klusterointiin ja sitä on helppo soveltaa mihin tahansa alaan kuten: musiikkiin, kirjallisuuteen ja genomeihin. Tämä johtuu siitä, että algoritmin käyttö on täysin riippumaton datasta ja sen ominaisuuksista. Algoritmi kykenee aina löytämään merkittävimmät ominaisuudet datasta ja vertailemaan näin samankaltaisuutta datan eri objektien välillä.
   NCD:n tehokkuutta parantaa huomattavasti, että algoritmi vaikuttaa olevan hyvin kohinansietokykyinen, eli se kykenee edelleen yhdistämään samankaltaiset objektit vaikka toisessa olisikin kohinaa.
-  Vaikka NCD:n kehittäjät luulivat osoittaneensa, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainoastaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa (kts. \ref{sub:pakkaajan_valinta}).
+  Vaikka NCD:n kehittäjät luulivat osoittaneensa, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainoastaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa kuten luvussa \ref{sub:pakkaajan_valinta} todettiin.
   Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
 
   NCD ei tietenkään ole ainut menetelmä, jota valvomattomassa oppimisessa voi käyttää datan klusteroimiseen.
@@ -589,7 +585,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Tarkempaa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta löytyy artikkelista \cite{terwijn2011nonapproximability}.
   Tutkimusta on myös tehty siitä, miten NCD toimii kuvantunnistuksessa \cite{doi:10.1117/12.704334}.
   NCD:n kohinansietokykyä on tutkittu, ja se on avannut tutkimuksen mahdollisuuksia tälle aiheelle. Tämän lisäksi on myös tutkittu miten NCD:tä voidaan hyödyntää kohinan poistossa \cite{vitanyi2013similarity}.
-  Nelikkomenetelmästä (kts. \ref{sub:nelikkomenetelma}) löytyy tarkempaa kuvausta artikkelissa \cite{cilibrasi2011fast}.
+  Nelikkomenetelmästä löytyy tarkempaa kuvausta artikkelissa \cite{cilibrasi2011fast}.
 
 
 % section yhteenveto (end)
