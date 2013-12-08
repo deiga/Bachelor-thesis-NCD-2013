@@ -161,6 +161,7 @@ Tähän tulee tutkielman tiivistelmä
   Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkausetaisyys} ja samalla käymme läpi mihin teoriaan algoritmi perustuu sekä miten se toimii.
   Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmia: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten suunniteltua (Gencompress).
 
+  % TODO: clearer
   Käytetyt yhtälöt pätevät aina lähes täsmälleen, sillä siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatioon. Approksimaation virhe on hyvin pieni: $O(\log n)$ ($n$ on esim. tiedoston pituus).
 
   Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki tehokkaat etäisyydet \engl{effective distances}: tehokkaat versiot Hammingin etäisyydestä, Euklidisesta etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
@@ -268,7 +269,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \emph{NCD} on funktioiden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä.
   Tämä funktioiden joukko on parametrisoitu käytetyn pakkaajan $C$ mukaan.
 
-  Käytännössä \emph{NCD}:n tulos on välillä $0 \leq r \leq 1+ \epsilon$, joka vastaa kahden tiedoston eroa toisistaan; mitä pienempi luku, sitä enemmän tiedostot ovat samankaltaisia.
+  Käytännössä \emph{NCD}:n tulos on välillä $0 \leq r \leq 1+ \epsilon$, mikä vastaa kahden tiedoston eroa toisistaan; mitä pienempi luku, sitä enemmän tiedostot ovat samankaltaisia.
   Tosielämässä pakkausalgoritmit eivät ole yhtä tehokkaita kuin teoreettiset mallit, joten virhemarginaali $\epsilon$ on lisätty ylärajaan.
   Suurimmalle osalle näistä algoritmeista on epätodennäköistä että  $\epsilon > 0.1$.
 % subsection normalisoitu_pakkausetaisyys (end)
@@ -283,7 +284,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   Kun pakkaaja on normaali, niin \emph{NCD} on normalisoitu hyväksyttävä etäisyys, joka täyttää metriikan yhtälöt, eli se on samankaltaisuuden metriikka.
 
-  Taulukossa \ref{tab:NCD-values} esitellään muutama arvo joilla NCD lasketaan ja mikä tulos näistä saadaan. Taulukon arvot saatu paperista \cite{cebrian2005common}
+  Taulukossa \ref{tab:NCD-values} esitellään muutama arvo joilla NCD lasketaan ja mikä tulos näistä saadaan. Taulukon arvot saatu artikkelista \cite{cebrian2005common}.
 
   \begin{table}[t]
     \begin{tabular}{c|c|l}
@@ -305,7 +306,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \section{Klusterointi} % (fold)
 \label{sec:klusterointi}
 
-  Yksi NCD:n käyttötarkoituksista on objektien klusterointi ilman että datasta tarvitsee etukäteen kerätä ominaisuuksia.
+  Yksi NCD:n käyttötarkoituksista on objektien klusterointi ilman, että datasta tarvitsee etukäteen kerätä ominaisuuksia.
   Täten samaan menetelmää voidaan hyödyntää klusteroimaan täysin eri tyyppisiä datajoukkoja.
   Klusterit ovat ryhmä objekteja, jotka ovat samankaltaisia valitun metriikan mukaan.
   Tässä tarkoitus on analysoida dataa, joka on tunnisteeton ja siitä ei tiedetä etukäteen klustereitten lukumäärää.
@@ -315,12 +316,12 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
   \subsection{Nelikkomenetelmä} % (fold)
   \label{sub:nelikkomenetelma}
-    Meillä on määrätty joukko objekteja ja näitten pareittain NCD arvot, muodostavat etäisyysmatriisin alkiot, jotka edustavat etäisyyksiä kaikkien objektiparien välillä.
+    Meillä on määrätty joukko objekteja ja näiden pareittaisista NCD:n arvoista muodostuvat etäisyysmatriisin alkiot, jotka edustavat etäisyyksiä kaikkien objektiparien välillä.
     Tässä matriisissa pareittaiset suhteet ovat raa'assa muodossa ja täten tietoa on vaikea hahmottaa.
-    Jotta voimme klusteroida objektit hierarkkisesti määritämme ternääripuun \engl{ternary tree} joka vastaa etäisyysmatriisin tietosisältöä jonkin valitun kustannusmittarin mukaan.
+    Jotta voimme klusteroida objektit hierarkkisesti määritämme ternääripuun \engl{ternary tree}, joka vastaa etäisyysmatriisin tietosisältöä jonkin valitun kustannusmittarin mukaan.
 
     Käsittelemme jokaista neljän objektin ryhmää $n$ kokoisesta joukosta. Näiden ryhmien lukumäärä on $\binom{n}{4}$.
-    Jokaisesta ryhmästä $\{u,v,w,x\}$ rakennamme puun, jossa jokaisella sisäsolmulla on 3 naapuria, eli puu koostuu kahdesta alipuusta, joissa kummassakin kaksi lapsisolmua.
+    Jokaisesta ryhmästä $\{u,v,w,x\}$ rakennamme puun, jossa jokaisella sisäsolmulla on 3 naapuria, eli puu koostuu kahdesta alipuusta, joissa on kummassakin kaksi lapsisolmua.
     Tällaista puuta kutsutaan \emph{nelikkotopologiaksi} \engl{quartet topology} \cite{CV05} tai \emph{nelikoksi} \engl{quartet} \cite{10.1109/WDM.2004.1358107}.
     On olemassa kolme vaihtoehtoa miten tämä puu rakentuu: a) $uv|wx$, b) $uw|vx$, c) $ux|vw$, joissa pystyviiva erottelee lapsisolmuparit eri alipuihin (kts. kuva \ref{fig:ternary-tree}).
 
@@ -333,17 +334,17 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \end{figure}
 
 
-    Jokaista määrättyä puuta $T$ ja jokaista lapsisolmumerkin ryhmää $\{u,v,w,x\}$ kohden sanomme että $T$ on konsistentti $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa.
+    Jokaista määrättyä puuta $T$ ja jokaista lapsisolmumerkin ryhmää $\{u,v,w,x\}$ kohden sanomme, että $T$ on konsistentti $uv|wx$:n kanssa, jos ja vain jos polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa.
 
-    Voimme kuvitella isomman puun rakentuvan monesta pienemmästä nelikosta. Yleisesit nelikkomenetelmän tarkoitus on löytää tai approksimoida mahdollisimman lähelle puu joka sisältää maksimaalisen määrän nelikoita määrätystä joukosta $Q$. Puun $T$ kustannus lasketaan seuraavasti:
+    Voimme kuvitella isomman puun rakentuvan monesta pienemmästä nelikosta. Yleisesti nelikkomenetelmän tarkoitus on löytää tai approksimoida mahdollisimman lähelle puu, joka sisältää maksimaalisen määrän nelikoita määrätystä joukosta $Q$. Puun $T$ kustannus lasketaan seuraavasti:
     \[
       C_{T} = \sum_{\{u,v,w,x\}\subseteq N}\{C_{uv|wx}: T \text{ on konsistentti } uv|wx \text{ kanssa}\}.
     \]
-    Jotta voimme vertailla puitten pisteitä $C_{T}$, niin nämä pitää normalisoida; nyt $0$ vastaa huonointa ja $1$ parasta pistearvoa. Tätä termiä kutsutaan \emph{normalisoiduksi puun hyötytulokseksi} \engl{normalized tree benefit score} $S(T)$ \cite{CV05}.
+    Jotta voimme vertailla puiden pisteitä $C_{T}$, niin nämä pitää normalisoida; nyt $0$ vastaa huonointa ja $1$ parasta pistearvoa. Tätä termiä kutsutaan \emph{normalisoiduksi puun hyötytulokseksi} \engl{normalized tree benefit score} $S(T)$ \cite{CV05}.
     Pyrkimys on löytää puu jonka $S(T)$:n arvo on maksimaalinen, eli pienin kokonaiskustannus.
     Tällaisen puun löytäminen tosin on NP-vaikea, eli se on erittäin epätodennäköistä, joskin välillä löytyy vastaus ja aina voidaan approksimoida se.
-    Tämän laskeminen on erittäin intensiivistä ja vaatii paljon resursseja ja siihen on sen takia kehitetty yksinkertainen heuristinen metodi, joka pohjautuu satunnaisuuteen ja vuorikiipeilijä-algoritmiin \engl{hill-climbing}.
-    Ensiksi luodaan satunnainen puu, johon luodaan $2n-2$ solmua. Näistä $n$ on lehtisolmuja, nimettynä objektien mukaan ja $n-2$ sisäsolmua jotka merkitään kirjaimella `n' ja uniikilla numerolla. Jokaisella sisäsolmulla on tasan 3 kaarta. Tälle puulle lasketaan $S(T)$ ja se asetetaan nykyiseksi parhaaksi puuksi. Puulle on määritelty operaatioita mitä voidaan suorittaa \cite{CV05}.
+    Tämän laskeminen on erittäin intensiivistä ja vaatii paljon resursseja, ja siihen on sen takia kehitetty yksinkertainen heuristinen metodi, joka pohjautuu satunnaisuuteen ja vuorikiipeilijä-algoritmiin \engl{hill-climbing}.
+    Ensiksi luodaan satunnainen puu, johon luodaan $2n-2$ solmua. Näistä $n$ on lehtisolmuja, nimettynä objektien mukaan, ja $n-2$ sisäsolmua jotka merkitään kirjaimella `n' ja uniikilla numerolla. Jokaisella sisäsolmulla on tasan 3 kaarta. Tälle puulle lasketaan $S(T)$ ja se asetetaan nykyiseksi parhaaksi puuksi. Puulle on määritelty operaatioita mitä voidaan suorittaa \cite{CV05}.
     Puulle suoritetaan mutaatio (yksi tai useampi operaatio) $T$:stä $T'$:hen ja sitten lasketaan $S(T')$, jos $S(T') > S(T)$, niin $T'$:stä tulee uusi paras puu. Mutaatioita suoritetaan kunnes $S(T')$ on $1$ tai kunnes parempia puita ei löydy järkevässä ajassa. Suorituksen lopussa tulostetaan paras puu.
 
   % subsection nelikkomenetelma (end)
@@ -356,8 +357,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     Seuraavaksi on klusteroitu sama 12 klassisen kappaleen joukko. Puun kustannukseksi saatiin $S(T)=0.958$ ja kappaleet ryhmittyvät säveltäjän mukaan.
 
-    Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille dataa (alle 25 objektia) ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia).
-    Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on että, ensiksi klusteroidaan epähierarkkisesti ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
+    Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille (alle 25 objektia), ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia).
+    Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on, että ensiksi klusteroidaan epähierarkkisesti, ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
 
     Esimerkkinä NCD:n kyvystä erotella eri aihelueet tehokkaasti on kuva \ref{fig:classification}.
     Tässä on klusteroitu seuraavia tiedostotyyppejä: i) neljä mitokondrioitten geenisekvenssiä (jääkarhu, kettu, rotta, mustakarhu); ii) neljä kappaletta kirjasta `The Zeppelin\'s Passenger'; iii) neljä MIDI tiedostoa, joita ei ole käsitelty (Jimi Hendrix, Debussy); iv) kaksi Linux x86 ELF ohjelmatiedostoa ja v) kaksi käännettyä Java luokkaa.
@@ -430,7 +431,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \end{figure}
     \iffalse
     \fi
-      Paperissa \cite{cebrian2005common} on osoitettu että, pakkaaja jota käytetään NCD:m laskemiseen ei ole idempotentti (\ref{idempotency}) kaikissa tapauksissa, koska objektien koko ja pakkaajan ikkunakoko vääristävät etäisyyksiä ja täten aiheuttavat poikkeuksia samankaltaisuuksissa. Yhteyttä etäisyyden tarkkuudesta ja objektien koosta on analysoitu monella tunnetulla pakkaajalla ja erityisesti seuraavilla kolmella:  \emph{bzip2}, \emph{gzip} ja \emph{PPMZ}.
+      Paperissa \cite{cebrian2005common} on osoitettu, että pakkaaja jota käytetään NCD:m laskemiseen ei ole idempotentti (\ref{idempotency}) kaikissa tapauksissa, koska objektien koko ja pakkaajan ikkunakoko vääristävät etäisyyksiä ja täten aiheuttavat poikkeuksia samankaltaisuuksissa. Yhteyttä etäisyyden tarkkuudesta ja objektien koosta on analysoitu monella tunnetulla pakkaajalla ja erityisesti seuraavilla kolmella:  \emph{bzip2}, \emph{gzip} ja \emph{PPMZ}.
 
       Vertailussa käytettiin Cilibrasin toteuttamaa CompLearn -työkalua \cite{complearn}, josta löytyy bzip2 ja gzip pakkaajat.
       Aineistona käytettiin tunnettua Calgary Corpus -kokoelmaa \cite{calgarycorpus}, joka on 18 tiedoston kokoelma jolla mitataan pakkausalgoritmien suorituskykyä.
@@ -492,7 +493,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \label{sub:hakukoneet_samankaltaisuuden_mittaamisessa}
 
     Googlen indeksoitujen internetsivujen määrä on kasvanut suunnattomaksi ja mikä tahansa yleinen hakutermi esiintyy miljoonilla internetsivulla. Internetin sisällöntuottajiakin on suunnaton määrä ja voidaan olettaa näiden olevan erittäin kuvaava otanta isosta osasta ihmiskuntaa.
-    Tämän perusteella voidaan argumentoida että, Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa.
+    Tämän perusteella voidaan argumentoida, että Google-haun frekvenssi on kuvaava approksimaatio todellisista relatiivisista frekvensseistä yhteiskunnassa.
     Frekvenssi on haun tuottamien osumien lukumäärän suhde kaikkien Googlen indeksoimien sivujen lukumäärään. \cite{cilibrasi2007google}
 
     % subsection hakukoneet_samankaltaisuuden_mittaamisessa (end)
