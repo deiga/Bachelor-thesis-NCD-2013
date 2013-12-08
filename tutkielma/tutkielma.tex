@@ -88,7 +88,7 @@ sovelluksia ja variaatioita}
 \date{\today}
 \level{Kandidaatintutkielma}
 \abstract{
-Esittelemme metodin pakkauspohjaiseen klusterointiin. Tämä metodi ei ole riippuvainen kohteen ominaisuuksista tai taustatiedoista. Metodi toimii seuraavanlaisesti: Ensin määritämme parametrittoman, universaalin, samankaltaisuusetäisyyden normalisoitu pakkausetäisyys (NCD), joka lasketaan pakatuista tiedostoista, yksittäin ja pareittain katenoituna. Seuraavaksi sovellamme hierarkkista klusterointimenetelmää. NCD ei ole rajattu tiettyyn sovellusalueeseen ja sitä voi käyttää useaan alueeseen kerralla. Esittelemme Kolmogorov-kompleksisuutta ja tähän perustuvan normalisoidun informaatioetäisyyden, jotka muodostavat NCD:n pohjan. Tämän lisäksi käymme läpi NCD:n kohinansietokykyä ja rajoitteita pakkaajan valinnassa NCD:n käyttöä varten. Seuraavaksi esitellään Google-samankaltaisuusetäisyys, joka perustuu samaan toimintaperiaatteeseen kuin NCD, mutta käyttää internethakutuloksien lukumäärää samankaltaisuuden mittarina.
+Esittelemme metodin pakkauspohjaiseen klusterointiin. Tämä metodi ei ole riippuvainen kohteen ominaisuuksista tai taustatiedoista. Metodi toimii seuraavanlaisesti: Ensin määritämme parametrittoman, universaalin samankaltaisuusetäisyyden: normalisoitu pakkausetäisyys (NCD), joka lasketaan pakatuista tiedostoista, yksittäin ja pareittain katenoituna. Seuraavaksi sovellamme hierarkkista klusterointimenetelmää. NCD ei ole rajattu tiettyyn sovellusalueeseen ja sitä voi käyttää useaan alueeseen kerralla. Esittelemme Kolmogorov-kompleksisuutta ja tähän perustuvan normalisoidun informaatioetäisyyden, jotka muodostavat NCD:n pohjan. Tämän lisäksi käymme läpi NCD:n kohinansietokykyä ja rajoitteita pakkaajan valinnassa NCD:n käyttöä varten. Seuraavaksi esitellään Google-samankaltaisuusetäisyys, joka perustuu samaan toimintaperiaatteeseen kuin NCD, mutta käyttää internethakutuloksien lukumäärää samankaltaisuuden mittarina.
 }
 % The following can be used to specify keywords and classification of the paper:
 
@@ -154,7 +154,6 @@ Esittelemme metodin pakkauspohjaiseen klusterointiin. Tämä metodi ei ole riipp
   Tämän esittelemme luvussa \ref{sec:normalisoitu_pakkausetaisyys} ja samalla käymme läpi mihin teoriaan algoritmi perustuu sekä miten se toimii.
   Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmia: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten suunniteltua (Gencompress).
 
-  % TODO: clearer
   Käytetyt yhtälöt pätevät aina lähes täsmälleen, koska siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatioon. Approksimaation virhe on hyvin pieni: $O(\log n)$ ($n$ on esimerkiksi tiedoston pituus).
 
   Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki tehokkaat etäisyydet \engl{effective distances}: tehokkaat versiot Hammingin etäisyydestä, Euklidisesta etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
