@@ -334,7 +334,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     \end{figure}
 
 
-
     Jokaista määrättyä puuta $T$ ja jokaista lapsisolmumerkin ryhmää $\{u,v,w,x\}$ kohden sanomme että $T$ on johdonmukainen $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa.
 
     Voimme kuvitella isomman puun rakentuvan monesta pienemmästä nelikkotopologiasta. Yleisesit nelikkomenetelmän tarkoitus on löytää tai approksimoida mahdollisimman lähelle puu joka sisältää maksimaalisen määrän johdonmukaisia nelikkotopologioita määrtystä joukosta $Q$. Tätä kutsutaan \emph{maksimi nelikkojohdonmukaisuudeksi} (MGC) \engl{maximum quartet consistency}
@@ -344,25 +343,17 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   %"quartet-based tree construction" -> "nelikkopohjainen puunrakennus"
   \paragraph{TODO} % (fold)
     \begin{itemize}
-      \item puun rakentaminen etäisyysmatriisista
-      \item Puun operaatiot
       \item normalisoitu puun hyötyarvo $S(T)$
       \item Satunnaisuuden käyttö tarkistusiteraatiossa parhaan puun approksimoimiseksi
     \end{itemize}
     % subsection nelikkomenetelma (end)
 
-    Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille dataa (alle 25 objektia) ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia). Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on että, ensiksi klusteroidaan epähierarkkisesti ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
-    \subsection{Tuloksia} % (fold)
-    \label{sub:tuloksia}
-      \paragraph{TODO} % (fold)
-      \begin{itemize}
-        \item Musiikin genrepuu
-        \item Musiikin pieni vertaus
-        \item Musiikin keskikokoinen vertaus
-        \item Musiikin suuri vertaus
-      \end{itemize}
 
-    % subsection tuloksia (end)
+    Klusteroinnista on usea esimerkki olemassa ja käsittelemmä tässä muutaman näistä. Ensimmäiseksi tarkastelemme musiikkigenrejen tunnistamista. Objekteiksi valittiin 12 klassista kappaletta, 12 jazz kappaletta ja 12 rock kappaletta. Tulokseksi saadun puun $S(T)$ on $0.858$. Kappaleet ryhmittyivät suurimmaksi osaksi oikeisiin katergorioihin, mutta poikkeuksiakin oli. Tämä  nähdään jo alhaisesta $S(T)$:n arvosta.
+
+    Seuraavaksi otimme saman 12 klassisen kappaleen joukon klusteroimme ne keskenään. Puun ... arvoksi saatiin $S(T)=0.958$ ja kappaleet ryhmittyvät säveltäjän mukaan.
+
+    Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille dataa (alle 25 objektia) ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia). Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on että, ensiksi klusteroidaan epähierarkkisesti ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
   % section klusterointi (end)
 
 \section{Algoritmin ongelmat ja ominaisuudet} % (fold)
