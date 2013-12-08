@@ -162,7 +162,7 @@ Tähän tulee tutkielman tiivistelmä
   Edellä mainitun vakauden esittämiseen voimme käyttää useaa tosielämän pakkausalgoritmia: tilastollista (PPMZ), Lempel-Ziv -algoritmiin pohjautuvaa hakemistollista (gzip), lohkoperusteista (bzip2) tai erityistarkoitusta varten suunniteltua (Gencompress).
 
   % TODO: clearer
-  Käytetyt yhtälöt pätevät aina lähes täsmälleen, sillä siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatioon. Approksimaation virhe on hyvin pieni: $O(\log n)$ ($n$ on esim. tiedoston pituus).
+  Käytetyt yhtälöt pätevät aina lähes täsmälleen, sillä siirrytään Kolmogorov-kompleksisuudesta laskettavaan approksimaatioon. Approksimaation virhe on hyvin pieni: $O(\log n)$ ($n$ on esimerkiksi tiedoston pituus).
 
   Tarkoituksemme on koota yhteen samankaltaisuuden metriikkaan kaikki tehokkaat etäisyydet \engl{effective distances}: tehokkaat versiot Hammingin etäisyydestä, Euklidisesta etäisyydestä, Lempel-Ziv etäisyydestä ja niin edelleen.
   Tämän metriikan tulee olla niin yleinen, että se toimii yhtäläisesti ja samanaikaisesti kaikilla aloilla: musiikilla, tekstillä, kirjallisuudella, ohjelmilla, genomeilla, luonnollisen kielen määrityksillä.
@@ -266,7 +266,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     NCD(x,y) &= \frac{C(xy)-min\{C(x),C(y)\}}{max\{C(x),C(y)\}}.
   \end{align}
 
-  \emph{NCD} on funktioiden joukko, joka ottaa argumenteiksi kaksi objektia (esim. tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä.
+  \emph{NCD} on funktioiden joukko, joka ottaa argumenteiksi kaksi objektia (esimerkiksi tiedostoja tai Googlen hakusanoja) ja tiivistää nämä, erillisinä ja yhdistettyinä.
   Tämä funktioiden joukko on parametrisoitu käytetyn pakkaajan $C$ mukaan.
 
   Käytännössä \emph{NCD}:n tulos on välillä $0 \leq r \leq 1+ \epsilon$, mikä vastaa kahden tiedoston eroa toisistaan; mitä pienempi luku, sitä enemmän tiedostot ovat samankaltaisia.
@@ -311,7 +311,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Klusterit ovat ryhmä objekteja, jotka ovat samankaltaisia valitun metriikan mukaan.
   Tässä tarkoitus on analysoida dataa, joka on tunnisteeton ja siitä ei tiedetä etukäteen klustereiden lukumäärää.
   NCD:n kanssa käytetään yleisesti hierarkkista klusterointia, koska sitä pidetään yhtenä parhaista valvomattoman oppimisen \engl{unsupervised learning} metodeina.
-  Yksi luonnollisimmista tavoista esittää objektien suhteet on dendrogrammi, joka on yleensä suunnattu binääripuu tai suuntaamaton ternääripuu \cite{10.1109/WDM.2004.1358107}.
+  Yksi luonnollisimmista tavoista esittää objektien suhteet on dendrogrammi, joka on yleensä suunnattu binääripuu tai suuntaamaton ternääripuu \cite{cilibrasi2004algorithmic}.
   Rakentaaksemme tällainen puu etäisyysmatriisista käytämme nelikkomenetelmää.
 
   \subsection{Nelikkomenetelmä} % (fold)
@@ -322,7 +322,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     Käsittelemme jokaista neljän objektin ryhmää $n$ kokoisesta joukosta. Näiden ryhmien lukumäärä on $\binom{n}{4}$.
     Jokaisesta ryhmästä $\{u,v,w,x\}$ rakennamme puun, jossa jokaisella sisäsolmulla on 3 naapuria, eli puu koostuu kahdesta alipuusta, joissa on kummassakin kaksi lapsisolmua.
-    Tällaista puuta kutsutaan \emph{nelikkotopologiaksi} \engl{quartet topology} \cite{CV05} tai \emph{nelikoksi} \engl{quartet} \cite{10.1109/WDM.2004.1358107}.
+    Tällaista puuta kutsutaan \emph{nelikkotopologiaksi} \engl{quartet topology} \cite{CV05} tai \emph{nelikoksi} \engl{quartet} \cite{cilibrasi2004algorithmic}.
     On olemassa kolme vaihtoehtoa miten tämä puu rakentuu: a) $uv|wx$, b) $uw|vx$, c) $ux|vw$, joissa pystyviiva erottelee lapsisolmuparit eri alipuihin (kts. kuva \ref{fig:ternary-tree}).
 
     \begin{figure}[tb]
@@ -596,7 +596,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Tarkempaa tietoa normalisoidun informaatioetäisyyden ominaisuuksista ja sen epäapproksimoitavuudesta löytyy artikkelista \cite{terwijn2011nonapproximability}.
   Tutkimusta on myös tehty siitä, miten NCD toimii kuvantunnistuksessa \cite{doi:10.1117/12.704334}.
   NCD:n kohinansietokykyä on tutkittu, ja se on avannut tutkimuksen mahdollisuuksia tälle aiheelle. Tämän lisäksi on myös tutkittu miten NCD:tä voidaan hyödyntää kohinan poistossa \cite{vitanyi2013similarity}.
-  Nelikkomenetelmästä (\ref{sub:nelikkomenetelma}) löytyy tarkempaa kuvausta artikkelissa \cite{cilibrasi2011fast}.
+  Nelikkomenetelmästä (kts. \ref{sub:nelikkomenetelma}) löytyy tarkempaa kuvausta artikkelissa \cite{cilibrasi2011fast}.
 
 
 % section yhteenveto (end)
