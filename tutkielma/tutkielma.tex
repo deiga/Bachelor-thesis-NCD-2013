@@ -412,11 +412,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \label{fig:bzip2-best}
     \end{figure}
     \begin{figure}[tb]
-      \includegraphics[width=\textwidth]{img/bzip2-fast}
-      \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{bzip2} pakkaajaa asetuksella `--fast'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
-      \label{fig:bzip2-fast}
-    \end{figure}
-    \begin{figure}[tb]
       \includegraphics[width=\textwidth]{img/gzip-best}
       \caption{\emph{Normalisoidut pakkausetäisyydet ensimmäisestä $n$ tavusta, neljälle tiedostolle Calgary Corpus -kokoelmasta, käyttäen \textbf{gzip} pakkaajaa asetuksella `--best'. Tiedostot vertailtiin itsensä kanssa.} \cite{cebrian2005common}}
       \label{fig:gzip-best}
@@ -444,7 +439,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
         Kuvassa \ref{fig:bzip2-best} huomataan että $NCD(x,x)$ on väliltä $0.2$ ja $0.3$, kun tiedostojen koko on sopiva bzip2 pakkaajalle, kun taas arvo on väliltä $0.25$ ja $0.9$ kun tiedostokoko ei ole enää sopiva.
         Rajoittava tekijä bzip2 pakkaajassa on tälle määriteltävä lohkokoko \engl{block size}, joka on oletusarvoisesti 900 kilotavua, eli jos pakattavan tiedoston koko on tätä suurempi niin se pilkotaan alle 900 kilotavun kokoisiksi palasiksi ennen pakkausta.
         Tällaisesta pilkkomisesta aiheutuu se, ettei eri osien välillä pysty enää pakkaamaan samankaltaisuuksia ja täten pakattu koko ei ole paras mahdollinen.
-        Tämä näkyy hyvin kuvassa \ref{fig:bzip2-fast}, jossa lohkokoko on huomattavasti pienempi kuin 900 kilotavua ja täten NCD:n arvot nousevat hyvin pienillä tiedostoilla jo korkealle.
       % paragraph bzip2 (end)
 
       \paragraph{gzip} % (fold)
