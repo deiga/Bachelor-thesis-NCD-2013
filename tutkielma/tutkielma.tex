@@ -354,6 +354,13 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     Seuraavaksi otimme saman 12 klassisen kappaleen joukon klusteroimme ne keskenään. Puun ... arvoksi saatiin $S(T)=0.958$ ja kappaleet ryhmittyvät säveltäjän mukaan.
 
     Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille dataa (alle 25 objektia) ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia). Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on että, ensiksi klusteroidaan epähierarkkisesti ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
+    \begin{figure}[tb]
+      \immediate\write18{pdfcrop img/classification}
+      \includegraphics[width=0.6\textwidth]{img/classification}
+      \caption{\emph{Eri tiedostotyyppien ryhmittely. Puu vastaa hyvin NCD:n etäisyysmatriisia: $S(T)=0.984$.}
+      \cite{CV05} }
+      \label{fig:classification}
+    \end{figure}
   % section klusterointi (end)
 
 \section{Algoritmin ongelmat ja ominaisuudet} % (fold)
