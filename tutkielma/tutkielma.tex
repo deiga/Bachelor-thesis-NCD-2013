@@ -316,16 +316,15 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   \subsection{Nelikkomenetelmä} % (fold)
   \label{sub:nelikkomenetelma}
 
-    % TODO: subtree
-    Käsittelemme jokaista neljän objektin ryhmää, $n$ kokoisesta joukosta. Näitä on $\binom{n}{4}$. Jokaisesta ryhmästä $u,v,w,x$ rakennamme ternääripuun, eli puu koostuu kahdesta subtreestä, joissa kummassakin 2 lasta. Tällaista puuta kutsutaan nelikkotopologiaksi \cite{CV05}. On olemassa kolme vaihtoehtoa miten tämä puu rakentuu:
+    Käsittelemme jokaista neljän objektin ryhmää $n$ kokoisesta joukosta. Näiden lukumäärä on $\binom{n}{4}$. Jokaisesta ryhmästä $u,v,w,x$ rakennamme ternääripuun, eli puu koostuu kahdesta alipuusta, joissa kummassakin 2 lapsisolmua. Tällaista puuta kutsutaan nelikkotopologiaksi \cite{CV05}. On olemassa kolme vaihtoehtoa miten tämä puu rakentuu:
     \begin{enumerate}[label=\roman*]
       \item $uv|wx$
       \item $uw|vx$
       \item $ux|vw$.
     \end{enumerate}
-    Pystyviiva erottelee lapsisolmuparit eri subtree.
+    Pystyviiva erottelee lapsisolmuparit eri alipuusta.
 
-    Jokaista määrättyä puuta $T$ kohti ja jokaista neljän lapsisolmumerkin ryhmää $u,v,w,x$ kohden sanomme että $T$ on konsistentti $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa.
+    Jokaista määrättyä puuta $T$ ja jokaista neljän lapsisolmumerkin ryhmää $u,v,w,x$ kohden sanomme että $T$ on johdonmukainen $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa. Voimme kuvitella isomman puun rakentuvan monesta pienemmästä nelikkotopologiasta.
 
   %"minimum quartet tree cost" -> "pienin nelikkopuukustannus"
 
@@ -540,7 +539,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \end{enumerate}
     % subsection google_samankaltaisuusetaisyys (end)
 
-    \subsection{Hierarkinen klusterointi} % (fold)
+    \subsection{Hierarkkinen klusterointi} % (fold)
     \label{sub:klusterointi}
       Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi lasketaan etäisyysmatriisi \ref{sub:etaisyysmatriisi} hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
 
@@ -559,7 +558,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \begin{figure}[tb]
         \immediate\write18{pdfcrop img/dutch-paintings}
         \includegraphics[width=\textwidth, height=350pt]{img/dutch-paintings}
-        \caption{\emph{Hierarkinen klusterointi hollantilaisista maalauksista} \cite{cilibrasi2007google} }
+        \caption{\emph{Hierarkkinen klusterointi hollantilaisista maalauksista} \cite{cilibrasi2007google} }
         \label{fig:dutch-paintings}
       \end{figure}
 
@@ -579,7 +578,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
 
   NCD ei tietenkään ole ainut menetelmä jota ohjaamattomassa oppimisessa voi käyttää datan klusteroimiseen.
-  Hierarkinen klusterointi on tapa jota NCD:n kanssa klusteroidessa käytetään, eli toisiaan lähemmät objektit liittyvät enemmän toisiinsa kuin kauempana olevat. Vaihtoehtoisesti voidaan käyttää K-keskiö klusterointia \engl{K-means clustering}, jossa pyritään klusteroimaan objektit $k$ eri klusteriin, klusterin keskipisteen etäisyyden perusteella; taikka jakautumaan pohjautuvaa klusterointia, jossa klusteroidaan objektit jotka todennäköisesti kuuluvat samaan jakaumaan.
+  Hierarkkinen klusterointi on tapa jota NCD:n kanssa klusteroidessa käytetään, eli toisiaan lähemmät objektit liittyvät enemmän toisiinsa kuin kauempana olevat. Vaihtoehtoisesti voidaan käyttää K-keskiö klusterointia \engl{K-means clustering}, jossa pyritään klusteroimaan objektit $k$ eri klusteriin, klusterin keskipisteen etäisyyden perusteella; taikka jakautumaan pohjautuvaa klusterointia, jossa klusteroidaan objektit jotka todennäköisesti kuuluvat samaan jakaumaan.
 
   Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin ja tässä esitellään muutama alue, joita tämän tutkielman pohjalta voi lukea.
   Geeniekspressioanalyysi on ... ja on tutkittu NCD:n käyttöä tässä \cite{nykter2005normalized}.
