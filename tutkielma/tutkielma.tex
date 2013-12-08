@@ -349,11 +349,24 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
     % subsection nelikkomenetelma (end)
 
 
-    Klusteroinnista on usea esimerkki olemassa ja käsittelemmä tässä muutaman näistä. Ensimmäiseksi tarkastelemme musiikkigenrejen tunnistamista. Objekteiksi valittiin 12 klassista kappaletta, 12 jazz kappaletta ja 12 rock kappaletta. Tulokseksi saadun puun $S(T)$ on $0.858$. Kappaleet ryhmittyivät suurimmaksi osaksi oikeisiin katergorioihin, mutta poikkeuksiakin oli. Tämä  nähdään jo alhaisesta $S(T)$:n arvosta.
+    Klusteroinnista on usea esimerkki olemassa ja käsittelemmä tässä muutaman näistä.
+    Ensimmäiseksi tarkastelemme musiikkigenrejen tunnistamista.
+    Objekteiksi valittiin 12 klassista kappaletta, 12 jazz kappaletta ja 12 rock kappaletta.
+    Tulokseksi saadun puun $S(T)$ on $0.858$. Kappaleet ryhmittyivät suurimmaksi osaksi oikeisiin katergorioihin, mutta poikkeuksiakin oli.
+    Tämä nähdään jo alhaisesta $S(T)$:n arvosta.
 
-    Seuraavaksi otimme saman 12 klassisen kappaleen joukon klusteroimme ne keskenään. Puun ... arvoksi saatiin $S(T)=0.958$ ja kappaleet ryhmittyvät säveltäjän mukaan.
+    Seuraavaksi on klusteroitu sama 12 klassisen kappaleen joukko. Puun ... arvoksi saatiin $S(T)=0.958$ ja kappaleet ryhmittyvät säveltäjän mukaan.
 
-    Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille dataa (alle 25 objektia) ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia). Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on että, ensiksi klusteroidaan epähierarkkisesti ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
+    Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille dataa (alle 25 objektia) ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia).
+    Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on että, ensiksi klusteroidaan epähierarkkisesti ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
+
+    % TODO: ...
+    Esimerkkinä NCD:n kyvystä erotella eri aihelueet tehokkaasti on kuva \ref{fig:classification}.
+    Tässä on klusteroitu seuraavia tiedostotyyppejä: i) neljä mitokondrioitten geenisekvenssiä (jääkarhu, kettu, rotta, mustakarhu); ii) neljä kappaletta kirjasta `The Zeppelin\'s Passenger'; iii) neljä MIDI tiedostoa, joita ei ole käsitelty (Jimi Hendrix, Debussy); iv) kaksi Linux x86 ELF ohjelmatiedostoa ja v) kaksi käännettyä Java luokkaa.
+    Pakkaajana käytettiin bzip2 -ohjelmaa.
+    Puun ... arvoksi tulee $S(T)=0.984$.
+    Tämä koe näyttää miten tehokas ja universaali NCD:n käyttö klusteroinnissa on \cite{CV05}.
+
     \begin{figure}[tb]
       \immediate\write18{pdfcrop img/classification}
       \includegraphics[width=0.6\textwidth]{img/classification}
