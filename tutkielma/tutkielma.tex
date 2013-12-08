@@ -150,8 +150,7 @@ Tähän tulee tutkielman tiivistelmä
   Kaikki data on luotu samanveroiseksi, mutta jotkut datat ovat samankaltaisempia kuin toiset.
   Esitämme tavan, jolla ilmaista tämä samankaltaisuus, käyttäen Cilibrasin ja Vitanyin esittelemää samankaltaisuuden metriikkaa \engl{similarity metric}, joka perustuu tiedoston pakkaamiseen. \cite{CV05}
   Metriikka on parametriton, eli se ei käytä datan ominaisuuksia tai taustatietoja, ja sitä voi soveltaa eri aloihin ilman muunnoksia.
-  Metriikka approksimoi parin hallitsevan piirteen \engl{dominant feature}, jonka perusteella parin samankaltaisuus arvioidaan ja on täten universaali.
-  % TODO: Metriikka on universaali siten, että se approksimoi parametrin, joka ilmaisee parin hallitsevan piirteen samankaltaisuutta pareittain vertailuissa.
+  Metriikka kykenee approksimoimaan objektiparin hallitsevan piirteen \engl{dominant feature}, jonka perusteella parin samankaltaisuus arvioidaan ja metriikka on täten universaali.
   Se on vakaa siinä mielessä, että sen tulokset ovat riippumattomia käytetystä pakkaajasta \cite{CV05}. Pakkaajalla tarkoitetaan pakkausohjelmaa kuten \emph{gzip, ppmz, bzip2}.
 
   \label{par:intro-2}
@@ -382,7 +381,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \immediate\write18{pdfcrop img/noise-001}
       \includegraphics{img/noise-001}
       \caption{\emph{Normalisoitujen pakkausetäisyyksien pohjalta klusteroituja kirjoja eri kirjoittajilta kun tiedostoihin on lisätty 25\% kohinaa. Merkinnät ovat kirjailijan nimikirjaimet: AC = Agatha Christie, AP = Alexander Pope, EAP = Edgar Allan Poe, WS = William Shakespeare ja NM = Niccolo Machiavelli.}
-      % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
       \cite{4167725}}
       \label{fig:noise-001}
     \end{figure}
@@ -390,7 +388,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \immediate\write18{pdfcrop img/noise-002}
       \includegraphics{img/noise-002}
       \caption{\emph{Kuvan \ref{fig:noise-001} tiedostoihin on lisätty 50\% kohinaa. Merkinnät vastaavat kuvaa \ref{fig:noise-001}.}
-      % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
       \cite{4167725}}
       \label{fig:noise-002}
     \end{figure}
@@ -398,7 +395,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \immediate\write18{pdfcrop img/noise-003}
       \includegraphics{img/noise-003}
       \caption{\emph{Kuvan \ref{fig:noise-001} tiedostoihin on lisätty 75\% kohinaa. Merkinnät vastaavat kuvaa \ref{fig:noise-001}.}
-      % TODO: The quality of the clustering degrades slowly due to the linear growth of the average distortion.
       \cite{4167725}}
       \label{fig:noise-003}
     \end{figure}
