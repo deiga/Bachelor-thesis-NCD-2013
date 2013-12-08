@@ -98,7 +98,7 @@ Tähän tulee tutkielman tiivistelmä
 
 % The following can be used to specify keywords and classification of the paper:
 
-\keywords{Samankaltaisuus, Klusterointi, Ohjaamaton oppiminen, Tiedonlouhinta}
+\keywords{Samankaltaisuus, Klusterointi, Valvomaton oppiminen, Tiedonlouhinta}
 
 % classification according to ACM Computing Classification System (http://www.acm.org/about/class/)
 % This is probably mostly relevant for computer scientists
@@ -305,26 +305,38 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 \section{Klusterointi} % (fold)
 \label{sec:klusterointi}
 
-  Yksi NCD:n käyttötarkoituksista on objektien klusterointi ilman että datasta tarvitsee
-
-  NCD:n vahvimpia käyttötarkoituksia on klusterointi eli eri objektien kerääminen samankaltaisiin nippuihin. seuraavassa luvussa käymme läpi miten tämä klusterointi savutetaan ja käymme esimerkkejä siitä miten klusteroidaan. esimerkkinä tästä klusteroinnista sienten genomi otettu muutaman sienilajin genomi ja syötetty se NCD:lle sit näitten etäisyyksien perusteella rakennettu puu ja tämä puu rakentuu hyvin samankaltaisesti kuin miten biologit luokittelevat sienet sukupuussa
-
-  Meillä on määrätty joukko objekteja ja objektien NCD arvot, pareittain kaikkien muitten objektien kanssa, muodostavat etäisyysmatriisin alkiot.
-  Matriisista objektien välisiä suhteita on vaikea hahmottaa.
-  Jotta pystymme klusteroimaan objektit hierarkkisesti määritämme ternääripuun \engl{ternary tree} joka vastaa etäisyysmatriisin tietosisältöä jonkin valitun kustannusmittarin mukaan.
+  Yksi NCD:n käyttötarkoituksista on objektien klusterointi ilman että datasta tarvitsee etukäteen kerätä ominaisuuksia.
+  Täten samaan menetelmää voidaan hyödyntää klusteroimaan täysin eri tyyppisiä datajoukkoja.
+  Klusterit ovat ryhmä objekteja, jotka ovat samankaltaisia valitun metriikan mukaan.
+  Tässä tarkoitus on analysoida dataa, joka on tunnisteeton ja siitä ei tiedetä etukäteen klustereitten lukumäärää.
+  NCD:n kanssa käytetään yleisesti hierarkkista klusterointia, koska sitä pidetään yhtenä parhaista valvomattoman oppimisen \engl{unsupervised learning} metodeina.
+  Yksi luonnollisimmista tavoista esittää objektien suhteet on dendrogrammi, joka on yleensä suunattu binääripuu tai suuntaamaton ternääripuu \cite{10.1109/WDM.2004.1358107}.
+  Rakentaaksemme tällainen puu etäisyymatriisista käytämme nelikkomenetelmää.
 
   \subsection{Nelikkomenetelmä} % (fold)
   \label{sub:nelikkomenetelma}
+    Meillä on määrätty joukko objekteja ja näitten pareittain NCD arvot, muodostavat etäisyysmatriisin alkiot, jotka edustavat etäisyyksiä kaikkien objektiparien välillä.
+    Tässä matriisissa pareittaiset suhteet ovat raa'assa muodossa ja täten tietoa on vaikea hahmottaa.
+    Jotta voimme klusteroida objektit hierarkkisesti määritämme ternääripuun \engl{ternary tree} joka vastaa etäisyysmatriisin tietosisältöä jonkin valitun kustannusmittarin mukaan.
 
-    Käsittelemme jokaista neljän objektin ryhmää $n$ kokoisesta joukosta. Näiden lukumäärä on $\binom{n}{4}$. Jokaisesta ryhmästä $u,v,w,x$ rakennamme ternääripuun, eli puu koostuu kahdesta alipuusta, joissa kummassakin 2 lapsisolmua. Tällaista puuta kutsutaan nelikkotopologiaksi \cite{CV05}. On olemassa kolme vaihtoehtoa miten tämä puu rakentuu:
-    \begin{enumerate}[label=\roman*]
-      \item $uv|wx$
-      \item $uw|vx$
-      \item $ux|vw$.
-    \end{enumerate}
-    Pystyviiva erottelee lapsisolmuparit eri alipuusta.
+    Käsittelemme jokaista neljän objektin ryhmää $n$ kokoisesta joukosta. Näiden ryhmien lukumäärä on $\binom{n}{4}$.
+    Jokaisesta ryhmästä $\{u,v,w,x\}$ rakennamme puun, jossa jokaisella sisäsolmulla on 3 naapuria, eli puu koostuu kahdesta alipuusta, joissa kummassakin kaksi lapsisolmua.
+    Tällaista puuta kutsutaan \emph{nelikkotopologiaksi} \engl{quartet topology} \cite{CV05} tai \emph{nelikoksi} \engl{quartet} \cite{10.1109/WDM.2004.1358107}.
+    On olemassa kolme vaihtoehtoa miten tämä puu rakentuu: a) $uv|wx$, b) $uw|vx$, c) $ux|vw$, joissa pystyviiva erottelee lapsisolmuparit eri alipuihin (kts. kuva \ref{fig:ternary-tree}).
 
-    Jokaista määrättyä puuta $T$ ja jokaista neljän lapsisolmumerkin ryhmää $u,v,w,x$ kohden sanomme että $T$ on johdonmukainen $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa. Voimme kuvitella isomman puun rakentuvan monesta pienemmästä nelikkotopologiasta.
+    \begin{figure}[tb]
+      \immediate\write18{pdfcrop img/ternary-tree}
+      \includegraphics{img/ternary-tree}
+      \caption{\emph{Kolme mahdollista nelikkotopologiaa}
+      \cite{CV05}}
+      \label{fig:ternary-tree}
+    \end{figure}
+
+
+
+    Jokaista määrättyä puuta $T$ ja jokaista lapsisolmumerkin ryhmää $\{u,v,w,x\}$ kohden sanomme että $T$ on johdonmukainen $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polun $w$:stä $x$:än kanssa.
+
+    Voimme kuvitella isomman puun rakentuvan monesta pienemmästä nelikkotopologiasta. Yleisesit nelikkomenetelmän tarkoitus on löytää tai approksimoida mahdollisimman lähelle puu joka sisältää maksimaalisen määrän johdonmukaisia nelikkotopologioita määrtystä joukosta $Q$. Tätä kutsutaan \emph{maksimi nelikkojohdonmukaisuudeksi} (MGC) \engl{maximum quartet consistency}
 
   %"minimum quartet tree cost" -> "pienin nelikkopuukustannus"
 
@@ -337,6 +349,8 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
       \item Satunnaisuuden käyttö tarkistusiteraatiossa parhaan puun approksimoimiseksi
     \end{itemize}
     % subsection nelikkomenetelma (end)
+
+    Empiirisesti on havaittu, että hierarkkinen klusterointi toimii parhaiten pienille joukoille dataa (alle 25 objektia) ja sen toimivuus laskee huomattavasti isoille joukoille (yli 40 objektia). Yleinen ratkaisu isojen joukkojen hierarkkiseen klusterointiin on että, ensiksi klusteroidaan epähierarkkisesti ja sitten klusteroimalla hierarkkisesti tästä saatavat klusterit.
     \subsection{Tuloksia} % (fold)
     \label{sub:tuloksia}
       \paragraph{TODO} % (fold)
@@ -541,7 +555,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
     \subsection{Hierarkkinen klusterointi} % (fold)
     \label{sub:klusterointi}
-      Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi lasketaan etäisyysmatriisi \ref{sub:etaisyysmatriisi} hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
+      Klusterointi normalisoidun Google-etäisyyden avulla onnistuu samanlailla kuin normalisoidulla pakkausetäisyydelläkin. Ensiksi koostetaan etäisyysmatriisi hakuehtojen pareittaisista NGD:n arvoista ja sitten nelikkomenetelmää \ref{sub:nelikkomenetelma} käyttäen rakennetaan \emph{juureton ternääripuu} \engl{unrooted ternary tree}.
 
       Esimerkkinä klusteroitiin 15, 1600-luvun hollantilaisten maalareitten, teosta.
       Kuvassa \ref{fig:dutch-paintings} on Rembrandtin, Steenin ja Bolin maalauksia ternääripuu-rakenteessa.
@@ -577,7 +591,7 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
   Vaikka NCD:n kehittäjät luulivat osoittaneen, että algoritmi on riippumaton pakkaajan valinnasta \cite{CV05}, niin vertailujen tuloksena on pystytty todistamaan, että ainoastaan tiedostonkokoa rajoittamaton pakkaaja toimii aidosti NCD:n kanssa \ref{sub:pakkaajan_valinta}.
   Kannattavin valinta pakkaajaksi on \emph{PPMZ}, mikäli käyttää NCD:n tuloksia klusterointiin.
 
-  NCD ei tietenkään ole ainut menetelmä jota ohjaamattomassa oppimisessa voi käyttää datan klusteroimiseen.
+  NCD ei tietenkään ole ainut menetelmä jota valvomattomassa oppimisessa voi käyttää datan klusteroimiseen.
   Hierarkkinen klusterointi on tapa jota NCD:n kanssa klusteroidessa käytetään, eli toisiaan lähemmät objektit liittyvät enemmän toisiinsa kuin kauempana olevat. Vaihtoehtoisesti voidaan käyttää K-keskiö klusterointia \engl{K-means clustering}, jossa pyritään klusteroimaan objektit $k$ eri klusteriin, klusterin keskipisteen etäisyyden perusteella; taikka jakautumaan pohjautuvaa klusterointia, jossa klusteroidaan objektit jotka todennäköisesti kuuluvat samaan jakaumaan.
 
   Normalisoidun pakkausetäisyyden aihealueesta on tehty paljon tutkimusta eri suuntautumishaaroihin ja tässä esitellään muutama alue, joita tämän tutkielman pohjalta voi lukea.
@@ -589,7 +603,6 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 
 
 % section yhteenveto (end)
-\pagebreak
 % --- References ---
 %
 % bibtex is used to generate the bibliography. The babplain style
