@@ -303,20 +303,29 @@ Jotta voimme soveltaa tätä ideaalia ja tarkkaa matemaattista teoriaa käytänt
 % section normalisoitu_pakkausetaisyys (end)
 
 \section{Klusterointi} % (fold)
-  \label{sec:klusterointi}
-    \paragraph{TODO} % (fold)
-    \begin{itemize}
-      \item Miten klusteroidaan
-      \item Etäisyysmatriisi
-    \end{itemize}
-    \subsection{Etäisyysmatriisi} % (fold)
-    \label{sub:etaisyysmatriisi}
+\label{sec:klusterointi}
 
-    % subsection etaisyysmatriisi (end)
-    \subsection{Nelikkomenetelmä} % (fold)
-    \label{sub:nelikkomenetelma}
+  Yksi NCD:n käyttötarkoituksista on objektien klusterointi ilman että datasta tarvitsee
 
-    %"quartet topology" -> "nelikkotopologia",
+  NCD:n vahvimpia käyttötarkoituksia on klusterointi eli eri objektien keräämienn samnaklaitisiin nippuihin seuraavassa luvussa käymme läpi miten tämä klusterointi savutetaan ja käymme esimerkkejä siitä miten klusteroidaan ja mitä oklöusteroitu. esimerkkinä tästä klusteroinnista sienten genomi otetttu muutamajn sienilajin genomi ja syötetty se NCD:lle sit näitten etäisyyksia persuteella rakennettu puu ja tämä puu rakentuyu hyvin samanklaitaisesti kuin miten bioligit luokittelevat sienet sukupuussa
+
+  Meillä on määrätty joukko objekteja ja objektien NCD arvot, pareittain kaikkien muitten objektien kanssa, muodostavat etäisyysmaatriisin alkiot.
+  Matriisista objektien välisiä suhteita on vaikea hahmottaa.
+  Jotta pystymme klusteroimaan objektit hierarkisesti määritämme ternääripuun \engl{ternary tree} joka vastaa etäisyysmatriisin tietosisältöä jonkin valitun kustannusmittarin mukaan.
+
+  \subsection{Nelikkomenetelmä} % (fold)
+  \label{sub:nelikkomenetelma}
+
+    % TODO: subtree
+    Käsittelemme jokaista neljän objektin ryhmää, $n$ kokoisesta joukosta. Näitä on $\binom{n}{4}$. Jokaisesta ryhmästä $u,v,w,x$ rakennamme ternääripuun, eli puu koostuu kahdesta subtreestä, joissa kummassakin 2 lasta. Tälläistä puuta kutsutaan nelikkotopologiaksi \cite{CV05}. On olemassa kolme vaihtoehtoa miten tämä puu rakentuu:
+    \begin{enumerate}[label=\roman*]
+      \item $uv|wx$
+      \item $uw|vx$
+      \item $ux|vw$.
+    \end{enumerate}
+    Pystyviiva erottelee lapsisolmuparit eri subtree.
+
+    Jokaista määrättyä puuta $T$ kohti ja jokaista neljän lapsisolmumerkin ryhmää $u,v,w,x$ kohden sanomme että $T$ on konsistentti $uv|wx$:n kanssa, joss polku $u$:sta $v$:hen ei risteä polkun $w$:stä $x$:än kanssa.
 
   %"minimum quartet tree cost" -> "pienin nelikkopuukustannus"
 
