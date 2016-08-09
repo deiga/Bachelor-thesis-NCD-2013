@@ -1,3 +1,3 @@
-#Bachelor Thesis 2013
+#Normalisoitu Pakkausetäisyys
 
-Repo for my Bachelors Thesis on NCD
+This repository is for the creation of my Bachelors Thesis on Normalized Compression Distance
